@@ -1469,17 +1469,6 @@ span {
 
 .contact-actions p { margin: 0; color: #aeb6ba; font-size: 12px; }
 
-.contact-email {
-  color: #d9dddf;
-  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 12px;
-  text-decoration: none;
-}
-
-.contact-email:hover {
-  color: #f0786f;
-}
-
 .site-footer {
   padding: 52px 0 32px;
   background: #0e1011;

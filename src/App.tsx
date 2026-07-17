@@ -98,7 +98,6 @@ function ContactBand() {
           <a className="primary-button light-button" href="mailto:chenwy1@getui.com?subject=仝心圆%20试点合作">
             联系合作 <ArrowRight size={17} />
           </a>
-          <a className="contact-email" href="mailto:chenwy1@getui.com">contact@mrtt.ai</a>
         </div>
       </div>
     </section>
