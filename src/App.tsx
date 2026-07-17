@@ -95,7 +95,7 @@ function ContactBand() {
         <p className="section-index light">CONTACT</p>
         <h2 id="contact-title">让你的工程图纸，重新开始工作。</h2>
         <div className="contact-actions">
-          <a className="primary-button light-button" href="mailto:chenwy1@getui.com?subject=MRTT%20试点合作">
+          <a className="primary-button light-button" href="mailto:chenwy1@getui.com?subject=仝心圆%20试点合作">
             联系合作 <ArrowRight size={17} />
           </a>
           <a className="contact-email" href="mailto:chenwy1@getui.com">contact@mrtt.ai</a>
@@ -111,11 +111,11 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
       <section className="hero" id="top">
         <div className="hero-content page-grid">
           <div className="hero-copy">
-            <p className="eyebrow">TURN DRAWINGS INTO DATA</p>
-            <h1>MRTT</h1>
+            <p className="eyebrow">MRTT PRESENTS / ENGINEERING DATA COMPILER</p>
+            <h1>仝心圆</h1>
             <h2>唤醒每一张工程图纸里的数据价值</h2>
             <p className="hero-description">
-              MRTT 是一家工业数据智能公司。我们把沉睡在扫描图、PDF、DWG 与 DXF 里的工程知识，转化为可核验、可追溯、可编辑，并能被 CAD 与 AI 系统直接使用的数据。
+              仝心圆是 MRTT 推出的工程数据编译产品。它把沉睡在扫描图、PDF、DWG 与 DXF 里的工程知识，转化为可核验、可追溯、可编辑，并能被 CAD 与 AI 系统直接使用的数据。
             </p>
             <div className="hero-actions">
               <button className="primary-button" onClick={() => navigate("product")}>
@@ -157,10 +157,10 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
             return <article className="service-row" key={service.title}><Icon size={27} strokeWidth={1.6} /><div><h3>{service.title}</h3><span>{service.english}</span></div><p>{service.description}</p></article>;
           })}
         </div>
-        <div className="page-grid ecosystem-flow" aria-label="MRTT 在工业数据链路中的位置">
+        <div className="page-grid ecosystem-flow" aria-label="仝心圆在工业数据链路中的位置">
           <div><span>INPUT</span><strong>非结构化工程资料</strong><p>扫描图 · PDF · DWG · DXF</p></div>
           <ArrowRight size={21} aria-hidden="true" />
-          <div className="is-mrtt"><span>MRTT</span><strong>工程数据编译与治理</strong><p>结构化 · 校验 · 证据链</p></div>
+          <div className="is-mrtt"><span>仝心圆 / MRTT</span><strong>工程数据编译与治理</strong><p>结构化 · 校验 · 证据链</p></div>
           <ArrowRight size={21} aria-hidden="true" />
           <div><span>APPLICATIONS</span><strong>工业软件与智能系统</strong><p>CAD · PLM · 数字孪生 · Agent</p></div>
         </div>
@@ -186,7 +186,7 @@ function ProductPage() {
   return (
     <main>
       <section className="inner-hero product-hero">
-        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">ENGINEERING DATA COMPILER</p><h1>唤醒图纸，让工程数据流动起来</h1></div><p>从企业档案库到 CAD、PLM、数字孪生与 AI Agent，让历史资料重新进入业务流程。</p></div>
+        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">仝心圆 / ENGINEERING DATA COMPILER</p><h1>唤醒图纸，让工程数据流动起来</h1></div><p>仝心圆连接企业档案库与 CAD、PLM、数字孪生和 AI Agent，让历史资料重新进入业务流程。</p></div>
       </section>
       <section className="business-section inner-section" aria-labelledby="delivery-title">
         <div className="page-grid section-heading"><div><p className="section-index">DATA PIPELINE</p><h2 id="delivery-title">从一张图，到一份可用的数据资产</h2></div><p>围绕真实使用场景，共同确定数据范围、交付格式和工程验收标准。</p></div>
@@ -250,14 +250,14 @@ function App() {
 
   useEffect(() => {
     const titles: Record<PageId, string> = {
-      home: "MRTT | 工程数据编译公司",
-      product: "产品与合作 | MRTT",
+      home: "仝心圆 | MRTT 工程数据智能",
+      product: "仝心圆产品与合作 | MRTT",
       about: "关于我们 | MRTT",
       careers: "加入我们 | MRTT",
     };
     const descriptions: Record<PageId, string> = {
-      home: "MRTT 是一家面向工业存量图纸的数据智能公司，专注将扫描图、PDF、DWG 与 DXF 编译为可供 CAD 和 AI 系统使用的工程数据。",
-      product: "了解 MRTT 的工程图纸数据交付内容、验收结果与试点合作方式。",
+      home: "仝心圆是 MRTT 推出的工程数据编译产品，将扫描图、PDF、DWG 与 DXF 编译为可供 CAD 和 AI 系统使用的工程数据。",
+      product: "了解仝心圆的工程图纸数据交付内容、验收结果与试点合作方式。",
       about: "了解 MRTT 从铁塔行业开始建设工程图纸数据能力的发展方向。",
       careers: "加入 MRTT，参与多模态 AI 与真实工业数据系统的研发。",
     };
@@ -276,18 +276,18 @@ function App() {
       <header className="site-header">
         <button className="wordmark" onClick={() => navigate("home")} aria-label="返回首页">MRTT</button>
         <nav className={`main-nav ${mobileOpen ? "is-open" : ""}`} aria-label="主导航">
-          <button className={page === "product" ? "current" : ""} aria-current={page === "product" ? "page" : undefined} onClick={() => navigate("product")}>产品与合作</button>
+          <button className={page === "product" ? "current" : ""} aria-current={page === "product" ? "page" : undefined} onClick={() => navigate("product")}>仝心圆</button>
           <button className={page === "about" ? "current" : ""} aria-current={page === "about" ? "page" : undefined} onClick={() => navigate("about")}>关于我们</button>
           <button className={page === "careers" ? "current" : ""} aria-current={page === "careers" ? "page" : undefined} onClick={() => navigate("careers")}>加入我们</button>
         </nav>
-        <a className="header-contact" href="mailto:chenwy1@getui.com?subject=MRTT%20合作咨询">联系合作 <ArrowRight size={16} /></a>
+        <a className="header-contact" href="mailto:chenwy1@getui.com?subject=仝心圆%20合作咨询">联系合作 <ArrowRight size={16} /></a>
         <button className="menu-button" onClick={() => setMobileOpen((value) => !value)} aria-label={mobileOpen ? "关闭菜单" : "打开菜单"} aria-expanded={mobileOpen}>{mobileOpen ? <X size={22} /> : <Menu size={22} />}</button>
       </header>
       {page === "home" && <HomePage navigate={navigate} />}
       {page === "product" && <ProductPage />}
       {page === "about" && <AboutPage />}
       {page === "careers" && <CareersPage openJob={openJob} setOpenJob={setOpenJob} />}
-      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>工程数据编译公司</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>产品与合作</button><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>© MRTT. ALL RIGHTS RESERVED.</span></div></div></footer>
+      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>仝心圆 · 工程数据编译产品</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>仝心圆</button><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>© MRTT. ALL RIGHTS RESERVED.</span></div></div></footer>
     </div>
   );
 }

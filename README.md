@@ -1,6 +1,7 @@
-# MRTT Website
+# MRTT / 仝心圆 Website
 
-MRTT corporate website built with React, TypeScript and Vite.
+Corporate website for MRTT and its engineering data compiler product, 仝心圆.
+Built with React, TypeScript and Vite.
 
 ## Local development
 
@@ -37,4 +38,3 @@ https://<organization-name>.github.io/
 
 The site uses hash-based routes such as `#/product`, so GitHub Pages can serve
 every page without custom rewrite rules.
-
