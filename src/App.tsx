@@ -95,10 +95,10 @@ function ContactBand() {
         <p className="section-index light">CONTACT</p>
         <h2 id="contact-title">让你的工程图纸，重新开始工作。</h2>
         <div className="contact-actions">
-          <a className="primary-button light-button" href="mailto:contact@mrtt.ai?subject=MRTT%20试点合作">
+          <a className="primary-button light-button" href="mailto:chenwy1@getui.com?subject=MRTT%20试点合作">
             联系合作 <ArrowRight size={17} />
           </a>
-          <a className="contact-email" href="mailto:contact@mrtt.ai">contact@mrtt.ai</a>
+          <a className="contact-email" href="mailto:chenwy1@getui.com">contact@mrtt.ai</a>
         </div>
       </div>
     </section>
@@ -229,7 +229,7 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
   return (
     <main>
       <section className="inner-hero careers-hero"><div className="page-grid inner-hero-layout"><div><p className="eyebrow">CAREERS</p><h1>把 AI 带进真实、复杂的工业世界</h1></div><p>这里有不整齐的数据、明确的工程约束，也有真正能被客户使用的结果。实习与全职均可。</p></div></section>
-      <section className="careers-section" aria-labelledby="careers-title"><div className="page-grid careers-heading"><div><p className="section-index">OPEN ROLES</p><h2 id="careers-title">多模态 AI 核心岗位</h2></div><p>两个方向都需要理解模型能力边界，并愿意把研究结果变成可验证的工程系统。</p></div><div className="page-grid job-list">{jobs.map((job, index) => { const isOpen = openJob === index; return <article className={`job-row ${isOpen ? "is-open" : ""}`} key={job.title}><button onClick={() => setOpenJob(isOpen ? null : index)} aria-expanded={isOpen}><span className="job-title"><strong>{job.title}</strong><small>{job.english}</small></span><span className="job-type">实习 / 全职</span><ChevronDown size={22} /></button><div className="job-details"><p>{job.summary}</p><ul>{job.requirements.map((item) => <li key={item}>{item}</li>)}</ul><a href="mailto:contact@mrtt.ai?subject=MRTT%20岗位申请">投递与沟通 <ArrowRight size={16} /></a></div></article>; })}</div></section>
+      <section className="careers-section" aria-labelledby="careers-title"><div className="page-grid careers-heading"><div><p className="section-index">OPEN ROLES</p><h2 id="careers-title">多模态 AI 核心岗位</h2></div><p>两个方向都需要理解模型能力边界，并愿意把研究结果变成可验证的工程系统。</p></div><div className="page-grid job-list">{jobs.map((job, index) => { const isOpen = openJob === index; return <article className={`job-row ${isOpen ? "is-open" : ""}`} key={job.title}><button onClick={() => setOpenJob(isOpen ? null : index)} aria-expanded={isOpen}><span className="job-title"><strong>{job.title}</strong><small>{job.english}</small></span><span className="job-type">实习 / 全职</span><ChevronDown size={22} /></button><div className="job-details"><p>{job.summary}</p><ul>{job.requirements.map((item) => <li key={item}>{item}</li>)}</ul><a href="mailto:chenwy1@getui.com?subject=MRTT%20岗位申请">投递与沟通 <ArrowRight size={16} /></a></div></article>; })}</div></section>
       <ContactBand />
     </main>
   );
@@ -280,7 +280,7 @@ function App() {
           <button className={page === "about" ? "current" : ""} aria-current={page === "about" ? "page" : undefined} onClick={() => navigate("about")}>关于我们</button>
           <button className={page === "careers" ? "current" : ""} aria-current={page === "careers" ? "page" : undefined} onClick={() => navigate("careers")}>加入我们</button>
         </nav>
-        <a className="header-contact" href="mailto:contact@mrtt.ai?subject=MRTT%20合作咨询">联系合作 <ArrowRight size={16} /></a>
+        <a className="header-contact" href="mailto:chenwy1@getui.com?subject=MRTT%20合作咨询">联系合作 <ArrowRight size={16} /></a>
         <button className="menu-button" onClick={() => setMobileOpen((value) => !value)} aria-label={mobileOpen ? "关闭菜单" : "打开菜单"} aria-expanded={mobileOpen}>{mobileOpen ? <X size={22} /> : <Menu size={22} />}</button>
       </header>
       {page === "home" && <HomePage navigate={navigate} />}
