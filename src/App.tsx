@@ -3,6 +3,7 @@ import {
   ArrowRight,
   ChevronDown,
   Database,
+  ExternalLink,
   FileStack,
   Menu,
   Waypoints,
@@ -166,18 +167,18 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
       <section className="hero" id="top">
         <div className="hero-content page-grid">
           <div className="hero-copy">
-            <p className="eyebrow">MRTT / 每日互动投资的 AI 创新公司</p>
+            <p className="eyebrow">仝心圆 / ENGINEERING DATA COMPILER</p>
             <h1>仝心圆</h1>
             <h2>唤醒每一张工程图纸里的数据价值</h2>
             <p className="hero-description">
-              仝心圆是 MRTT 推出的工程数据编译产品。它把沉睡在扫描图、PDF、DWG 与 DXF 里的工程知识，转化为可核验、可追溯、可编辑，并能被 CAD 与 AI 系统直接使用的数据。
+              仝心圆是一款工程数据编译产品。它把沉睡在扫描图、PDF、DWG 与 DXF 里的工程知识，转化为可核验、可追溯、可编辑，并能被 CAD 与 AI 系统直接使用的数据。
             </p>
             <div className="hero-actions">
               <button className="primary-button" onClick={() => navigate("product")}>
                 看看图纸如何变成数据 <ArrowRight size={17} />
               </button>
               <button className="text-button" onClick={() => navigate("about")}>
-                关于 MRTT <ArrowRight size={17} />
+                关于我们 <ArrowRight size={17} />
               </button>
             </div>
             <div className="hero-status"><span className="status-dot" /> CURRENT FOCUS / POWER TOWER DRAWINGS</div>
@@ -215,7 +216,7 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
         <div className="page-grid ecosystem-flow" aria-label="仝心圆在工业数据链路中的位置">
           <div><span>INPUT</span><strong>非结构化工程资料</strong><p>扫描图 · PDF · DWG · DXF</p></div>
           <ArrowRight size={21} aria-hidden="true" />
-          <div className="is-mrtt"><span>仝心圆 / MRTT</span><strong>工程数据编译与治理</strong><p>结构化 · 校验 · 证据链</p></div>
+          <div className="is-mrtt"><span>仝心圆</span><strong>工程数据编译与治理</strong><p>结构化 · 校验 · 证据链</p></div>
           <ArrowRight size={21} aria-hidden="true" />
           <div><span>APPLICATIONS</span><strong>工业软件与智能系统</strong><p>CAD · PLM · 数字孪生 · Agent</p></div>
         </div>
@@ -264,13 +265,20 @@ function AboutPage() {
   return (
     <main>
       <section className="inner-hero about-hero">
-        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">ABOUT MRTT</p><h1>让工业知识，真正进入 AI 时代</h1></div><p>我们建设连接历史图纸、工程经验与新一代工业系统的数据基础。</p></div>
+        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">关于仝心圆 / ABOUT</p><h1>让工业知识，真正进入 AI 时代</h1></div><p>我们建设连接历史图纸、工程经验与新一代工业系统的数据基础。</p></div>
       </section>
       <section className="backing-section" aria-labelledby="backing-title">
         <div className="page-grid backing-layout">
-          <p className="section-index">BACKED BY GETUI</p>
-          <h2 id="backing-title">每日互动投资的 AI 创新公司</h2>
-          <p>MRTT 聚焦工业存量图纸的数据智能化，把复杂、分散的工程资料转化为能够进入真实业务流程的数据资产。</p>
+          <p className="section-index">INDUSTRY ECOSYSTEM</p>
+          <div className="backing-copy">
+            <h2 id="backing-title">扎根数据智能与产业创新生态</h2>
+            <p>MRTT 聚焦工业存量图纸的数据智能化，把复杂、分散的工程资料转化为能够进入真实业务流程的数据资产。</p>
+          </div>
+          <div className="affiliation-links" aria-label="关联品牌与企业">
+            <a href="https://ge.cn/" target="_blank" rel="noreferrer">每日互动 <ExternalLink size={16} /></a>
+            <a href="https://www.getui.com/" target="_blank" rel="noreferrer">个推 <ExternalLink size={16} /></a>
+            <a href="https://www.taichang.com/m/" target="_blank" rel="noreferrer">泰昌集团 <ExternalLink size={16} /></a>
+          </div>
         </div>
       </section>
       <section className="direction-section">
@@ -292,7 +300,7 @@ function ResearchPage() {
     <main>
       <section className="inner-hero research-hero">
         <div className="page-grid inner-hero-layout">
-          <div><p className="eyebrow">MRTT RESEARCH</p><h1>研究那些让工业数据真正可用的问题</h1></div>
+          <div><p className="eyebrow">仝心圆研究 / RESEARCH</p><h1>研究那些让工业数据真正可用的问题</h1></div>
           <p>从多模态理解到工程关系重建，从结构化预测到可靠 Agent，我们围绕真实工业数据持续提出问题、设计实验并验证结果。</p>
         </div>
       </section>
@@ -340,7 +348,7 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
   return (
     <main>
       <section className="inner-hero careers-hero">
-        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">CAREERS AT MRTT</p><h1>把 AI 带进真实、复杂的工业世界</h1></div><p>这里有开放的研究问题、明确的工程约束，也有真正能被客户使用的结果。实习、应届及全职均可。</p></div>
+        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">加入仝心圆 / CAREERS</p><h1>把 AI 带进真实、复杂的工业世界</h1></div><p>这里有开放的研究问题、明确的工程约束，也有真正能被客户使用的结果。实习、应届及全职均可。</p></div>
       </section>
       <section className="career-facts" aria-label="招聘基本信息">
         <div className="page-grid career-facts-grid">
@@ -412,17 +420,17 @@ function App() {
 
   useEffect(() => {
     const titles: Record<PageId, string> = {
-      home: "仝心圆 | MRTT 工程数据智能",
-      product: "仝心圆产品与合作 | MRTT",
-      research: "研究方向 | MRTT",
-      about: "关于我们 | MRTT",
-      careers: "加入我们 | MRTT",
+      home: "仝心圆 | 工程数据智能",
+      product: "产品与合作 | 仝心圆",
+      research: "研究方向 | 仝心圆",
+      about: "关于我们 | 仝心圆",
+      careers: "加入我们 | 仝心圆",
     };
     const descriptions: Record<PageId, string> = {
-      home: "仝心圆是 MRTT 推出的工程数据编译产品，将扫描图、PDF、DWG 与 DXF 编译为可供 CAD 和 AI 系统使用的工程数据。",
+      home: "仝心圆是一款工程数据编译产品，将扫描图、PDF、DWG 与 DXF 编译为可供 CAD 和 AI 系统使用的工程数据。",
       product: "了解仝心圆的工程图纸数据交付内容、验收结果与试点合作方式。",
       research: "了解 MRTT 在工业多模态理解、工程关系、结构化预测、数据 Agent 和可靠评测方向的研究。",
-      about: "MRTT 是每日互动投资的 AI 创新公司，从电力铁塔开始建设工程图纸数据能力。",
+      about: "了解仝心圆背后的 MRTT 公司、产业生态与工程图纸数据能力。",
       careers: "加入 MRTT，参与多模态模型、Agent 与真实工业数据系统的研究和研发。",
     };
     document.title = titles[page];
@@ -438,7 +446,7 @@ function App() {
   return (
     <div className="site-shell">
       <header className="site-header">
-        <button className="wordmark" onClick={() => navigate("home")} aria-label="返回首页">MRTT</button>
+        <button className="wordmark" onClick={() => navigate("home")} aria-label="返回首页">仝心圆</button>
         <nav className={`main-nav ${mobileOpen ? "is-open" : ""}`} aria-label="主导航">
           <button className={page === "product" ? "current" : ""} aria-current={page === "product" ? "page" : undefined} onClick={() => navigate("product")}>仝心圆</button>
           <button className={page === "research" ? "current" : ""} aria-current={page === "research" ? "page" : undefined} onClick={() => navigate("research")}>研究方向</button>

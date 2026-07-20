@@ -96,7 +96,7 @@ span {
   padding: 0;
   border: 0;
   background: transparent;
-  font-size: 25px;
+  font-size: 23px;
   font-weight: 800;
   line-height: 1;
   cursor: pointer;
@@ -1264,23 +1264,48 @@ span {
 
 .backing-layout {
   display: grid;
-  grid-template-columns: 0.35fr 1.05fr 0.8fr;
+  grid-template-columns: 0.35fr 1.65fr;
   gap: 50px;
   align-items: start;
 }
 
-.backing-layout h2 {
+.backing-copy h2 {
   margin: 0;
   font-size: 32px;
   line-height: 1.35;
 }
 
-.backing-layout > p:last-child {
-  margin: 3px 0 0;
+.backing-copy p {
+  max-width: 720px;
+  margin: 18px 0 0;
   color: #aeb6ba;
   font-size: 14px;
   line-height: 1.85;
 }
+
+.affiliation-links {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #454c50;
+  border-bottom: 1px solid #454c50;
+}
+
+.affiliation-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+  padding: 0 22px;
+  border-right: 1px solid #454c50;
+  color: white;
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.affiliation-links a:last-child { border-right: 0; }
+.affiliation-links a:hover { background: #22272a; color: #f0786f; }
 
 .research-section {
   padding: 106px 0 116px;
@@ -1707,7 +1732,7 @@ span {
   .direction-lead { grid-template-columns: 0.25fr 1fr; }
   .direction-lead > p:last-child { grid-column: 2; }
   .backing-layout { grid-template-columns: 0.35fr 1fr; }
-  .backing-layout > p:last-child { grid-column: 2; }
+  .affiliation-links { grid-column: 2; }
   .research-list article { grid-template-columns: 0.55fr 0.8fr 1.1fr; gap: 24px; }
   .career-facts-grid { grid-template-columns: 1fr 1fr; }
   .career-facts-grid > div:nth-child(-n + 2) { border-bottom: 1px solid #454c50; }
@@ -1840,7 +1865,7 @@ span {
   .backing-layout,
   .research-cta-layout,
   .application-layout { grid-template-columns: 1fr; gap: 24px; }
-  .backing-layout > p:last-child { grid-column: auto; }
+  .affiliation-links { grid-column: auto; }
   .research-list article {
     grid-template-columns: 0.65fr 1fr;
     gap: 12px 24px;
@@ -1947,9 +1972,12 @@ span {
   .research-section,
   .research-cta,
   .application-section { padding: 72px 0; }
-  .backing-layout h2,
+  .backing-copy h2,
   .research-cta h2,
   .application-layout h2 { font-size: 28px; }
+  .affiliation-links { grid-template-columns: 1fr; }
+  .affiliation-links a { min-height: 64px; border-right: 0; border-bottom: 1px solid #454c50; }
+  .affiliation-links a:last-child { border-bottom: 0; }
   .research-list article { grid-template-columns: 1fr; gap: 8px; }
   .research-list p { grid-column: auto; margin-top: 6px; }
   .research-list h3 { font-size: 19px; }
