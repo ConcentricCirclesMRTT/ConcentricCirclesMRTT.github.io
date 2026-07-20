@@ -167,7 +167,7 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
       <section className="hero" id="top">
         <div className="hero-content page-grid">
           <div className="hero-copy">
-            <p className="eyebrow">仝心圆 / ENGINEERING DATA COMPILER</p>
+            <p className="eyebrow">仝心圆 / INDUSTRIAL DATA AI</p>
             <h1>仝心圆</h1>
             <h2>唤醒每一张工程图纸里的数据价值</h2>
             <p className="hero-description">
@@ -265,7 +265,7 @@ function AboutPage() {
   return (
     <main>
       <section className="inner-hero about-hero">
-        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">关于仝心圆 / ABOUT</p><h1>让工业知识，真正进入 AI 时代</h1></div><p>我们建设连接历史图纸、工程经验与新一代工业系统的数据基础。</p></div>
+        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">关于仝心圆 / ABOUT</p><h1>让工业知识，真正进入 AI 时代</h1></div><p>我们是一家专注工业工程数据的 AI 公司，建设连接历史图纸、工程经验与新一代工业系统的数据基础。</p></div>
       </section>
       <section className="backing-section" aria-labelledby="backing-title">
         <div className="page-grid backing-layout">
@@ -420,7 +420,7 @@ function App() {
 
   useEffect(() => {
     const titles: Record<PageId, string> = {
-      home: "仝心圆 | 工程数据智能",
+      home: "仝心圆 | 工业数据 AI",
       product: "产品与合作 | 仝心圆",
       research: "研究方向 | 仝心圆",
       about: "关于我们 | 仝心圆",
@@ -461,7 +461,7 @@ function App() {
       {page === "research" && <ResearchPage />}
       {page === "about" && <AboutPage />}
       {page === "careers" && <CareersPage openJob={openJob} setOpenJob={setOpenJob} />}
-      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>仝心圆 · 工程数据编译产品</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>仝心圆</button><button onClick={() => navigate("research")}>研究方向</button><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>© MRTT. ALL RIGHTS RESERVED.</span></div></div></footer>
+      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>工业数据 AI 公司 · 产品：仝心圆</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>仝心圆</button><button onClick={() => navigate("research")}>研究方向</button><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>© MRTT. ALL RIGHTS RESERVED.</span></div></div></footer>
     </div>
   );
 }
