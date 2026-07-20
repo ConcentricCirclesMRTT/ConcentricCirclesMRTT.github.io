@@ -66,26 +66,82 @@ const evidenceItems = [
   { title: "下游系统无法直接读取", crop: "evidence-d" },
 ];
 
-const jobs = [
+const researchAreas = [
   {
-    title: "多模态模型算法工程师",
-    english: "MULTIMODAL MODEL ENGINEER",
-    summary: "研究和适配多模态模型，让模型理解复杂专业图像、文本与文档。",
-    requirements: ["多模态模型与视觉理解", "数据构造与模型评测", "Python / PyTorch", "实习 / 全职"],
+    label: "MULTIMODAL UNDERSTANDING",
+    title: "工业多模态理解",
+    description: "让模型综合理解工程图像、文本、表格和文档，并在复杂页面中定位真正有用的信息。",
   },
   {
-    title: "多模态 Agent 工程师",
-    english: "MULTIMODAL AGENT ENGINEER",
-    summary: "将模型、工具和专业知识组织成可验证、可扩展的任务系统。",
-    requirements: ["Agent 与工具调用", "结构化输出与工作流", "Python 工程能力", "实习 / 全职"],
+    label: "GEOMETRY & RELATIONS",
+    title: "几何、拓扑与工程关系",
+    description: "从图形元素出发，恢复构件、连接、约束与跨视图关系，让视觉结果符合工程逻辑。",
+  },
+  {
+    label: "STRUCTURED PREDICTION",
+    title: "结构化工程表达",
+    description: "研究 Schema 驱动的数据提取与中间表示，使结果可检索、可编辑、可计算。",
+  },
+  {
+    label: "MULTIMODAL AGENTS",
+    title: "多模态数据 Agent",
+    description: "将模型、专业工具、规则和人工复核组织成可观测、可验证的数据处理系统。",
+  },
+  {
+    label: "DATA & EVALUATION",
+    title: "数据构造与可靠评测",
+    description: "围绕真实失败案例建设数据、评测和置信机制，持续识别能力边界并推动迭代。",
   },
 ];
 
-type PageId = "home" | "product" | "about" | "careers";
+const jobs = [
+  {
+    title: "多模态模型研究工程师",
+    english: "MULTIMODAL MODEL RESEARCH ENGINEER",
+    summary: "让多模态模型理解复杂专业图像、文本与文档，并产出可验证的结构化结果。",
+    responsibilities: [
+      "将真实业务现象抽象为可研究、可评测的多模态任务",
+      "建立模型基线，设计对照实验并分析长尾与失败案例",
+      "建设数据定义、标注规范、清洗增强与合成数据流程",
+      "开展模型适配、后训练、推理优化和原型验证",
+      "将实验沉淀为可复现代码、评测报告和产品能力",
+    ],
+    requirements: [
+      "具备机器学习、计算机视觉或多模态学习基础",
+      "理解 Transformer 与视觉语言模型的基本原理",
+      "能够使用 Python、PyTorch 完成实验与数据处理",
+      "愿意从真实数据和失败案例出发持续分析问题",
+      "能够清楚说明自己的实际工作与技术判断",
+    ],
+    preferred: ["论文、技术报告或系统性实验成果", "高质量开源项目或算法竞赛成果", "文档理解、视觉定位、OCR 或三维视觉经验"],
+  },
+  {
+    title: "多模态 Agent 研究工程师",
+    english: "MULTIMODAL AGENT RESEARCH ENGINEER",
+    summary: "将模型、工具、领域知识与数据流程组织成可靠、可验证的多模态 Agent 系统。",
+    responsibilities: [
+      "将复杂数据目标拆解为可观测、可验证的 Agent 子任务",
+      "设计 Processing Graph、工作流、状态流转与上下文组织",
+      "编排多模态模型、检索、规则和专业工具",
+      "建设结构化输出、校验、重试、降级与人工复核机制",
+      "构建任务轨迹、标准任务集和端到端评测体系",
+    ],
+    requirements: [
+      "理解大语言模型与多模态模型的工作方式和能力边界",
+      "具备 Agent、工具调用或复杂 AI 工作流实践",
+      "能够使用 Python 开发数据流程、后端服务或工具接口",
+      "熟悉 JSON Schema、Pydantic 等结构化表达方式",
+      "重视可观测性、任务质量和实际业务结果",
+    ],
+    preferred: ["多模态 Agent、文档智能或信息抽取经验", "开源 Agent 项目、论文或技术作品", "模型评测、LLMOps 或人机协同经验"],
+  },
+];
+
+type PageId = "home" | "product" | "research" | "about" | "careers";
 
 const pageFromHash = (): PageId => {
   const route = window.location.hash.replace("#/", "");
-  return route === "product" || route === "about" || route === "careers" ? route : "home";
+  return route === "product" || route === "research" || route === "about" || route === "careers" ? route : "home";
 };
 
 function ContactBand() {
@@ -110,7 +166,7 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
       <section className="hero" id="top">
         <div className="hero-content page-grid">
           <div className="hero-copy">
-            <p className="eyebrow">MRTT PRESENTS / ENGINEERING DATA COMPILER</p>
+            <p className="eyebrow">MRTT / 每日互动投资的 AI 创新公司</p>
             <h1>仝心圆</h1>
             <h2>唤醒每一张工程图纸里的数据价值</h2>
             <p className="hero-description">
@@ -210,6 +266,13 @@ function AboutPage() {
       <section className="inner-hero about-hero">
         <div className="page-grid inner-hero-layout"><div><p className="eyebrow">ABOUT MRTT</p><h1>让工业知识，真正进入 AI 时代</h1></div><p>我们建设连接历史图纸、工程经验与新一代工业系统的数据基础。</p></div>
       </section>
+      <section className="backing-section" aria-labelledby="backing-title">
+        <div className="page-grid backing-layout">
+          <p className="section-index">BACKED BY GETUI</p>
+          <h2 id="backing-title">每日互动投资的 AI 创新公司</h2>
+          <p>MRTT 聚焦工业存量图纸的数据智能化，把复杂、分散的工程资料转化为能够进入真实业务流程的数据资产。</p>
+        </div>
+      </section>
       <section className="direction-section">
         <div className="page-grid direction-lead"><p className="section-index">DIRECTION</p><h2>从铁塔出发，把一条工程数据链路做深做透</h2><p>当前以电力铁塔图纸为起点，把经过验证的数据能力逐步带向更多工业场景。</p></div>
         <div className="page-grid direction-grid">
@@ -224,12 +287,112 @@ function AboutPage() {
   );
 }
 
+function ResearchPage() {
+  return (
+    <main>
+      <section className="inner-hero research-hero">
+        <div className="page-grid inner-hero-layout">
+          <div><p className="eyebrow">MRTT RESEARCH</p><h1>研究那些让工业数据真正可用的问题</h1></div>
+          <p>从多模态理解到工程关系重建，从结构化预测到可靠 Agent，我们围绕真实工业数据持续提出问题、设计实验并验证结果。</p>
+        </div>
+      </section>
+      <section className="research-section" aria-labelledby="research-title">
+        <div className="page-grid section-heading research-heading">
+          <div><p className="section-index">RESEARCH DIRECTIONS</p><h2 id="research-title">面向工程数据编译的长期研究</h2></div>
+          <p>研究不以单次 Demo 为终点，而要形成可复现、可评测、可以进入产品的数据与系统能力。</p>
+        </div>
+        <div className="page-grid research-list">
+          {researchAreas.map((area) => (
+            <article key={area.title}>
+              <span>{area.label}</span>
+              <h3>{area.title}</h3>
+              <p>{area.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="output-section research-values" aria-labelledby="research-values-title">
+        <div className="page-grid output-heading">
+          <div><p className="section-index light">HOW WE RESEARCH</p><h2 id="research-values-title">从真实数据出发，用工程结果回答</h2></div>
+          <p>模型能力、传统方法、行业规则和人工判断都服务于同一个目标：更可靠的数据结果。</p>
+        </div>
+        <div className="page-grid outcome-grid customer-grid">
+          <article><h3>真实问题</h3><p>从企业资料和实际工作流中定义任务，持续面对噪声、缺失和长尾情况。</p></article>
+          <article><h3>可靠评测</h3><p>建设独立数据集、失败分析和端到端验收，不以少量展示样例判断能力。</p></article>
+          <article><h3>研究进入产品</h3><p>将实验结果沉淀为数据标准、工具、工作流和可以持续迭代的产品模块。</p></article>
+        </div>
+      </section>
+      <section className="research-cta">
+        <div className="page-grid research-cta-layout">
+          <div><p className="section-index">WORK WITH US</p><h2>和我们一起，把开放问题做成真实能力</h2></div>
+          <div>
+            <p>欢迎多模态 AI、计算机视觉、Agent、文档智能和工程数据方向的研究者与工程师加入。</p>
+            <a className="text-button" href="#/careers">查看开放岗位 <ArrowRight size={17} /></a>
+          </div>
+        </div>
+      </section>
+      <ContactBand />
+    </main>
+  );
+}
+
 function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJob: (value: number | null) => void }) {
   return (
     <main>
-      <section className="inner-hero careers-hero"><div className="page-grid inner-hero-layout"><div><p className="eyebrow">CAREERS</p><h1>把 AI 带进真实、复杂的工业世界</h1></div><p>这里有不整齐的数据、明确的工程约束，也有真正能被客户使用的结果。实习与全职均可。</p></div></section>
-      <section className="careers-section" aria-labelledby="careers-title"><div className="page-grid careers-heading"><div><p className="section-index">OPEN ROLES</p><h2 id="careers-title">多模态 AI 核心岗位</h2></div><p>两个方向都需要理解模型能力边界，并愿意把研究结果变成可验证的工程系统。</p></div><div className="page-grid job-list">{jobs.map((job, index) => { const isOpen = openJob === index; return <article className={`job-row ${isOpen ? "is-open" : ""}`} key={job.title}><button onClick={() => setOpenJob(isOpen ? null : index)} aria-expanded={isOpen}><span className="job-title"><strong>{job.title}</strong><small>{job.english}</small></span><span className="job-type">实习 / 全职</span><ChevronDown size={22} /></button><div className="job-details"><p>{job.summary}</p><ul>{job.requirements.map((item) => <li key={item}>{item}</li>)}</ul><a href="mailto:chenwy1@getui.com?subject=MRTT%20岗位申请">投递与沟通 <ArrowRight size={16} /></a></div></article>; })}</div></section>
-      <ContactBand />
+      <section className="inner-hero careers-hero">
+        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">CAREERS AT MRTT</p><h1>把 AI 带进真实、复杂的工业世界</h1></div><p>这里有开放的研究问题、明确的工程约束，也有真正能被客户使用的结果。实习、应届及全职均可。</p></div>
+      </section>
+      <section className="career-facts" aria-label="招聘基本信息">
+        <div className="page-grid career-facts-grid">
+          <div><span>LOCATION</span><strong>杭州</strong></div>
+          <div><span>EMPLOYMENT</span><strong>实习 · 应届 · 全职</strong></div>
+          <div><span>STAGE</span><strong>从 0 到 1</strong></div>
+          <div><span>COMPENSATION</span><strong>根据能力面议</strong></div>
+        </div>
+      </section>
+      <section className="careers-section" aria-labelledby="careers-title">
+        <div className="page-grid careers-heading">
+          <div><p className="section-index">OPEN ROLES</p><h2 id="careers-title">多模态 AI 研究工程师</h2></div>
+          <p>我们关注学习能力、问题拆解、技术深度和实际产出，不以工作年限作为唯一判断标准。</p>
+        </div>
+        <div className="page-grid job-list">
+          {jobs.map((job, index) => {
+            const isOpen = openJob === index;
+            return (
+              <article className={`job-row ${isOpen ? "is-open" : ""}`} key={job.title}>
+                <button
+                  onClick={() => setOpenJob(isOpen ? null : index)}
+                  aria-expanded={isOpen}
+                  aria-controls={`job-details-${index}`}
+                >
+                  <span className="job-title"><strong>{job.title}</strong><small>{job.english}</small></span>
+                  <span className="job-type">杭州 · 实习 / 应届 / 全职</span>
+                  <ChevronDown size={22} />
+                </button>
+                <div className="job-details" id={`job-details-${index}`} aria-hidden={!isOpen}>
+                  <p className="job-summary">{job.summary}</p>
+                  <div className="role-detail-grid">
+                    <section><h3>你会做什么</h3><ul>{job.responsibilities.map((item) => <li key={item}>{item}</li>)}</ul></section>
+                    <section><h3>我们希望你</h3><ul>{job.requirements.map((item) => <li key={item}>{item}</li>)}</ul></section>
+                    <section><h3>加分项</h3><ul>{job.preferred.map((item) => <li key={item}>{item}</li>)}</ul></section>
+                  </div>
+                  <a className="job-apply" href={`mailto:chenwy1@getui.com?subject=MRTT%20${encodeURIComponent(job.title)}%20申请`}>申请这个岗位 <ArrowRight size={16} /></a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+      <section className="application-section" aria-labelledby="application-title">
+        <div className="page-grid application-layout">
+          <div><p className="section-index">APPLICATION</p><h2 id="application-title">用你最真实的作品和我们聊聊</h2></div>
+          <div>
+            <p>投递简历即可。也欢迎附上 GitHub、论文、技术报告、竞赛、专利或个人项目，并用一两句话说明最能代表你的工作。</p>
+            <p>简历初筛通过后，我们会安排一次约 30 分钟的轻量交流。优秀实习生开放长期合作与转正机会。</p>
+            <a className="primary-button" href="mailto:chenwy1@getui.com?subject=MRTT%20岗位申请">投递简历 <ArrowRight size={17} /></a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
@@ -240,7 +403,7 @@ function App() {
   const [page, setPage] = useState<PageId>(pageFromHash);
 
   useEffect(() => {
-    const onHashChange = () => { setPage(pageFromHash()); window.scrollTo({ top: 0 }); };
+    const onHashChange = () => { setPage(pageFromHash()); setOpenJob(null); window.scrollTo({ top: 0 }); };
     const onResize = () => { if (window.innerWidth > 820) setMobileOpen(false); };
     window.addEventListener("hashchange", onHashChange);
     window.addEventListener("resize", onResize);
@@ -251,14 +414,16 @@ function App() {
     const titles: Record<PageId, string> = {
       home: "仝心圆 | MRTT 工程数据智能",
       product: "仝心圆产品与合作 | MRTT",
+      research: "研究方向 | MRTT",
       about: "关于我们 | MRTT",
       careers: "加入我们 | MRTT",
     };
     const descriptions: Record<PageId, string> = {
       home: "仝心圆是 MRTT 推出的工程数据编译产品，将扫描图、PDF、DWG 与 DXF 编译为可供 CAD 和 AI 系统使用的工程数据。",
       product: "了解仝心圆的工程图纸数据交付内容、验收结果与试点合作方式。",
-      about: "了解 MRTT 从铁塔行业开始建设工程图纸数据能力的发展方向。",
-      careers: "加入 MRTT，参与多模态 AI 与真实工业数据系统的研发。",
+      research: "了解 MRTT 在工业多模态理解、工程关系、结构化预测、数据 Agent 和可靠评测方向的研究。",
+      about: "MRTT 是每日互动投资的 AI 创新公司，从电力铁塔开始建设工程图纸数据能力。",
+      careers: "加入 MRTT，参与多模态模型、Agent 与真实工业数据系统的研究和研发。",
     };
     document.title = titles[page];
     document.querySelector('meta[name="description"]')?.setAttribute("content", descriptions[page]);
@@ -276,6 +441,7 @@ function App() {
         <button className="wordmark" onClick={() => navigate("home")} aria-label="返回首页">MRTT</button>
         <nav className={`main-nav ${mobileOpen ? "is-open" : ""}`} aria-label="主导航">
           <button className={page === "product" ? "current" : ""} aria-current={page === "product" ? "page" : undefined} onClick={() => navigate("product")}>仝心圆</button>
+          <button className={page === "research" ? "current" : ""} aria-current={page === "research" ? "page" : undefined} onClick={() => navigate("research")}>研究方向</button>
           <button className={page === "about" ? "current" : ""} aria-current={page === "about" ? "page" : undefined} onClick={() => navigate("about")}>关于我们</button>
           <button className={page === "careers" ? "current" : ""} aria-current={page === "careers" ? "page" : undefined} onClick={() => navigate("careers")}>加入我们</button>
         </nav>
@@ -284,9 +450,10 @@ function App() {
       </header>
       {page === "home" && <HomePage navigate={navigate} />}
       {page === "product" && <ProductPage />}
+      {page === "research" && <ResearchPage />}
       {page === "about" && <AboutPage />}
       {page === "careers" && <CareersPage openJob={openJob} setOpenJob={setOpenJob} />}
-      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>仝心圆 · 工程数据编译产品</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>仝心圆</button><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>© MRTT. ALL RIGHTS RESERVED.</span></div></div></footer>
+      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>仝心圆 · 工程数据编译产品</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>仝心圆</button><button onClick={() => navigate("research")}>研究方向</button><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>© MRTT. ALL RIGHTS RESERVED.</span></div></div></footer>
     </div>
   );
 }
