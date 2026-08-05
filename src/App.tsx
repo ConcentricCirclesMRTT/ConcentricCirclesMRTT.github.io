@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import {
   ArrowRight,
   ChevronDown,
@@ -9,6 +9,10 @@ import {
   Waypoints,
   X,
 } from "lucide-react";
+
+const TowerModelViewer = lazy(() =>
+  import("./TowerModelViewer").then((module) => ({ default: module.TowerModelViewer })),
+);
 
 const services = [
   {
@@ -247,6 +251,15 @@ function ProductPage() {
       <section className="business-section inner-section" aria-labelledby="delivery-title">
         <div className="page-grid section-heading"><div><p className="section-index">DATA PIPELINE</p><h2 id="delivery-title">从一张图，到一份可用的数据资产</h2></div><p>围绕真实使用场景，共同确定数据范围、交付格式和工程验收标准。</p></div>
         <div className="page-grid service-list">{services.map((service) => { const Icon = service.icon; return <article className="service-row" key={service.title}><Icon size={27} strokeWidth={1.6} /><div><h3>{service.title}</h3><span>{service.english}</span></div><p>{service.description}</p></article>; })}</div>
+      </section>
+      <section className="model-section" aria-labelledby="model-title">
+        <div className="page-grid model-heading">
+          <div><p className="section-index light">LIVE GEOMETRY</p><h2 id="model-title">从工程图纸，到可以直接操作的几何</h2></div>
+          <p>下面是一个真实铁塔 STL 样例，展示结构化工程数据进入三维工作流后的几何结果。</p>
+        </div>
+        <Suspense fallback={<div className="tower-viewer"><div className="viewer-status">正在准备三维查看器...</div></div>}>
+          <TowerModelViewer />
+        </Suspense>
       </section>
       <section className="output-section" aria-labelledby="customer-title">
         <div className="page-grid output-heading"><div><p className="section-index light">WHO WE SERVE</p><h2 id="customer-title">让工程数据，在更多地方发挥作用</h2></div><p>从企业数据治理，到工业软件与 AI 应用，让同一份工程知识持续创造价值。</p></div>
