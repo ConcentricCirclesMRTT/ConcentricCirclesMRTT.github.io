@@ -250,8 +250,8 @@ function ProductPage() {
       </section>
       <section className="model-section" aria-labelledby="model-title">
         <div className="page-grid model-heading">
-          <div><p className="section-index light">STRUCTURAL PRECISION</p><h2 id="model-title">从工程图纸，到结构准确的三维几何</h2></div>
-          <p>读取图纸中的尺寸、标注与构件关系，交叉核对物料表，并通过几何求解验证，让三维结果经得起工程核验。</p>
+          <div><p className="section-index light">AI-DRIVEN RECONSTRUCTION</p><h2 id="model-title">让 AI 读懂工程图纸，重建结构准确的三维几何</h2></div>
+          <p>仝心圆通过多模态 AI 与工程 Agent Harness 自动读取尺寸、标注和构件关系，交叉核对物料表，并以几何求解验证三维结果。</p>
         </div>
         <Suspense fallback={<div className="tower-viewer"><div className="viewer-status">正在准备三维查看器...</div></div>}>
           <TowerModelViewer />
