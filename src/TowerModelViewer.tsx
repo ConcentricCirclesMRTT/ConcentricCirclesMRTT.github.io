@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type PointerEvent } from "react";
-import { ArrowRight, Maximize2, RotateCcw, RotateCw, ScanLine } from "lucide-react";
+import { ArrowRight, Columns2, GalleryHorizontal, Maximize2, RotateCcw, RotateCw, ScanLine } from "lucide-react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
@@ -21,6 +21,7 @@ export function TowerModelViewer() {
   const [sequencePhase, setSequencePhase] = useState<"waiting" | "playing" | "revealed">("waiting");
   const [countdown, setCountdown] = useState(3);
   const [sequencePaused, setSequencePaused] = useState(false);
+  const [displayMode, setDisplayMode] = useState<"carousel" | "split">("carousel");
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -43,7 +44,7 @@ export function TowerModelViewer() {
   }, []);
 
   useEffect(() => {
-    if (!sequenceActive || sequencePhase !== "waiting" || sequencePaused) return;
+    if (displayMode !== "carousel" || !sequenceActive || sequencePhase !== "waiting" || sequencePaused) return;
 
     const countdownTimer = window.setTimeout(() => {
       if (countdown <= 1) {
@@ -55,7 +56,7 @@ export function TowerModelViewer() {
     }, 1000);
 
     return () => window.clearTimeout(countdownTimer);
-  }, [countdown, sequenceActive, sequencePaused, sequencePhase]);
+  }, [countdown, displayMode, sequenceActive, sequencePaused, sequencePhase]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -213,6 +214,12 @@ export function TowerModelViewer() {
     setSequenceActive(true);
   };
 
+  const showModelPage = () => {
+    setSequencePaused(false);
+    setSequenceActive(true);
+    setSequencePhase("revealed");
+  };
+
   const pauseTransformation = (event: PointerEvent<HTMLDivElement>) => {
     if (!sequenceActive || sequencePhase === "revealed") return;
     event.currentTarget.setPointerCapture(event.pointerId);
@@ -229,72 +236,112 @@ export function TowerModelViewer() {
 
   return (
     <div
-      className="tower-viewer"
+      className={`tower-viewer mode-${displayMode}`}
       ref={stageRef}
       onPointerDown={pauseTransformation}
       onPointerUp={resumeTransformation}
       onPointerCancel={resumeTransformation}
     >
-      <canvas ref={canvasRef} aria-label="可交互的铁塔 STL 三维模型" />
+      <div className="viewer-mode-switch" aria-label="展示方式" onPointerDown={(event) => event.stopPropagation()}>
+        <button
+          className={displayMode === "carousel" ? "is-active" : ""}
+          onClick={() => setDisplayMode("carousel")}
+          aria-pressed={displayMode === "carousel"}
+          aria-label="滑页展示"
+          title="滑页展示"
+        >
+          <GalleryHorizontal size={17} />
+        </button>
+        <button
+          className={displayMode === "split" ? "is-active" : ""}
+          onClick={() => setDisplayMode("split")}
+          aria-pressed={displayMode === "split"}
+          aria-label="并排展示"
+          title="并排展示"
+        >
+          <Columns2 size={17} />
+        </button>
+      </div>
+
       <div
-        className={`drawing-reveal is-${sequencePhase} ${sequencePaused ? "is-paused" : ""}`}
-        aria-hidden={sequencePhase === "revealed"}
+        className={`viewer-track is-${sequencePhase} ${sequencePaused ? "is-paused" : ""}`}
         onAnimationEnd={() => {
-          if (sequencePhase === "playing") setSequencePhase("revealed");
+          if (displayMode === "carousel" && sequencePhase === "playing") setSequencePhase("revealed");
         }}
       >
-        {sequenceActive && sequencePhase !== "revealed" && (
-          <div className="drawing-reveal-status" aria-live="polite">
-            <span>{sequencePaused ? "PAUSED" : sequencePhase === "playing" ? "COMPILING" : "GENERATING IN"}</span>
-            <strong>{sequencePhase === "waiting" ? String(countdown).padStart(2, "0") : sequencePaused ? "II" : "→"}</strong>
+        <div className="viewer-slide drawing-slide" aria-hidden={displayMode === "carousel" && sequencePhase === "revealed"}>
+          {displayMode === "carousel" && sequenceActive && sequencePhase !== "revealed" && (
+            <div className="drawing-reveal-status" aria-live="polite">
+              <span>{sequencePaused ? "PAUSED" : sequencePhase === "playing" ? "COMPILING" : "GENERATING IN"}</span>
+              <strong>{sequencePhase === "waiting" ? String(countdown).padStart(2, "0") : sequencePaused ? "II" : "→"}</strong>
+            </div>
+          )}
+          <div className="drawing-reveal-visual">
+            <img src="/images/N02932S-T0706-09-drawing.png" alt="铁塔二维工程图示意" />
           </div>
-        )}
-        <div className="drawing-reveal-visual">
-          <img src="/images/N02932S-T0706-09-drawing.png" alt="铁塔二维工程图示意" />
+          <div className="drawing-reveal-copy">
+            <span>INPUT / ENGINEERING DRAWING</span>
+            <strong>把这张工程图<br />变成三维几何</strong>
+            <ArrowRight size={30} strokeWidth={1.5} />
+          </div>
         </div>
-        <div className="drawing-reveal-copy">
-          <span>INPUT / ENGINEERING DRAWING</span>
-          <strong>把这张工程图<br />变成三维几何</strong>
-          <ArrowRight size={30} strokeWidth={1.5} />
+
+        <div className="viewer-slide model-slide">
+          <canvas ref={canvasRef} aria-label="可交互的铁塔 STL 三维模型" />
+          <div className="viewer-label">
+            <span>INTERACTIVE STL / N02932S-T0706-09</span>
+            <strong>铁塔协调模型</strong>
+          </div>
+          <button
+            className={`viewer-replay ${displayMode === "carousel" && sequencePhase === "revealed" ? "is-visible" : ""}`}
+            onClick={replayTransformation}
+            aria-label="重播图纸到三维的转换"
+            title="重播转换"
+          >
+            <RotateCcw size={18} />
+          </button>
+          <div className="viewer-toolbar" aria-label="三维模型控制">
+            <button
+              className={autoRotate ? "is-active" : ""}
+              onClick={() => setAutoRotate((value) => !value)}
+              aria-pressed={autoRotate}
+              aria-label="切换自动旋转"
+              title="自动旋转"
+            >
+              <RotateCw size={18} />
+            </button>
+            <button
+              className={wireframe ? "is-active" : ""}
+              onClick={() => setWireframe((value) => !value)}
+              aria-pressed={wireframe}
+              aria-label="切换线框模式"
+              title="线框模式"
+            >
+              <ScanLine size={18} />
+            </button>
+            <button onClick={() => resetViewRef.current()} aria-label="复位三维视角" title="复位视角">
+              <Maximize2 size={18} />
+            </button>
+          </div>
+          {loading && <div className="viewer-status">正在载入模型...</div>}
+          {error && <div className="viewer-status is-error">模型载入失败</div>}
         </div>
       </div>
-      <div className="viewer-label">
-        <span>INTERACTIVE STL / N02932S-T0706-09</span>
-        <strong>铁塔协调模型</strong>
-      </div>
-      <button
-        className={`viewer-replay ${sequencePhase === "revealed" ? "is-visible" : ""}`}
-        onClick={replayTransformation}
-        aria-label="重播图纸到三维的转换"
-        title="重播转换"
-      >
-        <RotateCcw size={18} />
-      </button>
-      <div className="viewer-toolbar" aria-label="三维模型控制">
-        <button
-          className={autoRotate ? "is-active" : ""}
-          onClick={() => setAutoRotate((value) => !value)}
-          aria-pressed={autoRotate}
-          aria-label="切换自动旋转"
-          title="自动旋转"
-        >
-          <RotateCw size={18} />
-        </button>
-        <button
-          className={wireframe ? "is-active" : ""}
-          onClick={() => setWireframe((value) => !value)}
-          aria-pressed={wireframe}
-          aria-label="切换线框模式"
-          title="线框模式"
-        >
-          <ScanLine size={18} />
-        </button>
-        <button onClick={() => resetViewRef.current()} aria-label="复位三维视角" title="复位视角">
-          <Maximize2 size={18} />
-        </button>
-      </div>
-      {loading && <div className="viewer-status">正在载入模型...</div>}
-      {error && <div className="viewer-status is-error">模型载入失败</div>}
+
+      {displayMode === "carousel" && (
+        <div className="viewer-pagination" aria-label="样例页面" onPointerDown={(event) => event.stopPropagation()}>
+          <button
+            className={sequencePhase !== "revealed" ? "is-active" : ""}
+            onClick={replayTransformation}
+            aria-label="查看二维工程图"
+          />
+          <button
+            className={sequencePhase === "revealed" ? "is-active" : ""}
+            onClick={showModelPage}
+            aria-label="查看三维模型"
+          />
+        </div>
+      )}
     </div>
   );
 }
