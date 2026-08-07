@@ -25,19 +25,19 @@ const services = [
     icon: Waypoints,
     title: "工程信息编译",
     english: "ENGINEERING COMPILATION",
-    description: "读取图纸标注、尺寸与构件关系，并与物料表等工程资料交叉核验。",
+    description: "精确读取图纸标注、尺寸与构件关系，并与物料表等工程资料交叉核验。",
   },
   {
     icon: Database,
     title: "可信结果交付",
     english: "VERIFIED DELIVERY",
-    description: "由工程 Agent Harness 编排专业 Skills、工具与验证流程，输出可进入 CAD、PLM、数字孪生和 AI 系统的工程结果。",
+    description: "由工程 Agent Harness 编排专业 Skills、工具与验证流程，输出精确、可验证并能进入 CAD、PLM、数字孪生和 AI 系统的工程结果。",
   },
 ];
 
 const customerGroups = [
-  { title: "电力与制造企业", description: "盘活存量图纸，为数据治理、资产管理和智能化建设提供工程数据。" },
-  { title: "CAD、PLM 与数字化平台", description: "获得可接入、可核验的构件、尺寸、关系与工程语义。" },
+  { title: "电力与制造企业", description: "盘活存量图纸，为数据治理、资产管理和智能化建设提供精确工程数据。" },
+  { title: "CAD、PLM 与数字化平台", description: "获得精确、可接入、可核验的构件、尺寸、关系与工程语义。" },
   { title: "工业 AI 与 Agent 团队", description: "获得来自真实工程场景的高质量数据与上下文。" },
 ];
 
@@ -50,7 +50,7 @@ const pilotSteps = [
   {
     title: "交付标准定义",
     english: "DEFINE",
-    description: "共同确认数据范围、准确性要求、输出格式与工程验收方式。",
+    description: "共同确认数据范围、精确度要求、输出格式与工程验收方式。",
   },
   {
     title: "联合验证",
@@ -85,7 +85,7 @@ const researchAreas = [
   {
     label: "STRUCTURED PREDICTION",
     title: "结构化工程表达",
-    description: "研究 Schema 驱动的数据提取与中间表示，使结果可检索、可编辑、可计算。",
+    description: "研究 Schema 驱动的数据提取与中间表示，使结果精确、可检索、可编辑、可计算。",
   },
   {
     label: "ENGINEERING AGENT HARNESS",
@@ -173,13 +173,13 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
           <div className="hero-copy">
             <p className="eyebrow">仝心圆 / INDUSTRIAL DATA AI</p>
             <h1>仝心圆</h1>
-            <h2>唤醒每一张工程图纸里的数据价值</h2>
+            <h2>让每一张工程图纸，成为精确可用的数据</h2>
             <p className="hero-description">
-              仝心圆是一款工程数据编译产品。它把沉睡在扫描图、PDF、DWG 与 DXF 里的工程知识，转化为可核验、可追溯、可编辑，并能被 CAD 与 AI 系统直接使用的数据。
+              仝心圆是一款图纸建模 AI 产品。它把沉睡在扫描图、PDF、DWG 与 DXF 里的工程知识，转化为精确、可核验、可追溯，并能被 CAD 与 AI 系统直接使用的数据。
             </p>
             <div className="hero-actions">
               <button className="primary-button" onClick={() => navigate("product")}>
-                看看图纸如何变成数据 <ArrowRight size={17} />
+                看看 AI 如何精确重建图纸 <ArrowRight size={17} />
               </button>
               <button className="text-button" onClick={() => navigate("about")}>
                 关于我们 <ArrowRight size={17} />
@@ -193,7 +193,7 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
       <section className="problem-section section-light" aria-labelledby="problem-title">
         <div className="page-grid problem-heading">
           <div><p className="section-index">OPPORTUNITY</p><h2 id="problem-title">工业 AI 的下一步，从读懂历史图纸开始</h2></div>
-          <p>构件、尺寸、关系和工程语义被真正结构化之后，图纸才能进入企业的数据与智能化流程。</p>
+          <p>构件、尺寸、关系和工程语义被精确结构化之后，图纸才能进入企业的数据与智能化流程。</p>
         </div>
         <div className="page-grid evidence-strip">
           {evidenceItems.map((item) => (
@@ -208,8 +208,8 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
 
       <section className="business-section" aria-labelledby="business-title">
         <div className="page-grid section-heading business-heading">
-          <div><p className="section-index">OUR POSITION</p><h2 id="business-title">让历史图纸，接上新一代工业系统</h2></div>
-          <p>为拥有大量存量图纸的工业企业，以及建设 CAD、PLM、数字孪生和工业 AI 的团队提供数据动力。</p>
+          <div><p className="section-index">OUR POSITION</p><h2 id="business-title">让精确工程数据，接上新一代工业系统</h2></div>
+          <p>为拥有大量存量图纸的工业企业，以及建设 CAD、PLM、数字孪生和工业 AI 的团队提供可信、精确的上游工程数据。</p>
         </div>
         <div className="page-grid service-list">
           {services.map((service) => {
@@ -220,7 +220,7 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
         <div className="page-grid ecosystem-flow" aria-label="仝心圆在工业数据链路中的位置">
           <div><span>INPUT</span><strong>非结构化工程资料</strong><p>扫描图 · PDF · DWG · DXF</p></div>
           <ArrowRight size={21} aria-hidden="true" />
-          <div className="is-mrtt"><span>仝心圆</span><strong>工程数据编译与治理</strong><p>结构化 · 校验 · 证据链</p></div>
+          <div className="is-mrtt"><span>仝心圆</span><strong>精确工程数据编译</strong><p>结构化 · 校验 · 证据链</p></div>
           <ArrowRight size={21} aria-hidden="true" />
           <div><span>APPLICATIONS</span><strong>工业软件与智能系统</strong><p>CAD · PLM · 数字孪生 · AI Agent Harness</p></div>
         </div>
@@ -231,8 +231,8 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
           <div className="focus-image"><img src="/images/mrtt-hero.webp" alt="铁塔图纸与结构化数据" /><span>CURRENT FOCUS</span></div>
           <div className="focus-copy">
             <p className="section-index">POWER TOWER ENGINEERING</p>
-            <h2 id="focus-title">从电力铁塔开始，把复杂数据做扎实</h2>
-            <p>先吃透一个行业、一类对象和一个真实结果，再把经过验证的工程数据能力带向更多工业场景。</p>
+            <h2 id="focus-title">从电力铁塔开始，把精确能力做扎实</h2>
+            <p>先吃透一个行业、一类对象和一套精确标准，再把经过验证的工程数据能力带向更多工业场景。</p>
             <button className="text-button" onClick={() => navigate("about")}>了解我们的发展方向 <ArrowRight size={17} /></button>
           </div>
         </div>
@@ -246,28 +246,28 @@ function ProductPage() {
   return (
     <main>
       <section className="inner-hero product-hero">
-        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">仝心圆 / ENGINEERING DATA COMPILER</p><h1>唤醒图纸，让工程数据流动起来</h1></div><p>仝心圆连接企业档案库与 CAD、PLM、数字孪生和 AI Agent，让历史资料重新进入业务流程。</p></div>
+        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">仝心圆 / DRAWING MODELING AI</p><h1>让图纸成为精确、工程可用的数据</h1></div><p>仝心圆以 AI 精确重建存量图纸，连接企业档案库与 CAD、PLM、数字孪生和 AI Agent，让历史资料重新进入业务流程。</p></div>
       </section>
       <section className="model-section" aria-labelledby="model-title">
         <div className="page-grid model-heading">
-          <div><p className="section-index light">AI-DRIVEN RECONSTRUCTION</p><h2 id="model-title">让 AI 读懂工程图纸，重建结构准确的三维几何</h2></div>
-          <p>仝心圆通过多模态 AI 与工程 Agent Harness 自动读取尺寸、标注和构件关系，交叉核对物料表，并以几何求解验证三维结果。</p>
+          <div><p className="section-index light">PRECISION AI RECONSTRUCTION</p><h2 id="model-title">让 AI 读懂工程图纸，重建精确、工程可用的三维几何</h2></div>
+          <p>仝心圆通过多模态 AI 与工程 Agent Harness 自动、精确地读取尺寸、标注和构件关系，交叉核对物料表，并以几何求解验证三维结果。</p>
         </div>
         <Suspense fallback={<div className="tower-viewer"><div className="viewer-status">正在准备三维查看器...</div></div>}>
           <TowerModelViewer />
         </Suspense>
         <div className="precision-strip">
-          <article><span>DRAWING READINGS</span><strong>图纸读数</strong><p>读取尺寸、标注、构件编号与跨视图对应关系。</p></article>
+          <article><span>DRAWING READINGS</span><strong>图纸精确读数</strong><p>精确读取尺寸、标注、构件编号与跨视图对应关系。</p></article>
           <article><span>BOM CROSS-CHECK</span><strong>物料表核验</strong><p>交叉核对构件规格、数量、编号与工程资料。</p></article>
-          <article><span>GEOMETRY VALIDATION</span><strong>几何求解验证</strong><p>检查拓扑连接、几何约束、结构闭合与工程一致性。</p></article>
+          <article><span>GEOMETRY VALIDATION</span><strong>完备几何验证</strong><p>检查拓扑连接、几何约束、结构闭合与工程一致性。</p></article>
         </div>
       </section>
       <section className="business-section inner-section" aria-labelledby="delivery-title">
-        <div className="page-grid section-heading"><div><p className="section-index">DATA PIPELINE</p><h2 id="delivery-title">从一张图，到一份可用的数据资产</h2></div><p>围绕真实使用场景，共同确定数据范围、交付格式和工程验收标准。</p></div>
+        <div className="page-grid section-heading"><div><p className="section-index">DATA PIPELINE</p><h2 id="delivery-title">从一张图，到一份精确可用的数据资产</h2></div><p>围绕真实使用场景，共同确定数据范围、精确度要求、交付格式和工程验收标准。</p></div>
         <div className="page-grid service-list">{services.map((service) => { const Icon = service.icon; return <article className="service-row" key={service.title}><Icon size={27} strokeWidth={1.6} /><div><h3>{service.title}</h3><span>{service.english}</span></div><p>{service.description}</p></article>; })}</div>
       </section>
       <section className="output-section" aria-labelledby="customer-title">
-        <div className="page-grid output-heading"><div><p className="section-index light">WHO WE SERVE</p><h2 id="customer-title">让工程数据，在更多地方发挥作用</h2></div><p>从企业数据治理，到工业软件与 AI 应用，让同一份工程知识持续创造价值。</p></div>
+        <div className="page-grid output-heading"><div><p className="section-index light">WHO WE SERVE</p><h2 id="customer-title">让精确工程数据，在更多地方发挥作用</h2></div><p>从企业数据治理，到工业软件与 AI 应用，让同一份精确工程知识持续创造价值。</p></div>
         <div className="page-grid outcome-grid customer-grid">{customerGroups.map((group) => <article key={group.title}><h3>{group.title}</h3><p>{group.description}</p></article>)}</div>
       </section>
       <section className="pilot-section" aria-labelledby="pilot-title">
@@ -283,14 +283,14 @@ function AboutPage() {
   return (
     <main>
       <section className="inner-hero about-hero">
-        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">关于仝心圆 / ABOUT</p><h1>让工业知识，真正进入 AI 时代</h1></div><p>我们是一家专注工业工程数据的 AI 公司，建设连接历史图纸、工程经验与新一代工业系统的数据基础。</p></div>
+        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">关于仝心圆 / ABOUT</p><h1>让工业知识，以精确数据进入 AI 时代</h1></div><p>我们是一家专注工业工程数据的 AI 公司，建设连接历史图纸、工程经验与新一代工业系统的精确数据基础。</p></div>
       </section>
       <section className="backing-section" aria-labelledby="backing-title">
         <div className="page-grid backing-layout">
           <p className="section-index">INDUSTRY ECOSYSTEM</p>
           <div className="backing-copy">
             <h2 id="backing-title">扎根数据智能与产业创新生态</h2>
-            <p>MRTT 聚焦工业存量图纸的数据智能化，把复杂、分散的工程资料转化为能够进入真实业务流程的数据资产。</p>
+            <p>MRTT 聚焦工业存量图纸的数据智能化，把复杂、分散的工程资料转化为精确、可验证并能够进入真实业务流程的数据资产。</p>
           </div>
           <div className="affiliation-links" aria-label="关联品牌与企业">
             <a href="https://ge.cn/" target="_blank" rel="noreferrer">每日互动 <ExternalLink size={16} /></a>
@@ -300,7 +300,7 @@ function AboutPage() {
         </div>
       </section>
       <section className="direction-section">
-        <div className="page-grid direction-lead"><p className="section-index">DIRECTION</p><h2>从铁塔出发，把一条工程数据链路做深做透</h2><p>当前以电力铁塔图纸为起点，把经过验证的数据能力逐步带向更多工业场景。</p></div>
+        <div className="page-grid direction-lead"><p className="section-index">DIRECTION</p><h2>从铁塔出发，把一条精确工程数据链路做深做透</h2><p>当前以电力铁塔图纸为起点，把经过验证的精确数据能力逐步带向更多工业场景。</p></div>
         <div className="page-grid direction-grid">
           <article><strong>吃透一个行业</strong><p>围绕电力铁塔建立真实可验收的数据标准、产品能力和交付闭环。</p></article>
           <article><strong>让数据越用越好</strong><p>持续积累标准、行业知识和反馈数据，让每次交付提升后续能力。</p></article>
@@ -319,7 +319,7 @@ function ResearchPage() {
       <section className="inner-hero research-hero">
         <div className="page-grid inner-hero-layout">
           <div><p className="eyebrow">仝心圆研究 / RESEARCH</p><h1>研究那些让工业数据真正可用的问题</h1></div>
-          <p>从多模态理解、工程关系重建到 Agent Harness，我们研究如何让 AI 在专业工具与工程约束下，稳定完成真实任务。</p>
+          <p>从多模态理解、工程关系重建到 Agent Harness，我们研究如何让 AI 在专业工具与工程约束下，精确、稳定地完成真实任务。</p>
         </div>
       </section>
       <section className="research-section" aria-labelledby="research-title">
@@ -453,15 +453,15 @@ function App() {
 
   useEffect(() => {
     const titles: Record<PageId, string> = {
-      home: "仝心圆 | 工业数据 AI",
-      product: "产品与合作 | 仝心圆",
+      home: "仝心圆 | 精确工程数据 AI",
+      product: "图纸建模 AI 产品 | 仝心圆",
       research: "研究方向 | 仝心圆",
       about: "关于我们 | 仝心圆",
       careers: "加入我们 | 仝心圆",
     };
     const descriptions: Record<PageId, string> = {
-      home: "仝心圆是一款工程数据编译产品，将扫描图、PDF、DWG 与 DXF 编译为可供 CAD 和 AI 系统使用的工程数据。",
-      product: "了解仝心圆的工程图纸数据交付内容、验收结果与试点合作方式。",
+      home: "仝心圆是一款图纸建模 AI 产品，将扫描图、PDF、DWG 与 DXF 编译为可供 CAD 和 AI 系统使用的精确工程数据。",
+      product: "了解仝心圆如何通过 AI 精确读取工程图纸，重建工程可用的结构化数据与三维几何。",
       research: "了解 MRTT 在工业多模态理解、工程关系、结构化预测、Agent Harness 和可靠评测方向的研究。",
       about: "了解仝心圆背后的 MRTT 公司、产业生态与工程图纸数据能力。",
       careers: "加入 MRTT，参与多模态模型、Agent 与真实工业数据系统的研究和研发。",
@@ -481,7 +481,7 @@ function App() {
       <header className="site-header">
         <button className="wordmark" onClick={() => navigate("home")} aria-label="返回首页">仝心圆</button>
         <nav className={`main-nav ${mobileOpen ? "is-open" : ""}`} aria-label="主导航">
-          <button className={page === "product" ? "current" : ""} aria-current={page === "product" ? "page" : undefined} onClick={() => navigate("product")}>仝心圆</button>
+          <button className={page === "product" ? "current" : ""} aria-current={page === "product" ? "page" : undefined} onClick={() => navigate("product")}>图纸建模 AI 产品</button>
           <button className={page === "research" ? "current" : ""} aria-current={page === "research" ? "page" : undefined} onClick={() => navigate("research")}>研究方向</button>
           <button className={page === "about" ? "current" : ""} aria-current={page === "about" ? "page" : undefined} onClick={() => navigate("about")}>关于我们</button>
           <button className={page === "careers" ? "current" : ""} aria-current={page === "careers" ? "page" : undefined} onClick={() => navigate("careers")}>加入我们</button>
@@ -494,7 +494,7 @@ function App() {
       {page === "research" && <ResearchPage />}
       {page === "about" && <AboutPage />}
       {page === "careers" && <CareersPage openJob={openJob} setOpenJob={setOpenJob} />}
-      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>工业数据 AI 公司 · 产品：仝心圆</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>仝心圆</button><button onClick={() => navigate("research")}>研究方向</button><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>© MRTT. ALL RIGHTS RESERVED.</span></div></div></footer>
+      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>工业数据 AI 公司 · 精确图纸建模产品：仝心圆</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>图纸建模 AI 产品</button><button onClick={() => navigate("research")}>研究方向</button><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>Copyright © 2026 浙江每日互动研究院有限公司</span></div></div></footer>
     </div>
   );
 }
