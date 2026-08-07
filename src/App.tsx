@@ -251,7 +251,7 @@ function ProductPage() {
       <section className="model-section" aria-labelledby="model-title">
         <div className="page-grid model-heading">
           <div><p className="section-index light">LIVE GEOMETRY</p><h2 id="model-title">从工程图纸，到可以直接操作的几何</h2></div>
-          <p>下面是一个真实铁塔 STL 样例，展示结构化工程数据进入三维工作流后的几何结果。</p>
+          <p>一张二维工程图，经过数据编译，成为可以进入三维工作流的几何结果。</p>
         </div>
         <Suspense fallback={<div className="tower-viewer"><div className="viewer-status">正在准备三维查看器...</div></div>}>
           <TowerModelViewer />

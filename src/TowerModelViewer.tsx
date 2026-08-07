@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Maximize2, RotateCw, ScanLine } from "lucide-react";
+import { ArrowRight, Maximize2, RotateCcw, RotateCw, ScanLine } from "lucide-react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
@@ -7,14 +7,42 @@ import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
 const MODEL_URL = "/models/N02932S-T0706-09_coordination.stl?v=20260807-7f20cc6d";
 
 export function TowerModelViewer() {
+  const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const resetViewRef = useRef<() => void>(() => undefined);
   const materialRef = useRef<THREE.MeshStandardMaterial | null>(null);
   const controlsRef = useRef<OrbitControls | null>(null);
+  const revealTimerRef = useRef<number | null>(null);
+  const replayFrameRef = useRef<number | null>(null);
+  const hasPlayedRef = useRef(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [autoRotate, setAutoRotate] = useState(true);
   const [wireframe, setWireframe] = useState(false);
+  const [revealed, setRevealed] = useState(false);
+  const [resetting, setResetting] = useState(false);
+
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || hasPlayedRef.current) return;
+        hasPlayedRef.current = true;
+        revealTimerRef.current = window.setTimeout(() => setRevealed(true), 900);
+        observer.disconnect();
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(stage);
+    return () => {
+      observer.disconnect();
+      if (revealTimerRef.current !== null) window.clearTimeout(revealTimerRef.current);
+      if (replayFrameRef.current !== null) window.cancelAnimationFrame(replayFrameRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -165,13 +193,49 @@ export function TowerModelViewer() {
     if (materialRef.current) materialRef.current.wireframe = wireframe;
   }, [wireframe]);
 
+  const replayTransformation = () => {
+    if (revealTimerRef.current !== null) window.clearTimeout(revealTimerRef.current);
+    if (replayFrameRef.current !== null) window.cancelAnimationFrame(replayFrameRef.current);
+
+    setResetting(true);
+    setRevealed(false);
+
+    replayFrameRef.current = window.requestAnimationFrame(() => {
+      replayFrameRef.current = window.requestAnimationFrame(() => {
+        setResetting(false);
+        revealTimerRef.current = window.setTimeout(() => setRevealed(true), 750);
+      });
+    });
+  };
+
   return (
-    <div className="tower-viewer">
+    <div className="tower-viewer" ref={stageRef}>
       <canvas ref={canvasRef} aria-label="可交互的铁塔 STL 三维模型" />
+      <div
+        className={`drawing-reveal ${revealed ? "is-revealed" : ""} ${resetting ? "is-resetting" : ""}`}
+        aria-hidden={revealed && !resetting}
+      >
+        <div className="drawing-reveal-visual">
+          <img src="/images/N02932S-T0706-09-drawing.png" alt="铁塔二维工程图示意" />
+        </div>
+        <div className="drawing-reveal-copy">
+          <span>INPUT / ENGINEERING DRAWING</span>
+          <strong>把这张工程图<br />变成三维几何</strong>
+          <ArrowRight size={30} strokeWidth={1.5} />
+        </div>
+      </div>
       <div className="viewer-label">
         <span>INTERACTIVE STL / N02932S-T0706-09</span>
         <strong>铁塔协调模型</strong>
       </div>
+      <button
+        className={`viewer-replay ${revealed && !resetting ? "is-visible" : ""}`}
+        onClick={replayTransformation}
+        aria-label="重播图纸到三维的转换"
+        title="重播转换"
+      >
+        <RotateCcw size={18} />
+      </button>
       <div className="viewer-toolbar" aria-label="三维模型控制">
         <button
           className={autoRotate ? "is-active" : ""}
