@@ -1398,6 +1398,45 @@ span {
   line-height: 1.85;
 }
 
+.precision-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: min(1240px, calc(100% - 64px));
+  margin: 0 auto;
+  border: 1px solid #454c50;
+  border-bottom: 0;
+}
+
+.precision-strip article {
+  min-height: 148px;
+  padding: 28px 30px;
+  border-right: 1px solid #454c50;
+}
+
+.precision-strip article:last-child { border-right: 0; }
+
+.precision-strip span {
+  display: block;
+  margin-bottom: 18px;
+  color: #899196;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 9px;
+}
+
+.precision-strip strong {
+  display: block;
+  margin-bottom: 8px;
+  color: white;
+  font-size: 17px;
+}
+
+.precision-strip p {
+  margin: 0;
+  color: #aeb6ba;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
 .tower-viewer {
   position: relative;
   width: min(1240px, calc(100% - 64px));
@@ -2194,6 +2233,8 @@ span {
   .model-heading h2 { font-size: 32px; }
   .tower-viewer { height: 66svh; min-height: 520px; }
   .tower-viewer { width: min(100% - 40px, 680px); }
+  .precision-strip { width: min(100% - 40px, 680px); }
+  .precision-strip article { padding: 24px 20px; }
   .viewer-label { left: 20px; }
   .viewer-toolbar { right: 20px; }
   .viewer-replay { right: 168px; }
@@ -2299,6 +2340,14 @@ span {
   .model-section { padding-top: 72px; }
   .model-heading h2 { font-size: 28px; }
   .tower-viewer { width: calc(100% - 28px); height: 520px; min-height: 520px; }
+  .precision-strip { grid-template-columns: 1fr; width: calc(100% - 28px); }
+  .precision-strip article {
+    min-height: 0;
+    padding: 22px 20px;
+    border-right: 0;
+    border-bottom: 1px solid #454c50;
+  }
+  .precision-strip article:last-child { border-bottom: 0; }
   .viewer-label { top: 20px; left: 14px; }
   .viewer-label strong { font-size: 16px; }
   .viewer-toolbar { top: auto; right: 14px; bottom: 16px; }

@@ -23,15 +23,15 @@ const services = [
   },
   {
     icon: Waypoints,
-    title: "工程信息结构化",
-    english: "ENGINEERING DATA",
-    description: "将图元、尺寸、构件、拓扑与约束整理为可检索、可编辑、可核验的工程数据。",
+    title: "工程信息编译",
+    english: "ENGINEERING COMPILATION",
+    description: "读取图纸标注、尺寸与构件关系，并与物料表等工程资料交叉核验。",
   },
   {
     icon: Database,
-    title: "下游系统交付",
-    english: "APPLICATION EXPORT",
-    description: "按使用场景输出结构化数据、建模条件与接口，连接 CAD、PLM、数字孪生和 AI Agent。",
+    title: "可信结果交付",
+    english: "VERIFIED DELIVERY",
+    description: "通过拓扑、约束与几何求解验证，输出可进入 CAD、PLM、数字孪生和 AI Agent 的工程结果。",
   },
 ];
 
@@ -250,12 +250,17 @@ function ProductPage() {
       </section>
       <section className="model-section" aria-labelledby="model-title">
         <div className="page-grid model-heading">
-          <div><p className="section-index light">LIVE GEOMETRY</p><h2 id="model-title">从工程图纸，到可以直接操作的几何</h2></div>
-          <p>一张二维工程图，经过数据编译，成为可以进入三维工作流的几何结果。</p>
+          <div><p className="section-index light">STRUCTURAL PRECISION</p><h2 id="model-title">从工程图纸，到结构准确的三维几何</h2></div>
+          <p>读取图纸中的尺寸、标注与构件关系，交叉核对物料表，并通过几何求解验证，让三维结果经得起工程核验。</p>
         </div>
         <Suspense fallback={<div className="tower-viewer"><div className="viewer-status">正在准备三维查看器...</div></div>}>
           <TowerModelViewer />
         </Suspense>
+        <div className="precision-strip">
+          <article><span>DRAWING READINGS</span><strong>图纸读数</strong><p>读取尺寸、标注、构件编号与跨视图对应关系。</p></article>
+          <article><span>BOM CROSS-CHECK</span><strong>物料表核验</strong><p>交叉核对构件规格、数量、编号与工程资料。</p></article>
+          <article><span>GEOMETRY VALIDATION</span><strong>几何求解验证</strong><p>检查拓扑连接、几何约束、结构闭合与工程一致性。</p></article>
+        </div>
       </section>
       <section className="business-section inner-section" aria-labelledby="delivery-title">
         <div className="page-grid section-heading"><div><p className="section-index">DATA PIPELINE</p><h2 id="delivery-title">从一张图，到一份可用的数据资产</h2></div><p>围绕真实使用场景，共同确定数据范围、交付格式和工程验收标准。</p></div>
