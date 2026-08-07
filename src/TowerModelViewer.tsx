@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
 
-const MODEL_URL = "/models/N02932S-T0706-09_coordination.stl";
+const MODEL_URL = "/models/N02932S-T0706-09_coordination.stl?v=20260807-7f20cc6d";
 
 export function TowerModelViewer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

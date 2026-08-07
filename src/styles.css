@@ -1400,11 +1400,13 @@ span {
 
 .tower-viewer {
   position: relative;
-  width: 100%;
+  width: min(1240px, calc(100% - 64px));
   height: min(72svh, 760px);
   min-height: 560px;
+  margin: 0 auto;
   overflow: hidden;
-  border-top: 1px solid #454c50;
+  border: 1px solid #454c50;
+  border-bottom: 0;
   background: var(--graphite);
 }
 
@@ -1427,7 +1429,7 @@ span {
 
 .viewer-label {
   top: 28px;
-  left: max(32px, calc((100vw - 1240px) / 2));
+  left: 28px;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -1444,7 +1446,7 @@ span {
 
 .viewer-toolbar {
   top: 24px;
-  right: max(32px, calc((100vw - 1240px) / 2));
+  right: 28px;
   display: flex;
   border: 1px solid #596166;
   background: rgba(23, 26, 28, 0.82);
@@ -1989,6 +1991,7 @@ span {
   .model-heading { grid-template-columns: 1fr; gap: 22px; padding-bottom: 38px; }
   .model-heading h2 { font-size: 32px; }
   .tower-viewer { height: 66svh; min-height: 520px; }
+  .tower-viewer { width: min(100% - 40px, 680px); }
   .viewer-label { left: 20px; }
   .viewer-toolbar { right: 20px; }
   .job-row > button { grid-template-columns: 1fr 24px; gap: 12px; }
@@ -2092,7 +2095,7 @@ span {
   .application-layout h2 { font-size: 28px; }
   .model-section { padding-top: 72px; }
   .model-heading h2 { font-size: 28px; }
-  .tower-viewer { height: 520px; min-height: 520px; }
+  .tower-viewer { width: calc(100% - 28px); height: 520px; min-height: 520px; }
   .viewer-label { top: 20px; left: 14px; }
   .viewer-label strong { font-size: 16px; }
   .viewer-toolbar { top: auto; right: 14px; bottom: 16px; }
