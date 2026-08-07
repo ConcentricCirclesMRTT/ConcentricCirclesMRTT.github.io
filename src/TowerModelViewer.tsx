@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { ArrowRight, Maximize2, RotateCcw, RotateCw, ScanLine } from "lucide-react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
@@ -12,15 +12,15 @@ export function TowerModelViewer() {
   const resetViewRef = useRef<() => void>(() => undefined);
   const materialRef = useRef<THREE.MeshStandardMaterial | null>(null);
   const controlsRef = useRef<OrbitControls | null>(null);
-  const revealTimerRef = useRef<number | null>(null);
-  const replayFrameRef = useRef<number | null>(null);
   const hasPlayedRef = useRef(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [autoRotate, setAutoRotate] = useState(true);
   const [wireframe, setWireframe] = useState(false);
-  const [revealed, setRevealed] = useState(false);
-  const [resetting, setResetting] = useState(false);
+  const [sequenceActive, setSequenceActive] = useState(false);
+  const [sequencePhase, setSequencePhase] = useState<"waiting" | "playing" | "revealed">("waiting");
+  const [countdown, setCountdown] = useState(3);
+  const [sequencePaused, setSequencePaused] = useState(false);
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -30,7 +30,7 @@ export function TowerModelViewer() {
       ([entry]) => {
         if (!entry.isIntersecting || hasPlayedRef.current) return;
         hasPlayedRef.current = true;
-        revealTimerRef.current = window.setTimeout(() => setRevealed(true), 900);
+        setSequenceActive(true);
         observer.disconnect();
       },
       { threshold: 0.35 },
@@ -39,10 +39,23 @@ export function TowerModelViewer() {
     observer.observe(stage);
     return () => {
       observer.disconnect();
-      if (revealTimerRef.current !== null) window.clearTimeout(revealTimerRef.current);
-      if (replayFrameRef.current !== null) window.cancelAnimationFrame(replayFrameRef.current);
     };
   }, []);
+
+  useEffect(() => {
+    if (!sequenceActive || sequencePhase !== "waiting" || sequencePaused) return;
+
+    const countdownTimer = window.setTimeout(() => {
+      if (countdown <= 1) {
+        setCountdown(0);
+        setSequencePhase("playing");
+        return;
+      }
+      setCountdown((value) => value - 1);
+    }, 1000);
+
+    return () => window.clearTimeout(countdownTimer);
+  }, [countdown, sequenceActive, sequencePaused, sequencePhase]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -194,27 +207,48 @@ export function TowerModelViewer() {
   }, [wireframe]);
 
   const replayTransformation = () => {
-    if (revealTimerRef.current !== null) window.clearTimeout(revealTimerRef.current);
-    if (replayFrameRef.current !== null) window.cancelAnimationFrame(replayFrameRef.current);
+    setSequencePaused(false);
+    setCountdown(3);
+    setSequencePhase("waiting");
+    setSequenceActive(true);
+  };
 
-    setResetting(true);
-    setRevealed(false);
+  const pauseTransformation = (event: PointerEvent<HTMLDivElement>) => {
+    if (!sequenceActive || sequencePhase === "revealed") return;
+    event.currentTarget.setPointerCapture(event.pointerId);
+    setSequencePaused(true);
+  };
 
-    replayFrameRef.current = window.requestAnimationFrame(() => {
-      replayFrameRef.current = window.requestAnimationFrame(() => {
-        setResetting(false);
-        revealTimerRef.current = window.setTimeout(() => setRevealed(true), 750);
-      });
-    });
+  const resumeTransformation = (event: PointerEvent<HTMLDivElement>) => {
+    if (!sequencePaused) return;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    setSequencePaused(false);
   };
 
   return (
-    <div className="tower-viewer" ref={stageRef}>
+    <div
+      className="tower-viewer"
+      ref={stageRef}
+      onPointerDown={pauseTransformation}
+      onPointerUp={resumeTransformation}
+      onPointerCancel={resumeTransformation}
+    >
       <canvas ref={canvasRef} aria-label="可交互的铁塔 STL 三维模型" />
       <div
-        className={`drawing-reveal ${revealed ? "is-revealed" : ""} ${resetting ? "is-resetting" : ""}`}
-        aria-hidden={revealed && !resetting}
+        className={`drawing-reveal is-${sequencePhase} ${sequencePaused ? "is-paused" : ""}`}
+        aria-hidden={sequencePhase === "revealed"}
+        onAnimationEnd={() => {
+          if (sequencePhase === "playing") setSequencePhase("revealed");
+        }}
       >
+        {sequenceActive && sequencePhase !== "revealed" && (
+          <div className="drawing-reveal-status" aria-live="polite">
+            <span>{sequencePaused ? "PAUSED" : sequencePhase === "playing" ? "COMPILING" : "GENERATING IN"}</span>
+            <strong>{sequencePhase === "waiting" ? String(countdown).padStart(2, "0") : sequencePaused ? "II" : "→"}</strong>
+          </div>
+        )}
         <div className="drawing-reveal-visual">
           <img src="/images/N02932S-T0706-09-drawing.png" alt="铁塔二维工程图示意" />
         </div>
@@ -229,7 +263,7 @@ export function TowerModelViewer() {
         <strong>铁塔协调模型</strong>
       </div>
       <button
-        className={`viewer-replay ${revealed && !resetting ? "is-visible" : ""}`}
+        className={`viewer-replay ${sequencePhase === "revealed" ? "is-visible" : ""}`}
         onClick={replayTransformation}
         aria-label="重播图纸到三维的转换"
         title="重播转换"
