@@ -31,7 +31,7 @@ const services = [
     icon: Database,
     title: "可信结果交付",
     english: "VERIFIED DELIVERY",
-    description: "通过拓扑、约束与几何求解验证，输出可进入 CAD、PLM、数字孪生和 AI Agent 的工程结果。",
+    description: "由工程 Agent Harness 编排专业 Skills、工具与验证流程，输出可进入 CAD、PLM、数字孪生和 AI 系统的工程结果。",
   },
 ];
 
@@ -88,9 +88,9 @@ const researchAreas = [
     description: "研究 Schema 驱动的数据提取与中间表示，使结果可检索、可编辑、可计算。",
   },
   {
-    label: "MULTIMODAL AGENTS",
-    title: "多模态数据 Agent",
-    description: "将模型、专业工具、规则和人工复核组织成可观测、可验证的数据处理系统。",
+    label: "ENGINEERING AGENT HARNESS",
+    title: "工程 Agent Harness",
+    description: "研究如何组织多模态模型、领域 Skills、专业工具、验证器与人工复核，稳定完成高约束工程任务。",
   },
   {
     label: "DATA & EVALUATION",
@@ -222,7 +222,7 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
           <ArrowRight size={21} aria-hidden="true" />
           <div className="is-mrtt"><span>仝心圆</span><strong>工程数据编译与治理</strong><p>结构化 · 校验 · 证据链</p></div>
           <ArrowRight size={21} aria-hidden="true" />
-          <div><span>APPLICATIONS</span><strong>工业软件与智能系统</strong><p>CAD · PLM · 数字孪生 · Agent</p></div>
+          <div><span>APPLICATIONS</span><strong>工业软件与智能系统</strong><p>CAD · PLM · 数字孪生 · AI Agent Harness</p></div>
         </div>
       </section>
 
@@ -304,7 +304,7 @@ function AboutPage() {
         <div className="page-grid direction-grid">
           <article><strong>吃透一个行业</strong><p>围绕电力铁塔建立真实可验收的数据标准、产品能力和交付闭环。</p></article>
           <article><strong>让数据越用越好</strong><p>持续积累标准、行业知识和反馈数据，让每次交付提升后续能力。</p></article>
-          <article><strong>接入更多系统</strong><p>服务 CAD、PLM、数字孪生、知识库和 AI Agent，成为可靠的工程数据来源。</p></article>
+          <article><strong>接入更多系统</strong><p>服务 CAD、PLM、数字孪生、知识库和 AI Agent Harness，成为可靠的工程数据来源。</p></article>
         </div>
       </section>
       <section className="about-section compact-about"><div className="page-grid about-layout"><div className="about-copy"><p className="section-index">TEAM</p><h2>跨越 AI 与工程行业</h2><p>团队结合垂直领域 AI、复杂数据工程与铁塔行业经验，共同定义数据标准和交付结果。</p></div><div className="about-statement"><strong>DATA ENGINEERING<br />FOR THE PHYSICAL WORLD</strong><p>让行业知识成为可持续使用的数据</p></div></div></section>
@@ -319,7 +319,7 @@ function ResearchPage() {
       <section className="inner-hero research-hero">
         <div className="page-grid inner-hero-layout">
           <div><p className="eyebrow">仝心圆研究 / RESEARCH</p><h1>研究那些让工业数据真正可用的问题</h1></div>
-          <p>从多模态理解到工程关系重建，从结构化预测到可靠 Agent，我们围绕真实工业数据持续提出问题、设计实验并验证结果。</p>
+          <p>从多模态理解、工程关系重建到 Agent Harness，我们研究如何让 AI 在专业工具与工程约束下，稳定完成真实任务。</p>
         </div>
       </section>
       <section className="research-section" aria-labelledby="research-title">
@@ -335,6 +335,21 @@ function ResearchPage() {
               <p>{area.description}</p>
             </article>
           ))}
+        </div>
+      </section>
+      <section className="harness-section" aria-labelledby="harness-title">
+        <div className="page-grid harness-heading">
+          <div><p className="section-index">AGENT HARNESS</p><h2 id="harness-title">让 AI 在工程约束下完成复杂任务</h2></div>
+          <div>
+            <p>我们建设面向工程数据任务的 Agent Harness，将模型能力组织成可观测、可验证、可持续迭代的工作系统。</p>
+            <p>当前从铁塔工程重构等高约束任务开始，验证领域 Skills 与专业工具协同工作的边界。</p>
+          </div>
+        </div>
+        <div className="page-grid harness-grid">
+          <article><span>TASK SCAFFOLD</span><h3>任务骨架</h3><p>将复杂工程目标拆解为有状态、可观测的处理阶段。</p></article>
+          <article><span>DOMAIN SKILLS</span><h3>领域 Skills</h3><p>沉淀专业任务所需的知识边界、输入要求与能力模块。</p></article>
+          <article><span>TOOLS & SOLVERS</span><h3>工具与求解器</h3><p>连接解析、几何、规则与 CAD 工具，处理需要确定性的环节。</p></article>
+          <article><span>VERIFICATION</span><h3>验证与复核</h3><p>通过评测、验证器和专家判断管理错误、歧义与结果质量。</p></article>
         </div>
       </section>
       <section className="output-section research-values" aria-labelledby="research-values-title">
@@ -447,7 +462,7 @@ function App() {
     const descriptions: Record<PageId, string> = {
       home: "仝心圆是一款工程数据编译产品，将扫描图、PDF、DWG 与 DXF 编译为可供 CAD 和 AI 系统使用的工程数据。",
       product: "了解仝心圆的工程图纸数据交付内容、验收结果与试点合作方式。",
-      research: "了解 MRTT 在工业多模态理解、工程关系、结构化预测、数据 Agent 和可靠评测方向的研究。",
+      research: "了解 MRTT 在工业多模态理解、工程关系、结构化预测、Agent Harness 和可靠评测方向的研究。",
       about: "了解仝心圆背后的 MRTT 公司、产业生态与工程图纸数据能力。",
       careers: "加入 MRTT，参与多模态模型、Agent 与真实工业数据系统的研究和研发。",
     };
