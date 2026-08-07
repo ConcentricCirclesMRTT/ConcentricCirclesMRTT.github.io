@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
 
-const MODEL_URL = "/models/N02932S-T0706-09_coordination.stl?v=20260807-7f20cc6d";
+const MODEL_URL = "/models/N02932S-T0706-09_coordination.stl?v=20260807-31635ff5";
 
 export function TowerModelViewer() {
   const stageRef = useRef<HTMLDivElement>(null);
