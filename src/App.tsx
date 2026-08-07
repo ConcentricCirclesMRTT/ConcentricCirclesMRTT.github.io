@@ -43,24 +43,24 @@ const customerGroups = [
 
 const pilotSteps = [
   {
-    title: "样本评估",
-    english: "ASSESS",
-    description: "选择一组具有代表性的真实图纸，确认资料质量、业务问题与适用边界。",
+    title: "资料与场景对齐",
+    english: "ALIGN",
+    description: "了解现有图纸、工程资料与业务流程，明确优先解决的真实问题。",
   },
   {
-    title: "目标定义",
+    title: "交付标准定义",
     english: "DEFINE",
-    description: "共同确定需要交付的数据、使用场景、人工验收方式与项目成功标准。",
+    description: "共同确认数据范围、准确性要求、输出格式与工程验收方式。",
   },
   {
-    title: "小范围试点",
-    english: "PILOT",
-    description: "围绕一种图纸体系或一类高价值构件完成数据化闭环，并提供可检查结果。",
+    title: "联合验证",
+    english: "VALIDATE",
+    description: "选取具有代表性的资料完成交付闭环，以真实工程结果验证能力与边界。",
   },
   {
-    title: "验收与扩展",
+    title: "批量落地",
     english: "SCALE",
-    description: "基于真实验收结果评估批量处理、系统接入和更多图纸类型的扩展计划。",
+    description: "在验收基础上扩展处理规模、图纸类型，并接入客户现有系统与工作流。",
   },
 ];
 
@@ -271,7 +271,7 @@ function ProductPage() {
         <div className="page-grid outcome-grid customer-grid">{customerGroups.map((group) => <article key={group.title}><h3>{group.title}</h3><p>{group.description}</p></article>)}</div>
       </section>
       <section className="pilot-section" aria-labelledby="pilot-title">
-        <div className="page-grid pilot-heading"><div><p className="section-index">PILOT</p><h2 id="pilot-title">从一组真实图纸，跑通第一个结果</h2></div><p>先解决一个清楚、可验收的问题，再把有效的方法扩展到更多资料。</p></div>
+        <div className="page-grid pilot-heading"><div><p className="section-index">HOW WE WORK</p><h2 id="pilot-title">合作，从真实工程资料开始</h2></div><p>围绕一个明确的业务场景，共同定义数据边界、交付结果与验收标准，再将经过验证的能力带入更大规模的工程流程。</p></div>
         <div className="page-grid pilot-steps">{pilotSteps.map((step) => <article key={step.title}><span>{step.english}</span><h3>{step.title}</h3><p>{step.description}</p></article>)}</div>
       </section>
       <ContactBand />
