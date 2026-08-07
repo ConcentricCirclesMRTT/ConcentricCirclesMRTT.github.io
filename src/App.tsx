@@ -173,13 +173,13 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
           <div className="hero-copy">
             <p className="eyebrow">仝心圆 / INDUSTRIAL DATA AI</p>
             <h1>仝心圆</h1>
-            <h2>把面向人的工程图纸，转化为 AI 原生的工程上下文</h2>
+            <h2>唤醒每一张工程图纸里的数据价值</h2>
             <p className="hero-description">
-              仝心圆是一款图纸建模 AI 产品。它把扫描图、PDF、DWG 与 DXF 中的几何、构件、尺寸和关系，转化为可验证、可追溯，并能被 CAD 与 AI Agent 直接调用的工程上下文。
+              仝心圆是一款工程数据编译产品。它把沉睡在扫描图、PDF、DWG 与 DXF 里的工程知识，转化为可核验、可追溯、可编辑，并能被 CAD 与 AI 系统直接使用的数据。
             </p>
             <div className="hero-actions">
               <button className="primary-button" onClick={() => navigate("product")}>
-                看看图纸如何进入 AI 工作流 <ArrowRight size={17} />
+                看 AI 如何读图建模 <ArrowRight size={17} />
               </button>
               <button className="text-button" onClick={() => navigate("about")}>
                 关于我们 <ArrowRight size={17} />
@@ -192,8 +192,8 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
 
       <section className="problem-section section-light" aria-labelledby="problem-title">
         <div className="page-grid problem-heading">
-          <div><p className="section-index">OPPORTUNITY</p><h2 id="problem-title">工业 AI 的下一步，从读懂历史图纸开始</h2></div>
-          <p>当构件、尺寸、关系和工程语义成为机器可读的上下文，图纸才能真正进入企业的 AI 工作流。</p>
+          <div><p className="section-index">THE MISSING LAYER</p><h2 id="problem-title">AI 已经会画图，下一步是读懂工程</h2></div>
+          <p>真正困难的不是生成一个看起来合理的模型，而是从复杂图纸中恢复构件、尺寸、关系和工程依据。</p>
         </div>
         <div className="page-grid evidence-strip">
           {evidenceItems.map((item) => (
@@ -208,8 +208,8 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
 
       <section className="business-section" aria-labelledby="business-title">
         <div className="page-grid section-heading business-heading">
-          <div><p className="section-index">OUR POSITION</p><h2 id="business-title">让历史图纸，接上新一代工业系统</h2></div>
-          <p>为拥有大量存量图纸的工业企业，以及建设 CAD、PLM、数字孪生和工业 AI 的团队提供机器可用的上游工程数据。</p>
+          <div><p className="section-index">WHERE WE WORK</p><h2 id="business-title">在历史图纸与下一代工业智能之间</h2></div>
+          <p>仝心圆完成最基础也最关键的数据准备，让企业资料真正进入 CAD、PLM、数字孪生和工业 AI。</p>
         </div>
         <div className="page-grid service-list">
           {services.map((service) => {
@@ -231,8 +231,8 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
           <div className="focus-image"><img src="/images/mrtt-hero.webp" alt="铁塔图纸与结构化数据" /><span>CURRENT FOCUS</span></div>
           <div className="focus-copy">
             <p className="section-index">POWER TOWER ENGINEERING</p>
-            <h2 id="focus-title">从电力铁塔开始，把复杂数据做扎实</h2>
-            <p>先吃透一个行业、一类对象和一个真实结果，再把经过验证的工程数据能力带向更多工业场景。</p>
+            <h2 id="focus-title">第一站，电力铁塔</h2>
+            <p>从结构复杂、标准严格的工程图纸开始，把 AI 读图、数据编译和三维重构做深，再走向更多工业场景。</p>
             <button className="text-button" onClick={() => navigate("about")}>了解我们的发展方向 <ArrowRight size={17} /></button>
           </div>
         </div>
@@ -246,11 +246,11 @@ function ProductPage() {
   return (
     <main>
       <section className="inner-hero product-hero">
-        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">仝心圆 / DRAWING MODELING AI</p><h1>从面向人的图纸，到 AI 原生的工程上下文</h1></div><p>仝心圆让图纸中的几何、构件、尺寸、拓扑与依据成为机器可读、可验证、可调用的数据，连接 CAD、PLM、数字孪生和 AI Agent。</p></div>
+        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">仝心圆 / DRAWING MODELING AI</p><h1>唤醒图纸，让工程数据流动起来</h1></div><p>仝心圆让图纸中的几何、构件、尺寸、拓扑与依据成为机器可读、可验证、可调用的数据，连接 CAD、PLM、数字孪生和 AI Agent。</p></div>
       </section>
       <section className="model-section" aria-labelledby="model-title">
         <div className="page-grid model-heading">
-          <div><p className="section-index light">AI-NATIVE ENGINEERING CONTEXT</p><h2 id="model-title">让 AI 读图、推理并重建工程结构</h2></div>
+          <div><p className="section-index light">AI-NATIVE ENGINEERING CONTEXT</p><h2 id="model-title">让 AI 读懂工程图纸，重建结构准确的三维几何</h2></div>
           <p>多模态 AI 与工程 Agent Harness 读取尺寸、标注和构件关系，交叉核对物料表，并通过几何求解确保结果精确、可核验。</p>
         </div>
         <Suspense fallback={<div className="tower-viewer"><div className="viewer-status">正在准备三维查看器...</div></div>}>
