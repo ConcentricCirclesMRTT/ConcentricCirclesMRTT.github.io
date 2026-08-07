@@ -246,7 +246,13 @@ function ProductPage() {
   return (
     <main>
       <section className="inner-hero product-hero">
-        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">仝心圆 / DRAWING MODELING AI</p><h1>唤醒图纸，让工程数据流动起来</h1></div><p>仝心圆让图纸中的几何、构件、尺寸、拓扑与依据成为机器可读、可验证、可调用的数据，连接 CAD、PLM、数字孪生和 AI Agent。</p></div>
+        <div className="page-grid product-hero-layout">
+          <div className="product-hero-copy">
+            <p className="eyebrow">仝心圆 / DRAWING MODELING AI</p>
+            <h1>唤醒图纸，让工程数据流动起来</h1>
+            <p>仝心圆让图纸中的几何、构件、尺寸、拓扑与依据成为机器可读、可验证、可调用的数据，连接 CAD、PLM、数字孪生和 AI Agent。</p>
+          </div>
+        </div>
       </section>
       <section className="model-section" aria-labelledby="model-title">
         <div className="page-grid model-heading">

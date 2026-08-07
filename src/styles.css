@@ -334,6 +334,46 @@ span {
   line-height: 1.9;
 }
 
+.product-hero {
+  min-height: 560px;
+  padding: 0;
+  background-color: #f2f3f1;
+  background-image: url("/images/product-hero-industrial-v1.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.product-hero::after {
+  right: auto;
+  left: max(32px, calc((100vw - 1240px) / 2));
+  width: min(34vw, 430px);
+}
+
+.product-hero-layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-height: 560px;
+}
+
+.product-hero-copy {
+  width: min(510px, 43%);
+  padding: 74px 0 70px;
+}
+
+.product-hero-copy h1 {
+  margin-bottom: 24px;
+}
+
+.product-hero-copy > p:last-child {
+  margin: 0;
+  color: #42494d;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
 .section-link-row {
   display: flex;
   justify-content: flex-end;
@@ -2132,6 +2172,7 @@ span {
   .hero-copy { width: 52%; }
   .hero h1 { font-size: 62px; }
   .hero h2 { font-size: 29px; }
+  .product-hero-copy { width: 47%; }
   .output-workspace { grid-template-columns: 1fr 1fr; }
   .output-image, .attributes-panel pre, .steel-model { height: 330px; }
   .focus-layout { gap: 42px; }
@@ -2208,6 +2249,19 @@ span {
   .hero-copy { width: 78%; min-height: 720px; padding: 70px 0 100px; }
   .hero h1 { font-size: 54px; }
   .hero h2 { font-size: 28px; }
+  .inner-hero.product-hero {
+    min-height: 500px;
+    padding: 0;
+    background-position: 61% center;
+  }
+  .product-hero::before {
+    position: absolute;
+    inset: 0;
+    background: rgba(247, 247, 245, 0.72);
+    content: "";
+  }
+  .product-hero-layout { min-height: 500px; }
+  .product-hero-copy { width: 72%; padding: 66px 0; }
   .hero-description { font-size: 15px; }
   .hero-status { bottom: 36px; }
   .hero-index { display: none; }
@@ -2344,6 +2398,16 @@ span {
   .inner-hero { min-height: 360px; padding: 76px 0 66px; }
   .inner-hero h1 { font-size: 34px; }
   .inner-hero-layout > p { font-size: 14px; }
+  .inner-hero.product-hero {
+    min-height: 520px;
+    padding: 0;
+    background-position: 67% center;
+  }
+  .product-hero::before { background: rgba(247, 247, 245, 0.84); }
+  .product-hero-layout { min-height: 520px; }
+  .product-hero-copy { width: 100%; padding: 64px 0 70px; }
+  .product-hero-copy h1 { max-width: 350px; }
+  .product-hero-copy > p:last-child { max-width: 360px; font-size: 14px; }
   .problem-section { padding: 76px 0 64px; }
   .evidence-strip { grid-template-columns: 1fr; }
   .evidence-item { border-right: 0; border-bottom: 1px solid var(--line); }
