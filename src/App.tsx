@@ -75,27 +75,27 @@ const researchAreas = [
   {
     label: "MULTIMODAL UNDERSTANDING",
     title: "工业多模态理解",
-    description: "让模型综合理解工程图像、文本、表格和文档，并在复杂页面中定位真正有用的信息。",
+    description: "联合理解工程图像、文本、表格与文档。",
   },
   {
     label: "GEOMETRY & RELATIONS",
     title: "几何、拓扑与工程关系",
-    description: "从图形元素出发，恢复构件、连接、约束与跨视图关系，让视觉结果符合工程逻辑。",
+    description: "恢复构件、连接、约束与跨视图关系。",
   },
   {
     label: "STRUCTURED PREDICTION",
     title: "结构化工程表达",
-    description: "研究 Schema 驱动的数据提取与中间表示，使结果可检索、可编辑、可计算。",
+    description: "以 Schema 和中间表示组织可计算的工程信息。",
   },
   {
     label: "ENGINEERING AGENT HARNESS",
     title: "工程 Agent Harness",
-    description: "研究如何组织多模态模型、领域 Skills、专业工具、验证器与人工复核，稳定完成高约束工程任务。",
+    description: "编排模型、领域 Skills、工具与验证流程。",
   },
   {
     label: "DATA & EVALUATION",
     title: "数据构造与可靠评测",
-    description: "围绕真实失败案例建设数据、评测和置信机制，持续识别能力边界并推动迭代。",
+    description: "用真实失败案例建设数据与评测体系。",
   },
 ];
 
@@ -323,15 +323,18 @@ function ResearchPage() {
   return (
     <main>
       <section className="inner-hero research-hero">
-        <div className="page-grid inner-hero-layout">
-          <div><p className="eyebrow">仝心圆研究 / RESEARCH</p><h1>研究那些让工业数据真正可用的问题</h1></div>
-          <p>从多模态理解、工程关系重建到 Agent Harness，我们研究如何让 AI 在专业工具与工程约束下，稳定完成真实任务。</p>
+        <div className="page-grid research-hero-layout">
+          <div className="research-hero-copy">
+            <p className="eyebrow">仝心圆研究 / RESEARCH</p>
+            <h1>研究让工业 AI 真正可用的问题</h1>
+            <p>聚焦多模态理解、几何与拓扑、工程 Agent Harness。</p>
+          </div>
         </div>
       </section>
       <section className="research-section" aria-labelledby="research-title">
         <div className="page-grid section-heading research-heading">
-          <div><p className="section-index">RESEARCH DIRECTIONS</p><h2 id="research-title">面向工程数据编译的长期研究</h2></div>
-          <p>研究不以单次 Demo 为终点，而要形成可复现、可评测、可以进入产品的数据与系统能力。</p>
+          <div><p className="section-index">RESEARCH DIRECTIONS</p><h2 id="research-title">工程数据编译的关键问题</h2></div>
+          <p>研究成果必须可复现、可评测，并进入产品。</p>
         </div>
         <div className="page-grid research-list">
           {researchAreas.map((area) => (
@@ -347,8 +350,7 @@ function ResearchPage() {
         <div className="page-grid harness-heading">
           <div><p className="section-index">AGENT HARNESS</p><h2 id="harness-title">让 AI 在工程约束下完成复杂任务</h2></div>
           <div>
-            <p>我们建设面向工程数据任务的 Agent Harness，将模型能力组织成可观测、可验证、可持续迭代的工作系统。</p>
-            <p>当前从铁塔工程重构等高约束任务开始，验证领域 Skills 与专业工具协同工作的边界。</p>
+            <p>用 Agent Harness 组织模型、领域 Skills、专业工具与验证器，从高约束任务中建立可靠工作流。</p>
           </div>
         </div>
         <div className="page-grid harness-grid">
@@ -361,7 +363,7 @@ function ResearchPage() {
       <section className="output-section research-values" aria-labelledby="research-values-title">
         <div className="page-grid output-heading">
           <div><p className="section-index light">HOW WE RESEARCH</p><h2 id="research-values-title">从真实数据出发，用工程结果回答</h2></div>
-          <p>模型能力、传统方法、行业规则和人工判断都服务于同一个目标：更可靠的数据结果。</p>
+          <p>模型、规则、工具和专家判断，共同对结果负责。</p>
         </div>
         <div className="page-grid outcome-grid customer-grid">
           <article><h3>真实问题</h3><p>从企业资料和实际工作流中定义任务，持续面对噪声、缺失和长尾情况。</p></article>
@@ -373,7 +375,7 @@ function ResearchPage() {
         <div className="page-grid research-cta-layout">
           <div><p className="section-index">WORK WITH US</p><h2>和我们一起，把开放问题做成真实能力</h2></div>
           <div>
-            <p>欢迎多模态 AI、计算机视觉、Agent、文档智能和工程数据方向的研究者与工程师加入。</p>
+            <p>欢迎多模态、计算机视觉、Agent 与工程数据方向的研究者和工程师。</p>
             <a className="text-button" href="#/careers">查看开放岗位 <ArrowRight size={17} /></a>
           </div>
         </div>
