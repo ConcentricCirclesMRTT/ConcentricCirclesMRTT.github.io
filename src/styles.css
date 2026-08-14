@@ -110,7 +110,9 @@ span {
 }
 
 .main-nav button,
-.footer-links button {
+.main-nav a,
+.footer-links button,
+.footer-links a {
   padding: 4px 0;
   border: 0;
   background: transparent;
@@ -120,7 +122,9 @@ span {
 }
 
 .main-nav button:hover,
-.footer-links button:hover {
+.main-nav a:hover,
+.footer-links button:hover,
+.footer-links a:hover {
   color: var(--red);
 }
 
@@ -2196,7 +2200,8 @@ span {
   gap: 12px 30px;
 }
 
-.footer-links button { color: #c9ced0; text-align: left; }
+.footer-links button,
+.footer-links a { color: #c9ced0; text-align: left; }
 
 .footer-meta {
   display: flex;
@@ -2268,7 +2273,8 @@ span {
     border-bottom: 1px solid var(--line);
   }
   .main-nav.is-open { display: flex; }
-  .main-nav button { min-height: 48px; border-bottom: 1px solid var(--soft-line); text-align: left; }
+  .main-nav button,
+  .main-nav a { min-height: 48px; border-bottom: 1px solid var(--soft-line); text-align: left; }
   .header-contact { display: none; }
   .menu-button { display: grid; }
   .hero {

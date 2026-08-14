@@ -491,6 +491,7 @@ function App() {
         <nav className={`main-nav ${mobileOpen ? "is-open" : ""}`} aria-label="主导航">
           <button className={page === "product" ? "current" : ""} aria-current={page === "product" ? "page" : undefined} onClick={() => navigate("product")}>图纸建模 AI 产品</button>
           <button className={page === "research" ? "current" : ""} aria-current={page === "research" ? "page" : undefined} onClick={() => navigate("research")}>研究方向</button>
+          <a className="showcase-link" href="/neube-sr-showcase/index.html">NeuBE SR 展示</a>
           <button className={page === "about" ? "current" : ""} aria-current={page === "about" ? "page" : undefined} onClick={() => navigate("about")}>关于我们</button>
           <button className={page === "careers" ? "current" : ""} aria-current={page === "careers" ? "page" : undefined} onClick={() => navigate("careers")}>加入我们</button>
         </nav>
@@ -502,7 +503,7 @@ function App() {
       {page === "research" && <ResearchPage />}
       {page === "about" && <AboutPage />}
       {page === "careers" && <CareersPage openJob={openJob} setOpenJob={setOpenJob} />}
-      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>工业数据 AI 公司 · 产品：仝心圆</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>图纸建模 AI 产品</button><button onClick={() => navigate("research")}>研究方向</button><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>Copyright © 2026 浙江每日互动研究院有限公司</span></div></div></footer>
+      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>工业数据 AI 公司 · 产品：仝心圆</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>图纸建模 AI 产品</button><button onClick={() => navigate("research")}>研究方向</button><a href="/neube-sr-showcase/index.html">NeuBE SR 展示</a><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>Copyright © 2026 浙江每日互动研究院有限公司</span></div></div></footer>
     </div>
   );
 }

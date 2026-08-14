@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="NeuBE-Structural-Rebuild：一个开源、可 Fork、可验证的结构三维重构 AI Agent Skill。" />
+    <meta name="theme-color" content="#10231f" />
+    <title>NeuBE-Structural-Rebuild | Everything in 3D</title>
+    <link rel="stylesheet" href="styles.css?v=20260814-fit-height-final" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#cover" aria-label="回到首页">
+        <span class="brand-mark">N</span>
+        <span>NeuBE / Structural Rebuild</span>
+      </a>
+      <nav class="topnav" aria-label="主要导航">
+        <a href="#method">重构方法</a>
+        <a href="#case">角钢塔样例</a>
+        <a href="#context">停止边界</a>
+        <a href="README.md">展示说明</a>
+      </nav>
+      <span class="top-status"><i></i> OPEN SOURCE · APACHE-2.0</span>
+    </header>
+
+    <aside class="rail" aria-label="页面进度">
+      <div class="rail-track"><span id="railFill"></span></div>
+      <nav>
+        <a href="#cover" data-label="命题"><span>01</span></a>
+        <a href="#shift" data-label="缺失层"><span>02</span></a>
+        <a href="#method" data-label="方法"><span>03</span></a>
+        <a href="#package" data-label="开源包"><span>04</span></a>
+        <a href="#case" data-label="角钢塔"><span>05</span></a>
+        <a href="#context" data-label="停止边界"><span>06</span></a>
+        <a href="#explorer" data-label="状态浏览"><span>07</span></a>
+        <a href="#fork" data-label="Fork"><span>08</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <section class="scene cover" id="cover" data-index="1">
+        <div class="cover-bg" aria-hidden="true">
+          <img src="assets/neube-structural-rebuild-banner.png" alt="" />
+        </div>
+        <div class="cover-shade"></div>
+        <div class="scene-inner cover-inner">
+          <p class="eyebrow mint">开源 AI Agent Skill · 领域包构建器</p>
+          <h1>Everything<br /><em>in 3D.</em></h1>
+          <p class="hero-lead">NeuBE-Structural-Rebuild 把图纸、照片、点云、表格和工程记录，组织成可追溯、可验证、可人工接管的结构重构流程。</p>
+          <div class="hero-collab-label">共创三步</div><div class="hero-lockup"><span>带来图纸</span><b>→</b><span>共定规则</span><b>→</b><span>共建领域</span></div>
+          <a class="scroll-cue" href="#shift">先看缺失的那一层 <span>↓</span></a>
+        </div>
+        <p class="scene-note light-note">NEUBE-STRUCTURAL-REBUILD · 2026</p>
+      </section>
+
+      <section class="scene paper" id="shift" data-index="2">
+        <div class="scene-inner">
+          <p class="eyebrow">缺失的那一层</p>
+          <h2>AI 可以生成一个漂亮的模型，<br />却不一定交付一个可信的结构。</h2>
+          <div class="shift-grid">
+            <div class="shift-col muted-col"><span>输入</span><strong>图纸 · 图片 · 点云 · 表格</strong><p>碎片化、跨版本、跨来源。每一条线都可能有多个解释。</p></div>
+            <div class="shift-gap"><b>缺失的一层</b><strong>证据 · 身份 · 约束 · 状态</strong><p>没有这层，三维结果只能被观看，不能被审计、修正和安全地交接。</p></div>
+            <div class="shift-col dark-col"><span>输出</span><strong>可追溯的结构模型</strong><p>每个对象都能回答：从哪里来？经过什么判断？现在是否仍有效？</p></div>
+          </div>
+          <p class="bottom-thesis"><b>NeuBE 的产品不是一个单体生成器。</b> 它是一套可以教给 AI Agent 的工程工作方法、领域接口和发布门禁。</p>
+        </div>
+        <p class="scene-note">02 · 缺失的那一层</p>
+      </section>
+
+      <section class="scene dark" id="method" data-index="3">
+        <div class="scene-inner">
+          <p class="eyebrow mint">重构方法</p>
+          <h2>把重构变成一条可检查的编译链</h2>
+          <p class="section-lead light-text">AI 不猜成品。它在每个阶段提出带边界的候选；确定性程序检查可计算事实；工程师只处理无法由证据消解的责任问题。</p>
+          <div class="method-chain" aria-label="NeuBE 重构编译链">
+            <article><span>01</span><b>来源与版本</b><small>Sources</small></article><i>→</i>
+            <article><span>02</span><b>原始观察</b><small>Observations</small></article><i>→</i>
+            <article><span>03</span><b>候选解释</b><small>Hypotheses</small></article><i>→</i>
+            <article><span>04</span><b>物理对象与关系</b><small>Semantic Model</small></article><i>→</i>
+            <article><span>05</span><b>规则与残差</b><small>Constraints</small></article><i>→</i>
+            <article class="review-node"><span>06</span><b>人工接管</b><small>Human Review</small></article><i>→</i>
+            <article><span>07</span><b>版本化制品</b><small>Versioned Outputs</small></article>
+          </div>
+          <div class="method-bottom"><strong>未决依赖会阻塞下游。</strong><span>上游事实改变时，相关结果会变成 stale，而不是继续伪装成 current。</span></div>
+        </div>
+        <p class="scene-note light-note">03 · 来源 → 观察 → 假设 → 语义 → 约束 → 复核 → 输出</p>
+      </section>
+
+      <section class="scene paper" id="package" data-index="4">
+        <div class="scene-inner">
+          <div class="section-heading"><div><p class="eyebrow">完全开源</p><h2>Fork 的不是一段 Prompt，<br />而是一套可运行的结构 Skill 基座。</h2></div><p class="section-lead">Apache-2.0 · 公开 IR · 独立验证器 · 支持领域包</p></div>
+          <div class="package-grid">
+            <article class="package-feature"><span>SKILL.md</span><h3>工作方法</h3><p>规定如何读证据、管理歧义、调用工具、请求复核，并在什么条件下停止。</p><code>agent behavior contract</code></article>
+            <article><span>PUBLIC IR</span><h3>通用契约</h3><p>来源、观察、假设、语义结构、约束、输出和依赖状态。</p><code>public-ir.schema.json</code></article>
+            <article><span>VALIDATORS</span><h3>可执行门禁</h3><p>不依赖黑盒服务，验证许可、引用、稳定 ID、残差与发布状态。</p><code>validate_public_ir.py</code></article>
+            <article><span>DOMAIN PACKS</span><h3>专业积木</h3><p>把构件本体、连接规则、容差、求解器和验收标准装进一个可 Fork 的领域包。</p><code>domains/&lt;domain&gt;</code></article>
+          </div>
+          <div class="open-source-callout"><b>Rebuild the structure.</b><span>Rebuild the reasoning behind it.</span><a href="README.md">查看展示说明 →</a></div>
+        </div>
+        <p class="scene-note">04 · 开源基础</p>
+      </section>
+
+      <section class="scene steel" id="case" data-index="5">
+        <div class="scene-inner">
+          <p class="eyebrow">成功样例 · 角钢输电塔</p>
+          <h2>角钢塔，是 NeuBE SR 的第一个高难度压力测试</h2>
+          <div class="case-layout">
+            <figure class="drawing-panel"><img src="assets/angle-tower-drawing.png" alt="复杂角钢塔工程图纸" /><figcaption><b>来源</b> 多视图、标注、连接与材料信息</figcaption></figure>
+            <div class="case-arrow" aria-hidden="true">→</div>
+            <figure class="tower-panel"><img src="assets/angle-tower-rebuild.png" alt="角钢塔协调级三维重构" /><figcaption><b>重构</b> 可选择、可追踪、可继续验证的协调级模型</figcaption></figure>
+          </div>
+          <p class="case-bottom"><strong>不是“线条变成实体”。</strong> 是多视图证据、构件身份、连接拓扑、局部坐标系和约束求解共同形成的结构模型。</p>
+        </div>
+        <p class="scene-note">05 · 角钢塔是样例，不是产品边界</p>
+      </section>
+
+      <section class="scene dark" id="context" data-index="6">
+        <div class="scene-inner">
+          <p class="eyebrow mint">停止边界</p>
+          <h2>最可靠的 Agent，知道什么时候不能继续</h2>
+          <p class="section-lead light-text">NeuBE 不把置信度当成工程授权。未决身份、坐标或约束问题会进入复核队列，并阻塞依赖它的下游制品。</p>
+          <div class="context-layout">
+            <figure class="context-shot"><img src="assets/validation-gate.png" alt="NeuBE 验证与复核门禁" /><figcaption>验证门禁 · 失败状态保持可见</figcaption></figure>
+            <div class="context-copy"><div><b>review_required</b><span>候选解释仍有多个可能，系统列出证据、影响和需要回答的问题。</span></div><div><b>blocked</b><span>关键依赖未解决时，几何、连接或发布输出不能被伪装成 current。</span></div><div><b>stale</b><span>上游事实改变后，依赖制品自动失效，等待重新验证而不是静默沿用。</span></div></div>
+          </div>
+        </div>
+        <p class="scene-note light-note">06 · 置信度不是工程授权</p>
+      </section>
+
+      <section class="scene paper" id="explorer" data-index="7">
+        <div class="scene-inner">
+          <div class="section-heading compact"><div><p class="eyebrow">可追溯身份浏览器</p><h2>同一个构件，跨越五种状态仍然保持身份</h2></div><p class="section-lead">先看五个身份层，再点击展开其中一个，查看证据、判断和发布状态。</p></div>
+          <div class="explorer-layout">
+            <div class="explorer-media"><div class="explorer-image-frame"><img id="explorerImage" src="assets/angle-tower-drawing.png" alt="当前结构重构状态" /></div></div>
+            <div class="explorer-panel">
+              <div class="identity-grid" role="tablist" aria-label="构件身份层"><button class="is-active" data-state="evidence" role="tab" aria-selected="true"><span>01</span><b>证据</b><small>Evidence</small></button><button data-state="hypothesis" role="tab" aria-selected="false"><span>02</span><b>假设</b><small>Hypothesis</small></button><button data-state="semantic" role="tab" aria-selected="false"><span>03</span><b>语义</b><small>Semantic IR</small></button><button data-state="validation" role="tab" aria-selected="false"><span>04</span><b>验证</b><small>Validation</small></button><button data-state="release" role="tab" aria-selected="false"><span>05</span><b>发布</b><small>Release</small></button></div>
+              <div class="state-copy"><p class="state-kicker" id="stateKicker">来源 / 原始观察</p><h3 id="stateTitle">原始输入不被解释覆盖</h3><p id="stateBody">保存图纸版本、页码、局部区域和原始字符串。当前状态只说“看到了什么”，不急于说“它是什么”。</p><div class="state-meta" id="stateMeta"><span>状态 <b>observed</b></span><span>来源 <b>drawing-rev-C</b></span></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="scene-note">07 · 证据 → 假设 → 语义 → 验证 → 发布</p>
+      </section>
+
+      <section class="scene closing" id="fork" data-index="8">
+        <div class="closing-bg" aria-hidden="true"><img src="assets/neube-structural-rebuild-banner.png" alt="" /></div><div class="closing-shade"></div>
+        <div class="scene-inner closing-inner"><p class="eyebrow mint">共创邀请</p><h2>把你的图纸带来，<br />一起教会 AI 你的领域。</h2><p class="closing-lead">建筑、桥梁、桁架、设备支撑、工业管线，任何需要从图纸理解实体的行业，都可以从 NeuBE SR 开始。你提供规则，我们一起把它变成可复用、可验证的领域包。</p><div class="fork-steps"><span><b>01</b> 带来图纸</span><span><b>02</b> 共定义规则</span><span><b>03</b> 共建领域包</span></div><a class="github-link" href="README.md">加入共创 · 查看说明 →</a></div>
+        <p class="scene-note light-note">08 · 重构结构 · 重构推理</p>
+      </section>
+    </main>
+
+    <div class="controls" aria-label="页面控制"><button id="prev" type="button" title="上一节" aria-label="上一节">↑</button><span id="counter">01 / 08</span><div class="progress"><i id="progressBar"></i></div><button id="next" type="button" title="下一节" aria-label="下一节">↓</button></div>
+    <script src="script.js?v=20260814-frame-relative-height"></script>
+  </body>
+</html>
