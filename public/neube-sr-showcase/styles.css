@@ -35,7 +35,7 @@ img { display: block; max-width: 100%; }
 .rail a.active { color: var(--white); }
 .rail a.active span { border-bottom: 2px solid var(--orange); }
 .scene { min-height: 100svh; position: relative; overflow: hidden; scroll-snap-align: start; scroll-snap-stop: always; padding: 104px 90px 66px; }
-.scene-inner { width: min(100%, 1380px); margin: 0 auto; position: relative; z-index: 2; }
+.scene-inner { width: min(100%, 1380px); margin: 0 auto; padding-inline: clamp(24px, 4vw, 72px); position: relative; z-index: 2; }
 .paper { background: var(--paper); }
 .steel { background: #e7eeeb; }
 .dark { background: var(--ink-deep); color: var(--white); }

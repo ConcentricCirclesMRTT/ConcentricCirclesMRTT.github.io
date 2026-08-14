@@ -237,6 +237,21 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
           </div>
         </div>
       </section>
+      <section className="neube-section" aria-labelledby="neube-title">
+        <div className="page-grid neube-layout">
+          <div className="neube-copy">
+            <p className="section-index">OPEN SOURCE / NEUBE SR</p>
+            <h2 id="neube-title">从角钢塔开始，重构工程 AI 的方法。</h2>
+            <p>NeuBE-Structural-Rebuild 是一套 fully open-source、可 Fork 的 AI Agent Skill 基座。它把图纸、观察、假设、语义、约束和复核组织成可追溯的结构重构流程。</p>
+            <p>角钢输电塔是第一个高难度压力测试：结果不仅要有三维形状，还要保留证据、身份和验证状态。</p>
+            <a className="text-button" href="/neube-sr-showcase/index.html">查看 NeuBE SR 展示 <ArrowRight size={17} /></a>
+          </div>
+          <a className="neube-image" href="/neube-sr-showcase/index.html" aria-label="打开 NeuBE SR 展示">
+            <img src="/neube-sr-showcase/assets/angle-tower-rebuild.png" alt="角钢塔协调级三维重构" />
+            <span>打开展示 →</span>
+          </a>
+        </div>
+      </section>
       <ContactBand />
     </main>
   );
