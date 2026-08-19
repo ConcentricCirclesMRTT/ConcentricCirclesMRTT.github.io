@@ -274,7 +274,7 @@ function ProductPage() {
       </section>
       <section className="model-section" aria-labelledby="model-title">
         <div className="page-grid model-heading">
-          <div><p className="section-index light">AI-NATIVE ENGINEERING CONTEXT</p><h2 id="model-title">让 AI 读懂工程图纸，重建结构准确的三维几何</h2></div>
+          <div><p className="section-index light">AI-NATIVE ENGINEERING CONTEXT</p><h2 id="model-title">让 AI 读工程图纸，重建结构准确的三维几何</h2></div>
           <p>多模态 AI 与工程 Agent Harness 读取尺寸、标注和构件关系，交叉核对物料表，并通过几何求解确保结果精确、可核验。</p>
         </div>
         <Suspense fallback={<div className="tower-viewer"><div className="viewer-status">正在准备三维查看器...</div></div>}>

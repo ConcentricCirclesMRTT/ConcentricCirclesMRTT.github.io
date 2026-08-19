@@ -2,30 +2,37 @@ import * as THREE from "three";
 import { OrbitControls } from "./vendor/three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "./vendor/three/examples/jsm/loaders/GLTFLoader.js";
 
-const canvas = document.querySelector("#towerCanvas");
-const status = document.querySelector("#towerModelStatus");
-if (canvas) {
+const viewers = [
+  { canvas: "#towerHeadCanvas", status: "#towerHeadModelStatus", model: "assets/models/complete-tower-head.glb", palette: [0x42a5d5, 0x58b957, 0xf39b27] },
+  { canvas: "#towerCanvas", status: "#towerModelStatus", model: "assets/models/tower-assembly-1-6-s1602.glb", palette: [0x42a5d5, 0x58b957, 0xf39b27, 0x20b8b4, 0x8f5bd4, 0xef413d] },
+];
+
+function createViewer(config) {
+  const canvas = document.querySelector(config.canvas);
+  const status = document.querySelector(config.status);
+  if (!canvas) return;
+
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0xeaf1ee, 1);
+  renderer.setClearColor(0x101916, 1);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
+  renderer.toneMappingExposure = 1.5;
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(32, 1, 0.01, 100000);
+  const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 1000);
   const controls = new OrbitControls(camera, canvas);
   controls.enableDamping = true;
   controls.dampingFactor = 0.07;
-  controls.autoRotate = false;
   controls.enablePan = false;
 
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x53645d, 2.4));
-  const key = new THREE.DirectionalLight(0xffffff, 3.2);
-  key.position.set(5, 8, 6);
+  scene.add(new THREE.AmbientLight(0xffffff, 1.5));
+  scene.add(new THREE.HemisphereLight(0xf4f1e8, 0x25343b, 3.6));
+  const key = new THREE.DirectionalLight(0xffffff, 4.5);
+  key.position.set(8, 12, 10);
   scene.add(key);
-  const rim = new THREE.DirectionalLight(0x8fd4bf, 1.8);
-  rim.position.set(-4, 5, -6);
+  const rim = new THREE.DirectionalLight(0x62c7d9, 3);
+  rim.position.set(-8, 7, -9);
   scene.add(rim);
 
   let frame = 0;
@@ -42,36 +49,51 @@ if (canvas) {
   const resizeObserver = new ResizeObserver(resize);
   resizeObserver.observe(canvas);
 
-  const loader = new GLTFLoader();
-  loader.load("assets/models/tower-assembly-1-6-s1602.glb", (gltf) => {
+  new GLTFLoader().load(config.model, (gltf) => {
     if (disposed) return;
+    const modelFrame = new THREE.Group();
     const model = gltf.scene;
+    modelFrame.add(model);
+    let meshIndex = 0;
     model.traverse((object) => {
       if (!object.isMesh) return;
-      object.material = new THREE.MeshStandardMaterial({ color: 0x98a6a1, roughness: 0.62, metalness: 0.2 });
+      const color = config.palette[meshIndex++ % config.palette.length];
+      object.material = new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.28, roughness: 0.5, metalness: 0.18, side: THREE.DoubleSide });
     });
-    const sourceBounds = new THREE.Box3().setFromObject(model);
-    const sourceSize = sourceBounds.getSize(new THREE.Vector3());
-    // Normalize common CAD export orientation: tower height should follow world Y.
-    if (sourceSize.z > sourceSize.y && sourceSize.z >= sourceSize.x) model.rotation.x = -Math.PI / 2;
-    else if (sourceSize.x > sourceSize.y && sourceSize.x > sourceSize.z) model.rotation.z = Math.PI / 2;
-    const bounds = new THREE.Box3().setFromObject(model);
-    const size = bounds.getSize(new THREE.Vector3());
-    const center = bounds.getCenter(new THREE.Vector3());
-    const pivot = new THREE.Group();
-    pivot.add(model);
-    model.position.sub(center);
-    modelRoot = pivot;
-    scene.add(pivot);
-    const maxDimension = Math.max(size.x, size.y, size.z);
-    const distance = (maxDimension / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))) * 1.2);
-    camera.position.set(distance * 0.85, distance * 0.58, distance * 0.85);
-    camera.near = Math.max(maxDimension / 10000, 0.001);
-    camera.far = maxDimension * 20;
+
+    // Both engineering exports use Z-up coordinates.
+    modelFrame.rotation.x = -Math.PI / 2;
+    modelFrame.updateMatrixWorld(true);
+    const orientedSize = new THREE.Box3().setFromObject(modelFrame).getSize(new THREE.Vector3());
+    const sourceMax = Math.max(orientedSize.x, orientedSize.y, orientedSize.z);
+    if (!Number.isFinite(sourceMax) || sourceMax <= 0) {
+      if (status) status.textContent = "模型没有可显示的几何";
+      return;
+    }
+
+    modelFrame.scale.setScalar(12 / sourceMax);
+    modelFrame.updateMatrixWorld(true);
+    const scaledCenter = new THREE.Box3().setFromObject(modelFrame).getCenter(new THREE.Vector3());
+    modelFrame.position.sub(scaledCenter);
+    modelFrame.updateMatrixWorld(true);
+    const bounds = new THREE.Box3().setFromObject(modelFrame);
+    const target = bounds.getCenter(new THREE.Vector3());
+    const radius = bounds.getBoundingSphere(new THREE.Sphere()).radius;
+    const distance = (radius / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2))) * 1.04;
+
+    // Keep engineering-axis correction on the inner frame. The outer pivot
+    // rotates only around the scene's vertical Y axis.
+    const rotationPivot = new THREE.Group();
+    rotationPivot.add(modelFrame);
+    scene.add(rotationPivot);
+    modelRoot = rotationPivot;
+    camera.position.copy(target).add(new THREE.Vector3(1, 0.22, 1).normalize().multiplyScalar(distance));
+    camera.near = Math.max(0.01, distance / 1000);
+    camera.far = distance * 12;
     camera.updateProjectionMatrix();
-    controls.target.set(0, 0, 0);
-    controls.minDistance = distance * 0.35;
-    controls.maxDistance = distance * 3.5;
+    controls.target.copy(target);
+    controls.minDistance = distance * 0.2;
+    controls.maxDistance = distance * 3;
     controls.update();
     status?.remove();
     resize();
@@ -95,3 +117,5 @@ if (canvas) {
     renderer.dispose();
   }, { once: true });
 }
+
+viewers.forEach(createViewer);

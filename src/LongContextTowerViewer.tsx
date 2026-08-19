@@ -31,7 +31,6 @@ export function LongContextTowerViewer() {
     renderer.toneMappingExposure = 1.1;
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x101916, 18, 48);
     const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100000);
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;

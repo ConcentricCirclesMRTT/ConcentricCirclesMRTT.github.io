@@ -2,15 +2,15 @@ import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { ArrowRight, Columns2, GalleryHorizontal, Maximize2, RotateCcw, RotateCw, ScanLine } from "lucide-react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-const MODEL_URL = "/models/N02932S-T0706-09_coordination.stl?v=20260807-31635ff5";
+const MODEL_URL = "/neube-sr-showcase/assets/models/complete-tower-head.glb";
 
 export function TowerModelViewer() {
   const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const resetViewRef = useRef<() => void>(() => undefined);
-  const materialRef = useRef<THREE.MeshStandardMaterial | null>(null);
+  const modelRef = useRef<THREE.Object3D | null>(null);
   const controlsRef = useRef<OrbitControls | null>(null);
   const hasPlayedRef = useRef(false);
   const [loading, setLoading] = useState(true);
@@ -64,20 +64,18 @@ export function TowerModelViewer() {
 
     let disposed = false;
     let animationFrame = 0;
-    let modelGeometry: THREE.BufferGeometry | null = null;
-    let edgeGeometry: THREE.EdgesGeometry | null = null;
+    const modelMaterials: THREE.MeshStandardMaterial[] = [];
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x171a1c, 1);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.1;
+    renderer.toneMappingExposure = 1.55;
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x171a1c, 18000, 42000);
 
-    const camera = new THREE.PerspectiveCamera(32, 1, 10, 100000);
+    const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100);
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
     controls.dampingFactor = 0.07;
@@ -86,69 +84,71 @@ export function TowerModelViewer() {
     controls.screenSpacePanning = true;
     controlsRef.current = controls;
 
-    scene.add(new THREE.HemisphereLight(0xf4f1e8, 0x22292d, 2.2));
+    scene.add(new THREE.AmbientLight(0xffffff, 1.6));
+    scene.add(new THREE.HemisphereLight(0xf4f1e8, 0x25343b, 3.8));
 
-    const keyLight = new THREE.DirectionalLight(0xffffff, 3.4);
-    keyLight.position.set(9000, 15000, 11000);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 4.8);
+    keyLight.position.set(8, 12, 10);
     scene.add(keyLight);
 
-    const rimLight = new THREE.DirectionalLight(0xd1493f, 2.4);
-    rimLight.position.set(-10000, 7000, -9000);
+    const rimLight = new THREE.DirectionalLight(0x62c7d9, 3.2);
+    rimLight.position.set(-8, 7, -9);
     scene.add(rimLight);
 
-    const material = new THREE.MeshStandardMaterial({
-      color: 0xc9ceca,
-      roughness: 0.68,
-      metalness: 0.18,
-      side: THREE.DoubleSide,
-    });
-    materialRef.current = material;
-
-    const edgeMaterial = new THREE.LineBasicMaterial({ color: 0x596166, transparent: true, opacity: 0.58 });
-    const grid = new THREE.GridHelper(11000, 14, 0x596166, 0x343a3e);
-    grid.material.transparent = true;
-    grid.material.opacity = 0.42;
-    scene.add(grid);
-
-    const loader = new STLLoader();
+    const loader = new GLTFLoader();
     loader.load(
       MODEL_URL,
-      (geometry) => {
+      (gltf) => {
         if (disposed) {
-          geometry.dispose();
+          gltf.scene.traverse((object) => { if (object instanceof THREE.Mesh) object.geometry.dispose(); });
           return;
         }
 
-        modelGeometry = geometry;
-        geometry.computeVertexNormals();
-        geometry.computeBoundingBox();
-        const size = geometry.boundingBox?.getSize(new THREE.Vector3()) ?? new THREE.Vector3(3592, 3563, 9060);
-        geometry.center();
+        const model = gltf.scene;
+        const modelFrame = new THREE.Group();
+        modelFrame.add(model);
+        modelRef.current = modelFrame;
+        const palette = [0x42a5d5, 0x58b957, 0xf39b27, 0x20b8b4, 0x8f5bd4, 0xef413d];
+        let meshIndex = 0;
+        model.traverse((object) => {
+          if (!(object instanceof THREE.Mesh)) return;
+          const color = palette[meshIndex++ % palette.length];
+          const material = new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.34, roughness: 0.48, metalness: 0.18, side: THREE.DoubleSide });
+          object.material = material;
+          modelMaterials.push(material);
+        });
 
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.rotation.x = -Math.PI / 2;
-        mesh.position.y = size.z / 2;
-        scene.add(mesh);
-
-        edgeGeometry = new THREE.EdgesGeometry(geometry, 28);
-        const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
-        edges.rotation.copy(mesh.rotation);
-        edges.position.copy(mesh.position);
-        scene.add(edges);
-
-        const target = new THREE.Vector3(0, size.z * 0.46, 0);
-        const maxDimension = Math.max(size.x, size.y, size.z);
-        const distance = (maxDimension / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)))) * 1.28;
+        modelFrame.updateMatrixWorld(true);
+        // This engineering export uses Z-up coordinates. The tower head is
+        // wider than it is tall, so longest-axis inference would rotate it
+        // incorrectly; map its known vertical axis directly to Three.js Y.
+        modelFrame.rotation.x = -Math.PI / 2;
+        modelFrame.updateMatrixWorld(true);
+        const orientedBounds = new THREE.Box3().setFromObject(modelFrame);
+        const orientedSize = orientedBounds.getSize(new THREE.Vector3());
+        const sourceMax = Math.max(orientedSize.x, orientedSize.y, orientedSize.z);
+        if (!Number.isFinite(sourceMax) || sourceMax <= 0) throw new Error("GLB has no visible geometry");
+        modelFrame.scale.setScalar(12 / sourceMax);
+        modelFrame.updateMatrixWorld(true);
+        const scaledCenter = new THREE.Box3().setFromObject(modelFrame).getCenter(new THREE.Vector3());
+        modelFrame.position.sub(scaledCenter);
+        modelFrame.updateMatrixWorld(true);
+        const bounds = new THREE.Box3().setFromObject(modelFrame);
+        const size = bounds.getSize(new THREE.Vector3());
+        const target = bounds.getCenter(new THREE.Vector3());
+        const radius = bounds.getBoundingSphere(new THREE.Sphere()).radius;
+        const distance = radius / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2));
+        scene.add(modelFrame);
 
         const resetView = () => {
-          const direction = new THREE.Vector3(1, 0.55, 1).normalize();
+          const direction = new THREE.Vector3(1, 0.22, 1).normalize();
           camera.position.copy(target).add(direction.multiplyScalar(distance));
-          camera.near = Math.max(1, distance / 1000);
-          camera.far = distance * 8;
+          camera.near = Math.max(0.01, distance / 1000);
+          camera.far = distance * 12;
           camera.updateProjectionMatrix();
           controls.target.copy(target);
-          controls.minDistance = distance * 0.28;
-          controls.maxDistance = distance * 3;
+          controls.minDistance = distance * 0.18;
+          controls.maxDistance = distance * 2.6;
           controls.update();
         };
 
@@ -187,15 +187,10 @@ export function TowerModelViewer() {
       window.cancelAnimationFrame(animationFrame);
       resizeObserver.disconnect();
       controls.dispose();
-      modelGeometry?.dispose();
-      edgeGeometry?.dispose();
-      material.dispose();
-      edgeMaterial.dispose();
-      grid.geometry.dispose();
-      grid.material.dispose();
+      modelMaterials.forEach((material) => material.dispose());
       renderer.dispose();
       controlsRef.current = null;
-      materialRef.current = null;
+      modelRef.current = null;
     };
   }, []);
 
@@ -204,7 +199,11 @@ export function TowerModelViewer() {
   }, [autoRotate]);
 
   useEffect(() => {
-    if (materialRef.current) materialRef.current.wireframe = wireframe;
+    if (modelRef.current) {
+      modelRef.current.traverse((object) => {
+        if (object instanceof THREE.Mesh && object.material instanceof THREE.MeshStandardMaterial) object.material.wireframe = wireframe;
+      });
+    }
   }, [wireframe]);
 
   const replayTransformation = () => {
@@ -277,7 +276,7 @@ export function TowerModelViewer() {
             </div>
           )}
           <div className="drawing-reveal-visual">
-            <img src="/images/N02932S-T0706-09-drawing.png" alt="铁塔二维工程图示意" />
+            <img src="/images/complete-tower-head-drawing.png" alt="完整塔头多视图工程图纸" />
           </div>
           <div className="drawing-reveal-copy">
             <span>INPUT / ENGINEERING DRAWING</span>
@@ -287,10 +286,10 @@ export function TowerModelViewer() {
         </div>
 
         <div className="viewer-slide model-slide">
-          <canvas ref={canvasRef} aria-label="可交互的铁塔 STL 三维模型" />
+          <canvas ref={canvasRef} aria-label="可交互的完整角钢塔塔头三维模型" />
           <div className="viewer-label">
-            <span>INTERACTIVE STL / N02932S-T0706-09</span>
-            <strong>铁塔协调模型</strong>
+            <span>INTERACTIVE GLB / COMPLETE TOWER HEAD</span>
+            <strong>完整塔头重构</strong>
           </div>
           <button
             className={`viewer-replay ${displayMode === "carousel" && sequencePhase === "revealed" ? "is-visible" : ""}`}
