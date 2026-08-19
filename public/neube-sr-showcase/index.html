@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#10231f" />
     <title>NeuBE-Structural-Rebuild | Everything in 3D</title>
     <link rel="stylesheet" href="styles.css?v=20260814-home-fork" />
+    <script type="importmap">{"imports":{"three":"./vendor/three/three.module.js"}}</script>
   </head>
   <body>
     <header class="topbar">
@@ -109,7 +110,7 @@
           <div class="case-layout">
             <figure class="drawing-panel"><img src="assets/angle-tower-drawing.png" alt="复杂角钢塔工程图纸" /><figcaption><b>来源</b> 多视图、标注、连接与材料信息</figcaption></figure>
             <div class="case-arrow" aria-hidden="true">→</div>
-            <figure class="tower-panel"><img src="assets/angle-tower-rebuild.png" alt="角钢塔协调级三维重构" /><figcaption><b>重构</b> 可选择、可追踪、可继续验证的协调级模型</figcaption></figure>
+            <figure class="tower-panel tower-model-panel"><div class="tower-canvas-wrap"><canvas id="towerCanvas" aria-label="角钢塔三维模型，可拖拽旋转和缩放"></canvas><span class="tower-model-status" id="towerModelStatus">正在加载三维模型…</span></div><figcaption><b>3D 重构</b> 可旋转查看的 M1–M6 塔段 · 网页内交互查看</figcaption></figure>
           </div>
           <p class="case-bottom"><strong>不是“线条变成实体”。</strong> 是多视图证据、构件身份、连接拓扑、局部坐标系和约束求解共同形成的结构模型。</p>
         </div>
@@ -162,5 +163,6 @@
 
     <div class="controls" aria-label="页面控制"><button id="prev" type="button" title="上一节" aria-label="上一节">↑</button><span id="counter">01 / 08</span><div class="progress"><i id="progressBar"></i></div><button id="next" type="button" title="下一节" aria-label="下一节">↓</button></div>
     <script src="script.js?v=20260814-frame-relative-height"></script>
+    <script type="module" src="tower-glb-viewer.js?v=20260819-local-three"></script>
   </body>
 </html>

@@ -122,6 +122,9 @@ h3 { font-size: 27px; line-height: 1.16; }
 .case-layout { display: grid; grid-template-columns: 1fr 54px 1fr; gap: 20px; align-items: center; height: 480px; }
 .case-layout figure { min-width: 0; height: 460px; margin: 0; display: flex; flex-direction: column; background: var(--white); border-bottom: 3px solid var(--line); }
 .case-layout figure img { width: 100%; height: 415px; object-fit: contain; }
+.tower-canvas-wrap { position: relative; width: 100%; height: 415px; overflow: hidden; background: linear-gradient(145deg, #f8fbfa, #dce8e3); }
+.tower-canvas-wrap canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.tower-model-status { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: var(--muted); font-size: 14px; white-space: nowrap; pointer-events: none; }
 .case-layout figcaption { padding: 12px 16px 0; color: var(--muted); font-size: 14px; }
 .case-layout figcaption b { margin-right: 10px; color: var(--mint-deep); font: 700 11px/1 ui-monospace, monospace; }
 .case-arrow { color: var(--orange); font-size: 37px; text-align: center; }
@@ -202,6 +205,7 @@ h3 { font-size: 27px; line-height: 1.16; }
   .case-layout { margin-top: 25px; }
   .case-layout figure { height: 330px; }
   .case-layout figure img { height: 285px; }
+  .tower-canvas-wrap { height: 285px; }
   .case-arrow { transform: rotate(90deg); }
   .context-shot img, .explorer-media { height: 280px; min-height: 280px; }
   .stop-copy { grid-template-columns: 1fr; }
