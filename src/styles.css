@@ -262,7 +262,6 @@ span {
 .readout-index,
 .output-panel > p,
 .hero-status,
-.focus-image > span,
 .footer-meta,
 .about-principles > p {
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
@@ -535,7 +534,6 @@ span {
 
 .problem-section,
 .business-section,
-.focus-section,
 .pilot-section,
 .about-section,
 .careers-section {
@@ -569,7 +567,6 @@ span {
 .problem-heading h2,
 .section-heading h2,
 .output-heading h2,
-.focus-copy h2,
 .pilot-heading h2,
 .about-copy h2,
 .careers-heading h2,
@@ -1147,52 +1144,6 @@ span {
   color: #aeb6ba;
   font-size: 13px;
   line-height: 1.75;
-}
-
-.focus-section {
-  padding: 112px 0;
-  background: var(--white);
-}
-
-.focus-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
-  gap: 70px;
-  align-items: center;
-}
-
-.focus-image {
-  position: relative;
-  aspect-ratio: 1.25;
-  overflow: hidden;
-  border-bottom: 3px solid var(--red);
-}
-
-.focus-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 64% center;
-}
-
-.focus-image > span {
-  position: absolute;
-  left: 20px;
-  bottom: 18px;
-  padding: 8px 10px;
-  background: var(--white);
-  color: var(--red);
-}
-
-.focus-copy h2 {
-  margin-bottom: 22px;
-}
-
-.focus-copy > p:not(.section-index) {
-  margin-bottom: 34px;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.85;
 }
 
 .pilot-section {
@@ -2278,7 +2229,6 @@ span {
   .research-hero-copy { width: 46%; }
   .output-workspace { grid-template-columns: 1fr 1fr; }
   .output-image, .attributes-panel pre, .steel-model { height: 330px; }
-  .focus-layout { gap: 42px; }
   .neube-layout { gap: 42px; }
   .long-context-layout { gap: 38px; }
   .team-structure { grid-template-columns: repeat(3, 1fr); }
@@ -2387,7 +2337,7 @@ span {
   .inner-hero { min-height: 380px; padding: 92px 0 74px; }
   .inner-hero-layout { grid-template-columns: 1fr; gap: 28px; }
   .inner-hero h1 { font-size: 42px; }
-  .problem-section, .business-section, .focus-section, .pilot-section, .about-section, .careers-section { scroll-margin-top: 64px; }
+  .problem-section, .business-section, .pilot-section, .about-section, .careers-section { scroll-margin-top: 64px; }
   .problem-heading,
   .section-heading,
   .output-heading,
@@ -2400,7 +2350,6 @@ span {
   .problem-heading h2,
   .section-heading h2,
   .output-heading h2,
-  .focus-copy h2,
   .pilot-heading h2,
   .about-copy h2,
   .careers-heading h2,
@@ -2445,8 +2394,6 @@ span {
   .outcome-grid.customer-grid article:last-child { border-bottom: 0; }
   .output-facts span:nth-child(2) { border-right: 0; }
   .output-facts span:nth-child(-n + 2) { border-bottom: 1px solid #4c5357; }
-  .focus-layout { grid-template-columns: 1fr; }
-  .focus-image { aspect-ratio: 1.45; }
   .about-visual { grid-template-columns: 1fr; }
   .pilot-result { grid-template-columns: 1fr; gap: 14px; }
   .about-drawing { min-height: 300px; border-right: 0; border-bottom: 1px solid var(--line); }
@@ -2561,11 +2508,10 @@ span {
   .evidence-item { border-right: 0; border-bottom: 1px solid var(--line); }
   .evidence-item:last-of-type { border-bottom: 0; }
   .evidence-image { height: 190px; }
-  .business-section, .focus-section, .pilot-section, .about-section, .careers-section { padding: 78px 0; }
+  .business-section, .pilot-section, .about-section, .careers-section { padding: 78px 0; }
   .problem-heading h2,
   .section-heading h2,
   .output-heading h2,
-  .focus-copy h2,
   .pilot-heading h2,
   .about-copy h2,
   .careers-heading h2,
@@ -2590,7 +2536,6 @@ span {
   .outcome-grid h3 { margin-bottom: 18px; }
   .output-facts span { border-right: 0; border-bottom: 1px solid #4c5357; }
   .output-facts span:last-child { border-bottom: 0; }
-  .focus-image { aspect-ratio: 1; }
   .pilot-steps { grid-template-columns: 1fr; }
   .pilot-steps article {
     min-height: 0;

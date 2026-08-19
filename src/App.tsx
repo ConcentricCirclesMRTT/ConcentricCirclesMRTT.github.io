@@ -229,17 +229,6 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
         </div>
       </section>
 
-      <section className="focus-section" aria-labelledby="focus-title">
-        <div className="page-grid focus-layout">
-          <div className="focus-image"><img src="/images/mrtt-hero.webp" alt="铁塔图纸与结构化数据" /><span>CURRENT FOCUS</span></div>
-          <div className="focus-copy">
-            <p className="section-index">POWER TOWER ENGINEERING</p>
-            <h2 id="focus-title">第一站，电力铁塔</h2>
-            <p>从结构复杂、标准严格的工程图纸开始，把 AI 读图、数据编译和三维重构做深，再走向更多工业场景。</p>
-            <button className="text-button" onClick={() => navigate("about")}>了解我们的发展方向 <ArrowRight size={17} /></button>
-          </div>
-        </div>
-      </section>
       <section className="neube-section" aria-labelledby="neube-title">
         <div className="page-grid neube-layout">
           <div className="neube-copy">

@@ -16,7 +16,7 @@
         <span>NeuBE / Structural Rebuild</span>
       </a>
       <nav class="topnav" aria-label="主要导航">
-        <a href="https://concentriccirclesmrtt.github.io/">回到 MRTT 首页</a>
+        <a href="/">回到 MRTT 首页</a>
         <a href="#method">重构方法</a>
         <a href="#tower-head">角钢塔样例</a>
         <a href="https://github.com/ConcentricCirclesMRTT/NeuBE-Structural-Rebuild" target="_blank" rel="noreferrer">GitHub</a>
@@ -30,10 +30,10 @@
       <nav>
         <a href="#cover" data-label="命题"><span>01</span></a>
         <a href="#shift" data-label="缺失层"><span>02</span></a>
-        <a href="#method" data-label="方法"><span>03</span></a>
-        <a href="#package" data-label="开源包"><span>04</span></a>
-        <a href="#tower-head" data-label="塔头重构"><span>05</span></a>
-        <a href="#case" data-label="完整塔架"><span>06</span></a>
+        <a href="#tower-head" data-label="塔头重构"><span>03</span></a>
+        <a href="#case" data-label="完整塔架"><span>04</span></a>
+        <a href="#method" data-label="方法"><span>05</span></a>
+        <a href="#package" data-label="开源包"><span>06</span></a>
         <a href="#explorer" data-label="状态浏览"><span>07</span></a>
         <a href="#fork" data-label="Fork"><span>08</span></a>
       </nav>
@@ -69,7 +69,35 @@
         <p class="scene-note">02 · 缺失的那一层</p>
       </section>
 
-      <section class="scene dark" id="method" data-index="3">
+      <section class="scene paper tower-head-case" id="tower-head" data-index="3">
+        <div class="scene-inner">
+          <p class="eyebrow">图纸建模 · 完整塔头</p>
+          <h2>让 AI 读工程图纸，<br />重建结构准确的三维几何</h2>
+          <div class="case-layout">
+            <figure class="drawing-panel"><img src="../images/complete-tower-head-drawing.png" alt="完整塔头多视图工程图纸" /><figcaption><b>工程输入</b> 正视、剖面、节点与连接标注</figcaption></figure>
+            <div class="case-arrow" aria-hidden="true">→</div>
+            <figure class="tower-panel tower-model-panel"><div class="tower-canvas-wrap tower-head-canvas-wrap"><canvas id="towerHeadCanvas" aria-label="完整塔头三维模型，可拖拽旋转和缩放"></canvas><span class="tower-model-status" id="towerHeadModelStatus">正在加载塔头模型…</span></div><figcaption><b>3D 重构</b> 可旋转查看的完整塔头 · 网页内交互查看</figcaption></figure>
+          </div>
+          <p class="case-bottom"><strong>从工程图纸读取尺寸、标注和构件关系。</strong> 通过几何求解与结构核验，形成可检查、可交互的塔头三维模型。</p>
+        </div>
+        <p class="scene-note">03 · 工程图纸 → 完整塔头三维几何</p>
+      </section>
+
+      <section class="scene steel" id="case" data-index="4">
+        <div class="scene-inner">
+          <p class="eyebrow">长上下文建模 · M1–M6 完整塔架</p>
+          <h2>多页、多视图、多模块，<br />仍然重建成同一个结构。</h2>
+          <div class="case-layout">
+            <figure class="drawing-panel"><img src="assets/angle-tower-drawing.png" alt="复杂角钢塔工程图纸" /><figcaption><b>来源</b> 多视图、标注、连接与材料信息</figcaption></figure>
+            <div class="case-arrow" aria-hidden="true">→</div>
+            <figure class="tower-panel tower-model-panel"><div class="tower-canvas-wrap"><canvas id="towerCanvas" aria-label="角钢塔三维模型，可拖拽旋转和缩放"></canvas><span class="tower-model-status" id="towerModelStatus">正在加载三维模型…</span></div><figcaption><b>3D 重构</b> 可旋转查看的 M1–M6 塔段 · 网页内交互查看</figcaption></figure>
+          </div>
+          <p class="case-bottom"><strong>跨页证据连续，跨视图身份一致，跨模块装配闭合。</strong> M1–M6 分段连接、共享节点和模块依赖最终进入同一个结构模型。</p>
+        </div>
+        <p class="scene-note">04 · 多页 · 多视图 · 多模块</p>
+      </section>
+
+      <section class="scene dark" id="method" data-index="5">
         <div class="scene-inner">
           <p class="eyebrow mint">重构方法</p>
           <h2>把重构变成一条可检查的编译链</h2>
@@ -85,10 +113,10 @@
           </div>
           <div class="method-bottom"><strong>未决依赖会阻塞下游。</strong><span>上游事实改变时，相关结果会变成 stale，而不是继续伪装成 current。</span></div>
         </div>
-        <p class="scene-note light-note">03 · 来源 → 观察 → 假设 → 语义 → 约束 → 复核 → 输出</p>
+        <p class="scene-note light-note">05 · 来源 → 观察 → 假设 → 语义 → 约束 → 复核 → 输出</p>
       </section>
 
-      <section class="scene paper" id="package" data-index="4">
+      <section class="scene paper" id="package" data-index="6">
         <div class="scene-inner">
           <div class="section-heading"><div><p class="eyebrow">完全开源</p><h2>Fork 的不是一段 Prompt，<br />而是一套可运行的结构 Skill 基座。</h2></div><p class="section-lead">Apache-2.0 · 公开 IR · 独立验证器 · 支持领域包</p></div>
           <div class="package-grid">
@@ -99,35 +127,7 @@
           </div>
           <div class="open-source-callout"><b>Rebuild the structure.</b><span>Rebuild the reasoning behind it.</span><a href="https://github.com/ConcentricCirclesMRTT/NeuBE-Structural-Rebuild" target="_blank" rel="noreferrer">查看 GitHub 仓库 →</a></div>
         </div>
-        <p class="scene-note">04 · 开源基础</p>
-      </section>
-
-      <section class="scene paper tower-head-case" id="tower-head" data-index="5">
-        <div class="scene-inner">
-          <p class="eyebrow">图纸建模 · 完整塔头</p>
-          <h2>让 AI 读工程图纸，<br />重建结构准确的三维几何</h2>
-          <div class="case-layout">
-            <figure class="drawing-panel"><img src="../images/complete-tower-head-drawing.png" alt="完整塔头多视图工程图纸" /><figcaption><b>工程输入</b> 正视、剖面、节点与连接标注</figcaption></figure>
-            <div class="case-arrow" aria-hidden="true">→</div>
-            <figure class="tower-panel tower-model-panel"><div class="tower-canvas-wrap tower-head-canvas-wrap"><canvas id="towerHeadCanvas" aria-label="完整塔头三维模型，可拖拽旋转和缩放"></canvas><span class="tower-model-status" id="towerHeadModelStatus">正在加载塔头模型…</span></div><figcaption><b>3D 重构</b> 可旋转查看的完整塔头 · 网页内交互查看</figcaption></figure>
-          </div>
-          <p class="case-bottom"><strong>从工程图纸读取尺寸、标注和构件关系。</strong> 通过几何求解与结构核验，形成可检查、可交互的塔头三维模型。</p>
-        </div>
-        <p class="scene-note">05 · 工程图纸 → 完整塔头三维几何</p>
-      </section>
-
-      <section class="scene steel" id="case" data-index="6">
-        <div class="scene-inner">
-          <p class="eyebrow">长上下文建模 · M1–M6 完整塔架</p>
-          <h2>多页、多视图、多模块，<br />仍然重建成同一个结构。</h2>
-          <div class="case-layout">
-            <figure class="drawing-panel"><img src="assets/angle-tower-drawing.png" alt="复杂角钢塔工程图纸" /><figcaption><b>来源</b> 多视图、标注、连接与材料信息</figcaption></figure>
-            <div class="case-arrow" aria-hidden="true">→</div>
-            <figure class="tower-panel tower-model-panel"><div class="tower-canvas-wrap"><canvas id="towerCanvas" aria-label="角钢塔三维模型，可拖拽旋转和缩放"></canvas><span class="tower-model-status" id="towerModelStatus">正在加载三维模型…</span></div><figcaption><b>3D 重构</b> 可旋转查看的 M1–M6 塔段 · 网页内交互查看</figcaption></figure>
-          </div>
-          <p class="case-bottom"><strong>跨页证据连续，跨视图身份一致，跨模块装配闭合。</strong> M1–M6 分段连接、共享节点和模块依赖最终进入同一个结构模型。</p>
-        </div>
-        <p class="scene-note">06 · 多页 · 多视图 · 多模块</p>
+        <p class="scene-note">06 · 开源基础</p>
       </section>
 
       <section class="scene paper" id="explorer" data-index="7">
