@@ -13,6 +13,9 @@ import {
 const TowerModelViewer = lazy(() =>
   import("./TowerModelViewer").then((module) => ({ default: module.TowerModelViewer })),
 );
+const LongContextTowerViewer = lazy(() =>
+  import("./LongContextTowerViewer").then((module) => ({ default: module.LongContextTowerViewer })),
+);
 
 const services = [
   {
@@ -247,7 +250,7 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
             <a className="text-button" href="/neube-sr-showcase/index.html">查看 NeuBE SR 展示 <ArrowRight size={17} /></a>
           </div>
           <a className="neube-image" href="/neube-sr-showcase/index.html" aria-label="打开 NeuBE SR 展示">
-            <img src="/neube-sr-showcase/assets/angle-tower-rebuild.png" alt="角钢塔协调级三维重构" />
+            <img src="/images/neube-sr-complete-tower.png" alt="NeuBE SR 重构的完整彩色角钢塔" />
             <span>打开展示 →</span>
           </a>
         </div>
@@ -282,6 +285,26 @@ function ProductPage() {
           <article><span>BOM CROSS-CHECK</span><strong>物料表核验</strong><p>交叉核对构件规格、数量、编号与工程资料。</p></article>
           <article><span>GEOMETRY VALIDATION</span><strong>几何求解验证</strong><p>检查拓扑连接、几何约束、结构闭合与工程一致性。</p></article>
         </div>
+      </section>
+      <section className="long-context-section" aria-labelledby="long-context-title">
+        <div className="page-grid long-context-heading">
+          <div>
+            <p className="section-index light">LONG-CONTEXT RECONSTRUCTION</p>
+            <h2 id="long-context-title">多页、多视图、多模块，仍然重建成同一个结构。</h2>
+          </div>
+          <p>面对跨页图纸、重复编号、投影重合和分段装配，系统持续保留构件身份、跨视图关系和模块依赖，完成更长链条的结构建模。</p>
+        </div>
+        <div className="page-grid long-context-layout">
+          <div className="long-context-copy">
+            <div className="long-context-step"><span>01</span><div><strong>跨页证据连续</strong><small>Multi-page evidence</small><p>图纸页码、视图区域、标注和版本都进入同一条证据链。</p></div></div>
+            <div className="long-context-step"><span>02</span><div><strong>跨视图身份一致</strong><small>Cross-view identity</small><p>正视、侧视、剖面和局部大样共同指向同一个物理构件。</p></div></div>
+            <div className="long-context-step"><span>03</span><div><strong>跨模块装配闭合</strong><small>Multi-module assembly</small><p>M1–M6 分段连接、共享节点和依赖状态在整体模型中保持一致。</p></div></div>
+          </div>
+          <Suspense fallback={<div className="long-context-viewer"><div className="long-context-status">正在准备最新塔架…</div></div>}>
+            <LongContextTowerViewer />
+          </Suspense>
+        </div>
+        <div className="page-grid long-context-proof"><span>6 个模块</span><span>多页图纸</span><span>多视图关联</span><span>统一三维装配</span></div>
       </section>
       <section className="business-section inner-section" aria-labelledby="delivery-title">
         <div className="page-grid section-heading"><div><p className="section-index">DATA PIPELINE</p><h2 id="delivery-title">从一张图，到可供 AI 使用的工程上下文</h2></div><p>围绕真实使用场景，共同确定数据范围、质量标准、交付格式和工程验收方式。</p></div>
