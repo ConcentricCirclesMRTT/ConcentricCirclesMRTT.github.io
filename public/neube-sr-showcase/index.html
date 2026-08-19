@@ -31,12 +31,11 @@
       <nav>
         <a href="#cover" data-label="命题"><span>01</span></a>
         <a href="#shift" data-label="两种路径"><span>02</span></a>
-        <a href="#tower-head" data-label="塔头重构"><span>03</span></a>
-        <a href="#case" data-label="完整塔架"><span>04</span></a>
-        <a href="#method" data-label="Agent"><span>05</span></a>
-        <a href="#explorer" data-label="控制权"><span>06</span></a>
-        <a href="#package" data-label="开源包"><span>07</span></a>
-        <a href="#fork" data-label="Fork"><span>08</span></a>
+        <a href="#tower-head" data-label="重构成果"><span>03</span></a>
+        <a href="#method" data-label="Agent"><span>04</span></a>
+        <a href="#explorer" data-label="控制权"><span>05</span></a>
+        <a href="#package" data-label="开源包"><span>06</span></a>
+        <a href="#fork" data-label="Fork"><span>07</span></a>
       </nav>
     </aside>
 
@@ -59,51 +58,40 @@
       <section class="scene paper" id="shift" data-index="2">
         <div class="scene-inner">
           <p class="eyebrow">两种工作方式</p>
-          <h2>黑盒生成交付一个结果。<br />NeuBE 交付一个可以继续工作的结构。</h2>
+          <h2>通用 AI Agent 交付一个结果。<br />专用 Agent 交付一个可以继续工作的结构。</h2>
           <div class="workmode-grid">
             <article class="workmode-card generation-card">
-              <div class="workmode-head"><span>01</span><div><b>一次性三维生成</b><small>ONE-SHOT GENERATION</small></div></div>
+              <div class="workmode-head"><span>01</span><div><b>通用 AI Agent</b><small>GENERAL-PURPOSE AI AGENT</small></div></div>
               <div class="workmode-flow"><span>图纸 / 图片</span><i>→</i><span>等待</span><i>→</i><strong>最终模型</strong></div>
               <ul><li>适合概念草图与快速预览</li><li>局部错误往往需要整体重新生成</li><li>无法回答构件来自哪里、为何这样连接</li><li>最终文件缺少稳定身份与工程关系</li></ul>
             </article>
             <article class="workmode-card reconstruction-card">
-              <div class="workmode-head"><span>02</span><div><b>NeuBE 结构重构</b><small>STRUCTURAL RECONSTRUCTION</small></div></div>
+              <div class="workmode-head"><span>02</span><div><b>专用 Agent</b><small>SPECIALIZED AGENT · NEUBE SR</small></div></div>
               <div class="workmode-flow"><span>工程资料</span><i>→</i><span>结构项目</span><i>↻</i><strong>持续工作</strong></div>
               <ul><li>输出仍然是一个可读写的工程项目</li><li>局部构件、关系与判断可以单独修正</li><li>证据、身份、约束和版本持续保留</li><li>结果可以进入 CAD、数字孪生与后续 Agent</li></ul>
             </article>
           </div>
           <p class="bottom-thesis"><b>差别不在模型看起来多漂亮。</b> 差别在于结果能否被追问、修正、验证，并在下一轮工程工作中继续存在。</p>
         </div>
-        <p class="scene-note">02 · 一次性生成 vs. 结构项目</p>
+        <p class="scene-note">02 · 通用 AI Agent vs. 专用 Agent</p>
       </section>
 
       <section class="scene paper tower-head-case" id="tower-head" data-index="3">
+        <span class="section-anchor" id="case" aria-hidden="true"></span>
         <div class="scene-inner">
-          <p class="eyebrow">图纸建模 · 完整塔头</p>
-          <h2>让 AI 读工程图纸，<br />重建结构准确的三维几何</h2>
-          <div class="case-layout">
-            <figure class="drawing-panel"><img src="../images/complete-tower-head-drawing.png" alt="完整塔头多视图工程图纸" /><figcaption><b>工程输入</b> 正视、剖面、节点与连接标注</figcaption></figure>
-            <div class="case-arrow" aria-hidden="true">→</div>
-            <figure class="tower-panel tower-model-panel"><div class="tower-canvas-wrap tower-head-canvas-wrap"><canvas id="towerHeadCanvas" aria-label="完整塔头三维模型，可拖拽旋转和缩放"></canvas><span class="tower-model-status" id="towerHeadModelStatus">正在加载塔头模型…</span></div><figcaption><b>3D 重构</b> 可旋转查看的完整塔头 · 网页内交互查看</figcaption></figure>
+          <p class="eyebrow">结构重构成果 · 塔头到完整塔架</p>
+          <h2>让专用 Agent 读工程图纸，<br />把多页、多视图、多模块重建成同一个结构。</h2>
+          <div class="showcase-triptych">
+            <figure class="drawing-panel"><img src="../images/complete-tower-head-drawing.png" alt="完整塔头多视图工程图纸" /><figcaption><b>01 · 工程输入</b> 正视、剖面、节点与连接标注</figcaption></figure>
+            <figure class="tower-panel tower-model-panel"><div class="tower-canvas-wrap tower-head-canvas-wrap"><canvas id="towerHeadCanvas" aria-label="完整塔头三维模型，可拖拽旋转和缩放"></canvas><span class="tower-model-status" id="towerHeadModelStatus">正在加载塔头模型…</span></div><figcaption><b>02 · 塔头重构</b> 结构准确、可交互的三维几何</figcaption></figure>
+            <figure class="tower-panel tower-model-panel"><div class="tower-canvas-wrap"><canvas id="towerCanvas" aria-label="角钢塔三维模型，可拖拽旋转和缩放"></canvas><span class="tower-model-status" id="towerModelStatus">正在加载三维模型…</span></div><figcaption><b>03 · 完整塔架</b> M1–M6 跨模块统一装配</figcaption></figure>
           </div>
-          <p class="case-bottom"><strong>从工程图纸读取尺寸、标注和构件关系。</strong> 通过几何求解与结构核验，形成可检查、可交互的塔头三维模型。</p>
+          <p class="case-bottom"><strong>从局部构件到完整装配，结构身份始终连续。</strong> 尺寸、标注、共享节点与模块依赖最终进入同一个可检查、可继续工作的结构项目。</p>
         </div>
-        <p class="scene-note">03 · 工程图纸 → 完整塔头三维几何</p>
+        <p class="scene-note">03 · 工程输入 → 塔头重构 → 完整塔架</p>
       </section>
 
-      <section class="scene steel" id="case" data-index="4">
-        <div class="scene-inner">
-          <p class="eyebrow">长上下文建模 · M1–M6 完整塔架</p>
-          <h2>多页、多视图、多模块，<br />仍然重建成同一个结构。</h2>
-          <div class="case-layout model-only-layout">
-            <figure class="tower-panel tower-model-panel"><div class="tower-canvas-wrap"><canvas id="towerCanvas" aria-label="角钢塔三维模型，可拖拽旋转和缩放"></canvas><span class="tower-model-status" id="towerModelStatus">正在加载三维模型…</span></div><figcaption><b>3D 重构</b> 可旋转查看的 M1–M6 塔段 · 网页内交互查看</figcaption></figure>
-          </div>
-          <p class="case-bottom"><strong>跨页证据连续，跨视图身份一致，跨模块装配闭合。</strong> M1–M6 分段连接、共享节点和模块依赖最终进入同一个结构模型。</p>
-        </div>
-        <p class="scene-note">04 · 多页 · 多视图 · 多模块</p>
-      </section>
-
-      <section class="scene dark" id="method" data-index="5">
+      <section class="scene dark" id="method" data-index="4">
         <div class="scene-inner">
           <p class="eyebrow mint">为什么这对 Agent 更重要</p>
           <h2>Agent 不再反复抽奖，<br />而是在同一个结构项目里工作。</h2>
@@ -117,12 +105,12 @@
           </div>
           <div class="agent-ledger" aria-label="可验证重构过程"><strong>一次可验证的重构序列</strong><span>来源</span><i>→</i><span>观察</span><i>→</i><span>结构身份</span><i>→</i><span>约束验证</span><i>→</i><span>版本化输出</span></div>
         </div>
-        <p class="scene-note light-note">05 · READ → ACT → WRITE BACK</p>
+        <p class="scene-note light-note">04 · READ → ACT → WRITE BACK</p>
       </section>
 
-      <section class="scene paper control-scene" id="explorer" data-index="6">
+      <section class="scene paper control-scene" id="explorer" data-index="5">
         <div class="scene-inner">
-          <div class="section-heading compact control-heading"><div><p class="eyebrow">你仍然拥有控制权</p><h2>Agent 完成重构，<br />但结构仍然属于你。</h2></div><p class="section-lead">每一次变化都能回到它的来源、判断与版本。人可以继续检查、修正和移交，而不是被锁在一次黑盒输出里。</p></div>
+          <div class="section-heading compact control-heading"><div><p class="eyebrow">你仍然拥有控制权</p><h2>Agent 完成重构，<br />但结构仍然属于你。</h2></div><p class="section-lead">每一次变化都能回到它的来源、判断与版本。人可以继续检查、修正和移交，而不是被锁在一次性输出里。</p></div>
           <div class="control-values" aria-label="结构项目的四种控制能力">
             <article><span>01</span><b>可见</b><small>VISIBLE</small><p>知道构件来自哪张图、哪个区域。</p></article>
             <article><span>02</span><b>可修改</b><small>EDITABLE</small><p>单独修正构件、关系或候选判断。</p></article>
@@ -137,10 +125,10 @@
             </div>
           </div>
         </div>
-        <p class="scene-note">06 · 可见 · 可修改 · 可验证 · 可移交</p>
+        <p class="scene-note">05 · 可见 · 可修改 · 可验证 · 可移交</p>
       </section>
 
-      <section class="scene paper" id="package" data-index="7">
+      <section class="scene paper" id="package" data-index="6">
         <div class="scene-inner">
           <div class="section-heading"><div><p class="eyebrow">为什么完全开源</p><h2>Fork 的不是一个演示，<br />而是一套结构工程能力。</h2></div><p class="section-lead">Apache-2.0 · 公开 IR · 独立验证器 · 支持领域包</p></div>
           <div class="package-grid">
@@ -149,12 +137,12 @@
             <article><span>VALIDATORS</span><h3>确定性验证</h3><p>用可执行程序检查引用、稳定 ID、坐标、约束残差与制品完整性。</p><code>validate_public_ir.py</code></article>
             <article><span>DOMAIN PACKS</span><h3>领域能力</h3><p>把术语、构件本体、连接规则、求解器和验收方式沉淀为可复用领域包。</p><code>domains/&lt;domain&gt;</code></article>
           </div>
-          <div class="package-boundary"><div><b>它适合什么</b><span>真实工程资料、反复修订、跨系统交付和需要追溯的结构结果。</span></div><div><b>它不是什么</b><span>不是输入一句 Prompt 就生成所有工程模型的一键黑盒。</span></div><a href="https://github.com/ConcentricCirclesMRTT/NeuBE-Structural-Rebuild" target="_blank" rel="noreferrer">查看 GitHub 仓库 →</a></div>
+          <div class="package-boundary"><div><b>它适合什么</b><span>真实工程资料、反复修订、跨系统交付和需要追溯的结构结果。</span></div><div><b>它不是什么</b><span>不是输入一句 Prompt 就生成所有工程模型的通用生成工具。</span></div><a href="https://github.com/ConcentricCirclesMRTT/NeuBE-Structural-Rebuild" target="_blank" rel="noreferrer">查看 GitHub 仓库 →</a></div>
         </div>
-        <p class="scene-note">07 · 方法 · IR · 验证器 · 领域包</p>
+        <p class="scene-note">06 · 方法 · IR · 验证器 · 领域包</p>
       </section>
 
-      <section class="scene closing" id="fork" data-index="8">
+      <section class="scene closing" id="fork" data-index="7">
         <div class="closing-bg" aria-hidden="true"><img src="assets/neube-structural-rebuild-banner.png" alt="" /></div><div class="closing-shade"></div>
         <div class="scene-inner closing-inner"><p class="eyebrow mint">开放共创 · OPEN TO COLLABORATION</p><h2>把一组真实图纸带来，<br />一起教会 AI 你的领域。</h2><p class="closing-lead">你提供真实资料、专业术语和工程判断；我们共同定义构件、关系、约束与验收方式，把一次成功重构沉淀成可复用、可验证的领域包。</p><div class="fork-steps"><span><b>01</b> 对齐真实图纸</span><span><b>02</b> 共定义结构规则</span><span><b>03</b> 共建可复用领域包</span></div><div class="collab-actions"><a class="github-link" href="https://github.com/ConcentricCirclesMRTT/NeuBE-Structural-Rebuild" target="_blank" rel="noreferrer">在 GitHub 上参与 →</a><a class="contact-link" href="mailto:chenwy1@getui.com?subject=NeuBE%20SR%20共创">chenwy1@getui.com</a></div></div>
         <div class="closing-credits" aria-label="署名与归属">
@@ -168,11 +156,11 @@
             <div class="credit-row"><span>CREDITS</span><strong>浙江每日互动研究院有限公司</strong></div>
           </div>
         </div>
-        <p class="scene-note light-note">08 · 重构结构 · 重构推理</p>
+        <p class="scene-note light-note">07 · 重构结构 · 重构推理</p>
       </section>
     </main>
 
-    <div class="controls" aria-label="页面控制"><button id="prev" type="button" title="上一节" aria-label="上一节">↑</button><span id="counter">01 / 08</span><div class="progress"><i id="progressBar"></i></div><button id="next" type="button" title="下一节" aria-label="下一节">↓</button></div>
+    <div class="controls" aria-label="页面控制"><button id="prev" type="button" title="上一节" aria-label="上一节">↑</button><span id="counter">01 / 07</span><div class="progress"><i id="progressBar"></i></div><button id="next" type="button" title="下一节" aria-label="下一节">↓</button></div>
     <script src="script.js?v=20260814-frame-relative-height"></script>
     <script type="module" src="tower-glb-viewer.js?v=20260819-tower-head"></script>
   </body>
