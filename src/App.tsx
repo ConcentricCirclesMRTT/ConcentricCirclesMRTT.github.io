@@ -201,10 +201,41 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
       </section>
 
       <section className="problem-section section-light" aria-labelledby="problem-title">
-        <div className="page-grid problem-heading">
-          <div><p className="section-index">THE MISSING LAYER</p><h2 id="problem-title">AI 已经会画图，下一步是读懂工程</h2></div>
-          <p>真正困难的不是生成一个看起来合理的模型，而是从复杂图纸中恢复构件、尺寸、关系和工程依据。</p>
+        <div className="page-grid problem-heading engineering-heading">
+          <div><p className="section-index">WHY ENGINEERING AGENTS</p><h2 id="problem-title">模型越来越强，<br />工程理解仍需逐步核验。</h2></div>
+          <p>3D 多模态与世界模型拓展了形状理解和生成的能力。但同一张工程图纸，仍可能支持多种看似合理的解释。工程 Agent 需要结合 AI 基座模型、工程规则与专业工具，把候选解释逐步核验为有依据的结果。</p>
         </div>
+        <div className="page-grid engineering-reasons">
+          <article>
+            <span className="reason-number">01 / INFORMATION</span>
+            <h3>图纸是三维实体的<br />选择性表达</h3>
+            <p>二维投影只保留部分信息。深度、遮挡与连接关系，可能需要跨视图寻找证据才能确定。</p>
+            <div className="reason-example"><span>一张投影</span><strong>多种空间解释</strong><small>可见轮廓之外，仍有待确认的信息。</small></div>
+          </article>
+          <article>
+            <span className="reason-number">02 / KNOWLEDGE</span>
+            <h3>工程知识需要成为<br />可执行的规则</h3>
+            <p>基准、制图惯例与行业经验，常以隐含约定存在。Agent 需要识别这些约定，并转化为建模与检查的约束。</p>
+            <div className="reason-example"><span>“以中心线为基准”</span><strong>明确基准与约束</strong><small>让专业经验进入工具可执行的流程。</small></div>
+          </article>
+          <article>
+            <span className="reason-number">03 / VALIDATION</span>
+            <h3>外观合理，<br />还需验证工程关系</h3>
+            <p>相似的几何外观，可能对应完全不同的内部连接。对象、基准和依据，需要分别核验。</p>
+            <div className="reason-example"><span>同一个交叉投影</span><strong>共享节点？前后错开？</strong><small>用连接证据判断，而非仅凭视觉相似度。</small></div>
+          </article>
+        </div>
+        <div className="page-grid engineering-method">
+          <div className="method-heading"><p className="section-index">HOW THE AGENT WORKS</p><h3>让每一步解释，都有核验的依据</h3><p>基座模型提出候选，工程规则与工具参与验证；在新证据中持续修订。</p></div>
+          <ol className="verification-steps">
+            <li><span>01</span><div><h4>提出解释</h4><p>从图纸中提出候选对象与关系。</p></div></li>
+            <li><span>02</span><div><h4>保留候选</h4><p>区分已知事实、假设与未解问题。</p></div></li>
+            <li><span>03</span><div><h4>调用工具</h4><p>检查几何、约束与关系的一致性。</p></div></li>
+            <li><span>04</span><div><h4>依据修订</h4><p>根据证据回到图纸，继续核验与修正。</p></div></li>
+          </ol>
+          <p className="engineering-outcome">我们追求的工程解释：<strong>有依据、可解释、可复核。</strong></p>
+        </div>
+        <div className="page-grid evidence-intro"><p className="section-index">IN REAL DRAWINGS</p><h3>落到真实图纸，还有这四个难点</h3></div>
         <div className="page-grid evidence-strip">
           {evidenceItems.map((item) => (
             <article className="evidence-item" key={item.title}>
@@ -243,9 +274,9 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
             <h2 id="neube-title">从角钢塔开始，重构工程 AI 的方法。</h2>
             <p>NeuBE-Structural-Rebuild 是一套 fully open-source、可 Fork 的 AI Agent Skill 基座。它把图纸、观察、假设、语义、约束和复核组织成可追溯的结构重构流程。</p>
             <p>角钢输电塔是第一个高难度压力测试：结果不仅要有三维形状，还要保留证据、身份和验证状态。</p>
-            <a className="text-button" href="/neube-sr-showcase/index.html">查看 NeuBE SR 展示 <ArrowRight size={17} /></a>
+            <a className="text-button" href="/neube-sr-showcase/index.html">跨领域工程数据参数化重建解决方案 <ArrowRight size={17} /></a>
           </div>
-          <a className="neube-image" href="/neube-sr-showcase/index.html" aria-label="打开 NeuBE SR 展示">
+          <a className="neube-image" href="/neube-sr-showcase/index.html" aria-label="打开跨领域工程数据参数化重建解决方案">
             <img src="/images/neube-sr-complete-tower.png" alt="NeuBE SR 重构的完整彩色角钢塔" />
             <span>打开展示 →</span>
           </a>
@@ -539,7 +570,7 @@ function App() {
         <nav className={`main-nav ${mobileOpen ? "is-open" : ""}`} aria-label="主导航">
           <button className={page === "product" ? "current" : ""} aria-current={page === "product" ? "page" : undefined} onClick={() => navigate("product")}>图纸建模 AI 产品</button>
           <button className={page === "research" ? "current" : ""} aria-current={page === "research" ? "page" : undefined} onClick={() => navigate("research")}>研究方向</button>
-          <a className="showcase-link" href="/neube-sr-showcase/index.html">NeuBE SR 展示</a>
+          <a className="showcase-link" href="/neube-sr-showcase/index.html">跨领域工程数据参数化重建解决方案</a>
           <button className={page === "about" ? "current" : ""} aria-current={page === "about" ? "page" : undefined} onClick={() => navigate("about")}>关于我们</button>
           <button className={page === "careers" ? "current" : ""} aria-current={page === "careers" ? "page" : undefined} onClick={() => navigate("careers")}>加入我们</button>
         </nav>
@@ -551,7 +582,7 @@ function App() {
       {page === "research" && <ResearchPage />}
       {page === "about" && <AboutPage />}
       {page === "careers" && <CareersPage openJob={openJob} setOpenJob={setOpenJob} />}
-      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>工业数据 AI 公司 · 产品：仝心圆</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>图纸建模 AI 产品</button><button onClick={() => navigate("research")}>研究方向</button><a href="/neube-sr-showcase/index.html">NeuBE SR 展示</a><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>Copyright © 2026 浙江每日互动研究院有限公司</span></div></div></footer>
+      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>工业数据 AI 公司 · 产品：仝心圆</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>图纸建模 AI 产品</button><button onClick={() => navigate("research")}>研究方向</button><a href="/neube-sr-showcase/index.html">跨领域工程数据参数化重建解决方案</a><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>Copyright © 2026 浙江每日互动研究院有限公司</span></div></div></footer>
     </div>
   );
 }
