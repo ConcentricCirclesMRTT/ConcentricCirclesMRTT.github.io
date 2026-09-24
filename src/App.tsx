@@ -104,45 +104,52 @@ const researchAreas = [
 
 const jobs = [
   {
-    title: "多模态模型研究工程师",
-    english: "MULTIMODAL MODEL RESEARCH ENGINEER",
-    summary: "让多模态模型理解复杂专业图像、文本与文档，并产出可验证的结构化结果。",
-    responsibilities: [
-      "将真实业务现象抽象为可研究、可评测的多模态任务",
-      "建立模型基线，设计对照实验并分析长尾与失败案例",
-      "建设数据定义、标注规范、清洗增强与合成数据流程",
-      "开展模型适配、后训练、推理优化和原型验证",
-      "将实验沉淀为可复现代码、评测报告和产品能力",
+    "title": "Agent 工程师（AI4Industry / 工程智能方向）",
+    "english": "AGENT ENGINEER / AI4INDUSTRY",
+    "summary": "MRTT 正在建设面向复杂工程任务的 Agent 系统，当前从工程图纸理解、参数化建模与结果校验切入。我们希望让 AI 理解真实工程需求与专业资料，在工程师的指导下开展调研、制定方案、调用专业软件与计算工具，并对结果进行校验和修正，逐步探索设计、仿真与制造环节的协同。\n\n这是一条需要持续探索的复杂任务链路：资料可能不完整，图纸之间可能存在隐含关联，建模过程需要满足几何与工程约束，执行结果又会带来新的问题。我们正在把多模态模型、Agent、专业工具和工程知识结合起来，让系统能够在这些真实问题中持续推进任务，并交付可检查、可追溯的结果。",
+    "context": "你将与团队一起定义目标、约束和验收标准，设计并指导 Agent 完成从问题调研到工程验证的全过程。我们看重你理解 AI、使用 AI 和改进 AI 系统的能力，也期待你把新的技术想法变成能运行、能复现、有实际效果的成果。\n\n一个典型任务是：面对工程设计与建模目标，让 Agent 识别信息缺口，查阅相关资料与工具文档，提出可执行的方案，调用建模或计算工具进行试验，依据几何约束、工程规则和工具反馈调整方案，并在关键决策处向工程师提供证据和待确认事项。你需要设计这条链路，观察它如何执行，并推动它逐步完成更复杂的任务。",
+    "responsibilities": [
+      "组织复杂调研与问题求解。 在团队指导下，把开放的工程问题转化为任务目标、研究步骤和验收条件；让 Agent 检索资料、阅读文档与代码、比较方案、开展实验，并保留结论依据。",
+      "建设长链路 Agent 系统。 设计任务规划、上下文与记忆管理、执行状态、工具调用及失败恢复机制，让 Agent 能根据中间结果调整后续步骤，在多轮探索中保持目标与约束一致。",
+      "连接专业工具与工程任务。 将图纸解析、几何计算、参数化建模、专业软件接口及校验工具接入 Agent，沉淀可复用的工具和 Skills，打通从工程信息理解到模型生成与验证的链路，并根据实际任务探索与仿真分析、制造工具的衔接。",
+      "设计人机协作机制。 明确 Agent 可自主推进的范围、需要补充的信息和人工确认节点，把专业判断转化为可执行的约束、反馈和检查规则。",
+      "用评测推动迭代。 建设代表性任务集，记录执行轨迹和失败案例，评估任务完成率、结果正确性、人工介入程度、时间与成本，验证每次改动的实际收益。",
+      "积累数据与持续改进能力。 将图纸、工程文档、工具反馈、建模记录及人工修正整理为可追溯的数据；从成功与失败轨迹中提炼样例、规则和评测任务，探索对 Agent 策略、工具和模型的持续改进，并通过独立评测验证效果。",
+      "把前沿方法带入真实任务。 持续关注 Agent 与模型能力的变化，主动试用、复现和比较新方法，将有价值的探索转化为可复用的工程成果。"
     ],
-    requirements: [
-      "具备机器学习、计算机视觉或多模态学习基础",
-      "理解 Transformer 与视觉语言模型的基本原理",
-      "能够使用 Python、PyTorch 完成实验与数据处理",
-      "愿意从真实数据和失败案例出发持续分析问题",
-      "能够清楚说明自己的实际工作与技术判断",
+    "requirements": [
+      "有亲手推进 AI 项目的经历，能够展示一个由你主导或深度参与的 Agent、自动化研究、工具使用或复杂任务求解项目，并讲清楚你的贡献、关键设计、失败过程和改进结果。",
+      "主动探索新技术，尤其欢迎分享你在近年来尝试的新模型、新工具或新工作方式，以及它们如何改变了你的项目成果和工作习惯。",
+      "理解大语言模型或多模态模型的能力与局限，能围绕任务选择模型、组织上下文、设计工具接口，并判断何时需要验证、重试或引入人工反馈。",
+      "具备扎实的编程与调试能力，能够使用 Python 或其他熟悉的语言开发工具、处理数据、定位系统问题，并把实验原型推进到可复现的端到端流程。",
+      "熟练使用 AI 编程与研究工具，能给 AI 清晰的目标和反馈，也能独立审查其产出、验证关键假设，对最终结果负责。",
+      "愿意深入理解工程问题，能与领域专家协作，把专业知识转化为数据定义、工具能力和可验证的任务约束。",
+      "有自主推进意识，能够在目标明确、路径尚需探索的情况下提出方案、开展试验、记录结论并持续迭代。"
     ],
-    preferred: ["论文、技术报告或系统性实验成果", "高质量开源项目或算法竞赛成果", "文档理解、视觉定位、OCR 或三维视觉经验"],
-  },
-  {
-    title: "多模态 Agent 研究工程师",
-    english: "MULTIMODAL AGENT RESEARCH ENGINEER",
-    summary: "将模型、工具、领域知识与数据流程组织成可靠、可验证的多模态 Agent 系统。",
-    responsibilities: [
-      "将复杂数据目标拆解为可观测、可验证的 Agent 子任务",
-      "设计 Processing Graph、工作流、状态流转与上下文组织",
-      "编排多模态模型、检索、规则和专业工具",
-      "建设结构化输出、校验、重试、降级与人工复核机制",
-      "构建任务轨迹、标准任务集和端到端评测体系",
+    "background": "我们欢迎具有机器学习、深度学习、计算机视觉、软件工程或其他理工科背景的候选人。既有积累是重要基础，我们也关注你近期如何将这些积累与新的 AI 能力结合。不设置统一工作年限门槛，项目、研究、开源贡献和个人作品均可作为能力依据。",
+    "preferred": [
+      "AI4Science / AI4Industry： 用 AI 推进科学研究、实验设计、仿真计算、工程设计、制造或其他专业问题求解，有可展示的成果。",
+      "有实际成果的 Agent 项目： 做过自主研究、代码执行、复杂工具使用、长任务规划或多 Agent 协作，并能说明系统在真实任务中的表现与改进过程。",
+      "非常规数据与模型改进： 处理过工程图纸、实验记录、仿真输出、异构文档、几何结构或交互轨迹等数据，能将杂乱的专业信息整理为可用于评测、训练或反馈学习的数据。",
+      "基于反馈的持续改进： 探索过轨迹筛选、合成数据、模型后训练、自动实验或 Agent 自我改进，能够说明数据质量、独立评测和改进有效性如何得到保障。",
+      "工程设计与建模： 有机械 CAD（如 SolidWorks）、BIM 设计工具（如 Revit）、参数化建模、几何计算或约束求解经验，愿意把专业软件与工程知识转化为 Agent 可使用和验证的能力。",
+      "仿真与制造： 有 CAE 仿真分析、CAM 加工编程或制造工艺相关经验，能够把工程目标转化为可执行的工具操作，并理解结果的验证方法。",
+      "公开技术成果： 有开源项目、论文、技术文章、演示或持续维护的个人作品，能体现你的技术判断与动手能力。"
     ],
-    requirements: [
-      "理解大语言模型与多模态模型的工作方式和能力边界",
-      "具备 Agent、工具调用或复杂 AI 工作流实践",
-      "能够使用 Python 开发数据流程、后端服务或工具接口",
-      "熟悉 JSON Schema、Pydantic 等结构化表达方式",
-      "重视可观测性、任务质量和实际业务结果",
+    "preferredNote": "以上为加分方向，不要求全部具备。已有 Agent 实践、愿意深入学习工业场景的候选人，同样欢迎申请。",
+    "internship": [
+      "欢迎本科生、硕士生和博士生，课程项目、实验室研究、竞赛及个人作品都可以作为交流起点。",
+      "优先考虑能够连续实习 4 个月及以上的候选人，具体到岗时间和每周工作天数可以沟通。",
+      "希望你能分享一次主动尝试新 AI 技术、推进真实任务并根据结果改进的经历。",
+      "对优秀实习生开放长期合作或转正机会。"
     ],
-    preferred: ["多模态 Agent、文档智能或信息抽取经验", "开源 Agent 项目、论文或技术作品", "模型评测、LLMOps 或人机协同经验"],
-  },
+    "benefits": [
+      "参与 Agent 解决真实工业问题的完整过程，直接看到调研、工具、数据和模型能力如何共同影响工程结果。",
+      "与团队及领域专家共同定义任务、架构和验证方法，作为早期成员影响技术路线与产品方向。",
+      "在复杂任务求解、工程软件工具使用和数据反馈迭代中积累可复用的方法与作品。",
+      "围绕真实问题持续试验前沿 AI 方法，让有价值的探索进入实际系统。"
+    ]
+  }
 ];
 
 type PageId = "home" | "product" | "research" | "about" | "careers";
@@ -402,7 +409,7 @@ function ResearchPage() {
         <div className="page-grid research-cta-layout">
           <div><p className="section-index">WORK WITH US</p><h2>和我们一起，把开放问题做成真实能力</h2></div>
           <div>
-            <p>欢迎多模态、计算机视觉、Agent 与工程数据方向的研究者和工程师。</p>
+            <p>欢迎有 Agent 实践成果，以及 AI4Science、AI4Industry 与工程数据背景的研究者和工程师。</p>
             <a className="text-button" href="#/careers">查看开放岗位 <ArrowRight size={17} /></a>
           </div>
         </div>
@@ -420,7 +427,7 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
       </section>
       <section className="career-facts" aria-label="招聘基本信息">
         <div className="page-grid career-facts-grid">
-          <div><span>LOCATION</span><strong>杭州</strong></div>
+          <div><span>LOCATION</span><strong>杭州（可沟通）</strong></div>
           <div><span>EMPLOYMENT</span><strong>实习 · 应届 · 全职</strong></div>
           <div><span>STAGE</span><strong>从 0 到 1</strong></div>
           <div><span>COMPENSATION</span><strong>根据能力面议</strong></div>
@@ -428,8 +435,8 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
       </section>
       <section className="careers-section" aria-labelledby="careers-title">
         <div className="page-grid careers-heading">
-          <div><p className="section-index">OPEN ROLES</p><h2 id="careers-title">多模态 AI 研究工程师</h2></div>
-          <p>我们关注学习能力、问题拆解、技术深度和实际产出，不以工作年限作为唯一判断标准。</p>
+          <div><p className="section-index">OPEN ROLES</p><h2 id="careers-title">Agent 工程师</h2></div>
+          <p>AI4Industry / 工程智能方向。我们关注近期 AI 探索、复杂任务求解和实际成果，不设置统一工作年限门槛。</p>
         </div>
         <div className="page-grid job-list">
           {jobs.map((job, index) => {
@@ -446,11 +453,19 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
                   <ChevronDown size={22} />
                 </button>
                 <div className="job-details" id={`job-details-${index}`} aria-hidden={!isOpen}>
-                  <p className="job-summary">{job.summary}</p>
+                  {job.summary.split("\n\n").map((paragraph) => <p className="job-summary" key={paragraph}>{paragraph}</p>)}
+                  <h3 className="job-context-title">你将参与什么</h3>
+                  {job.context.split("\n\n").map((paragraph) => <p className="job-summary" key={paragraph}>{paragraph}</p>)}
                   <div className="role-detail-grid">
                     <section><h3>你会做什么</h3><ul>{job.responsibilities.map((item) => <li key={item}>{item}</li>)}</ul></section>
                     <section><h3>我们希望你</h3><ul>{job.requirements.map((item) => <li key={item}>{item}</li>)}</ul></section>
-                    <section><h3>加分项</h3><ul>{job.preferred.map((item) => <li key={item}>{item}</li>)}</ul></section>
+                    <section><h3>以下经历会让我们更想认识你</h3><ul>{job.preferred.map((item) => <li key={item}>{item}</li>)}</ul></section>
+                  </div>
+                  <p className="job-summary">{job.background}</p>
+                  <p className="job-summary">{job.preferredNote}</p>
+                  <div className="role-detail-grid role-support-grid">
+                    <section><h3>如果你是在校生</h3><ul>{job.internship.map((item) => <li key={item}>{item}</li>)}</ul></section>
+                    <section><h3>你将获得</h3><ul>{job.benefits.map((item) => <li key={item}>{item}</li>)}</ul></section>
                   </div>
                   <a className="job-apply" href={`mailto:chenwy1@getui.com?subject=MRTT%20${encodeURIComponent(job.title)}%20申请`}>申请这个岗位 <ArrowRight size={16} /></a>
                 </div>
@@ -463,8 +478,8 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
         <div className="page-grid application-layout">
           <div><p className="section-index">APPLICATION</p><h2 id="application-title">用你最真实的作品和我们聊聊</h2></div>
           <div>
-            <p>投递简历即可。也欢迎附上 GitHub、论文、技术报告、竞赛、专利或个人项目，并用一两句话说明最能代表你的工作。</p>
-            <p>简历初筛通过后，我们会安排一次约 30 分钟的轻量交流。优秀实习生开放长期合作与转正机会。</p>
+            <p>请发送简历，欢迎附上近期项目链接、演示、代码仓库、技术文章或简短说明：你解决了什么问题，Agent 完成了哪些工作，你做了哪些关键设计，如何验证结果，以及哪次失败或新技术尝试改变了你的做法。</p>
+            <p>我们尤其期待看到你在 2026 年以来的探索与成果。保密项目可提供脱敏说明，投递阶段无需另行准备长篇材料。初步交流将围绕实际项目、技术判断和兴趣方向展开。</p>
             <a className="primary-button" href="mailto:chenwy1@getui.com?subject=MRTT%20岗位申请">投递简历 <ArrowRight size={17} /></a>
           </div>
         </div>
@@ -475,11 +490,11 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
 
 function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openJob, setOpenJob] = useState<number | null>(null);
+  const [openJob, setOpenJob] = useState<number | null>(0);
   const [page, setPage] = useState<PageId>(pageFromHash);
 
   useEffect(() => {
-    const onHashChange = () => { setPage(pageFromHash()); setOpenJob(null); window.scrollTo({ top: 0 }); };
+    const onHashChange = () => { setPage(pageFromHash()); setOpenJob(0); window.scrollTo({ top: 0 }); };
     const onResize = () => { if (window.innerWidth > 820) setMobileOpen(false); };
     window.addEventListener("hashchange", onHashChange);
     window.addEventListener("resize", onResize);
@@ -499,7 +514,7 @@ function App() {
       product: "了解仝心圆如何通过 AI 读取工程图纸，重建可验证的结构化数据与三维几何。",
       research: "了解 MRTT 在工业多模态理解、工程关系、结构化预测、Agent Harness 和可靠评测方向的研究。",
       about: "了解仝心圆背后的 MRTT 公司、产业生态与工程图纸数据能力。",
-      careers: "加入 MRTT，参与多模态模型、Agent 与真实工业数据系统的研究和研发。",
+      careers: "加入 MRTT，建设面向复杂工程任务的 Agent 系统，探索工程设计、建模、仿真与制造协同。",
     };
     document.title = titles[page];
     document.querySelector('meta[name="description"]')?.setAttribute("content", descriptions[page]);
