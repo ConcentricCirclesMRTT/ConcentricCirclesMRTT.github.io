@@ -2701,3 +2701,16 @@ span {
   .engineering-outcome strong { display: block; font-size: 21px; }
   .main-nav .showcase-link { max-width: none; }
 }
+
+.illustrated-reasons article { padding: 26px 22px; }
+.illustrated-reasons h3 { font-size: 22px; margin: 18px 0 12px; }
+.illustrated-reasons img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; margin: auto 0 18px; }
+.illustrated-reasons p { margin: 0; font-size: 14px; }
+.verification-visual { margin: 4px 0 28px; }
+.verification-visual > img { display: block; width: 100%; height: auto; }
+.verification-labels { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); list-style: none; padding: 0; margin: 18px 0 0; text-align: center; color: #8fd4bf; font-size: 18px; font-weight: 600; }
+@media (max-width: 760px) {
+  .illustrated-reasons article { padding: 26px 22px; }
+  .verification-labels { gap: 8px; font-size: 12px; }
+  .engineering-method { padding: 26px 16px; }
+}
