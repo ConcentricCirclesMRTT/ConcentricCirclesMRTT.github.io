@@ -2636,3 +2636,18 @@ span {
 @media (max-width: 760px) {
   .role-support-grid { grid-template-columns: 1fr; }
 }
+
+.application-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+}
+.application-email {
+  color: var(--muted);
+  font-size: 15px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+.application-email:hover { color: var(--red); }

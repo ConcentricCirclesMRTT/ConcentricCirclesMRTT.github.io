@@ -467,7 +467,10 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
                     <section><h3>如果你是在校生</h3><ul>{job.internship.map((item) => <li key={item}>{item}</li>)}</ul></section>
                     <section><h3>你将获得</h3><ul>{job.benefits.map((item) => <li key={item}>{item}</li>)}</ul></section>
                   </div>
+                  <div className="application-actions">
                   <a className="job-apply" href={`mailto:chenwy1@getui.com?subject=MRTT%20${encodeURIComponent(job.title)}%20申请`}>申请这个岗位 <ArrowRight size={16} /></a>
+                    <a className="application-email" href="mailto:chenwy1@getui.com">chenwy1@getui.com</a>
+                  </div>
                 </div>
               </article>
             );
@@ -480,7 +483,10 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
           <div>
             <p>请发送简历，欢迎附上近期项目链接、演示、代码仓库、技术文章或简短说明：你解决了什么问题，Agent 完成了哪些工作，你做了哪些关键设计，如何验证结果，以及哪次失败或新技术尝试改变了你的做法。</p>
             <p>我们尤其期待看到你在 2026 年以来的探索与成果。保密项目可提供脱敏说明，投递阶段无需另行准备长篇材料。初步交流将围绕实际项目、技术判断和兴趣方向展开。</p>
+            <div className="application-actions">
             <a className="primary-button" href="mailto:chenwy1@getui.com?subject=MRTT%20岗位申请">投递简历 <ArrowRight size={17} /></a>
+              <a className="application-email" href="mailto:chenwy1@getui.com">chenwy1@getui.com</a>
+            </div>
           </div>
         </div>
       </section>
