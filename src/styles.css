@@ -2714,3 +2714,6 @@ span {
   .verification-labels { gap: 8px; font-size: 12px; }
   .engineering-method { padding: 26px 16px; }
 }
+
+.application-questions { padding-left: 22px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.application-questions li + li { margin-top: 8px; }
