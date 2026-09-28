@@ -450,7 +450,7 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
       <section className="career-facts" aria-label="招聘基本信息">
         <div className="page-grid career-facts-grid">
           <div><span>LOCATION</span><strong>杭州</strong></div>
-          <div><span>EMPLOYMENT</span><strong>实习 · 应届 · 全职</strong></div>
+          <div><span>EMPLOYMENT</span><strong>实习 · 应届 · 全职<br />顾问 · 兼职共创</strong></div>
           <div><span>STAGE</span><strong>龙头制造业公司和上市科技企业合资新创业公司</strong></div>
           <div><span>COMPENSATION</span><strong>市场竞争力薪资和潜在股权激励</strong></div>
         </div>
@@ -471,7 +471,7 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
                   aria-controls={`job-details-${index}`}
                 >
                   <span className="job-title"><strong>{job.title}</strong><small>{job.english}</small></span>
-                  <span className="job-type">杭州 · 实习 / 应届 / 全职</span>
+                  <span className="job-type">杭州 · 实习 / 应届 / 全职 / 顾问 / 兼职共创</span>
                   <ChevronDown size={22} />
                 </button>
                 <div className="job-details" id={`job-details-${index}`} aria-hidden={!isOpen}>
