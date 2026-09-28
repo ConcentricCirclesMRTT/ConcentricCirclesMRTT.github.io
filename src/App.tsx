@@ -441,7 +441,11 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
   return (
     <main>
       <section className="inner-hero careers-hero">
-        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">加入仝心圆 / CAREERS</p><h1>让 AI 多学一招，让工程向前一步。</h1></div><p>从让 Agent 跑通复杂任务，到让模型从数据中学会新本领，和我们一起把想法变成真实工程里的进步。实习、应届及全职均可。</p></div>
+        <div className="page-grid inner-hero-layout">
+          <div><p className="eyebrow">AI4INDUSTRY · BUILD WITH US</p><h1>让 Agent 深入工业，<br />让数据长出智能。</h1></div>
+          <p>欢迎 Builder 加入复杂工业场景的 AI 攻关。从工程图纸与专业数据出发，让多模态模型、专业算法与工具协同求解，让执行反馈持续推动能力进化。一起迈出 AI4Industry 深入复杂垂域的第一步，构建能够自主推进任务、持续学习的异构 AI 系统。</p>
+        </div>
+        <ul className="page-grid career-builder-themes" aria-label="我们的攻关方向"><li>多模型协同</li><li>专业工具求解</li><li>数据驱动进化</li></ul>
       </section>
       <section className="career-facts" aria-label="招聘基本信息">
         <div className="page-grid career-facts-grid">
