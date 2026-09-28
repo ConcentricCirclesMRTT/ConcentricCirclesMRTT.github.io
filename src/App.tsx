@@ -95,7 +95,7 @@ const researchAreas = [
   },
 ];
 
-// Source: MRTT/HR/MRTT Agent 工程师招聘 精简投放版 20260925.md
+// Source: MRTT/HR recruitment Markdown drafts.
 const jobs = [
   {
     "title": "Agent 工程师（工程求解与 CAD 建模方向）",
@@ -111,6 +111,7 @@ const jobs = [
       "愿意深入理解工程与几何问题，与领域专家协作，把专业知识转化为数据定义、工具能力和可验证的任务约束",
       "有自主推进意识，能在目标明确、路径尚需探索的情况下提出方案、开展试验、记录结论并持续迭代"
     ],
+    "background": "",
     "preferred": [
       "AI4Science / AI4Industry：用 AI 推进科学研究、仿真计算、工程设计或制造等实际问题求解，有可展示的成果",
       "真实任务中跑通过的 Agent 项目：长任务规划、复杂工具使用、多 Agent 协作，并能说明系统的实际表现与改进过程",
@@ -131,6 +132,42 @@ const jobs = [
       "哪次失败或新技术尝试，让你改变了原来的做法？"
     ],
     "applicationNote": "我们尤其期待看到 2026 年以来的探索与成果。涉及保密的项目可以提供脱敏说明，投递阶段无需另行准备长篇材料。初步交流将围绕你的实际项目、技术判断和兴趣方向展开。"
+  },
+  {
+    "title": "AI 算法工程师（模型与学习方向）",
+    "english": "AI ALGORITHM ENGINEER / MODELS & LEARNING",
+    "summary": "MRTT 正在建设面向复杂工程任务的 Agent 系统，当前从工程图纸理解、参数化建模与结果校验切入，让 AI 在工程师指导下开展调研、调用专业工具并推进问题求解。\n\n真实任务会不断暴露模型的能力边界，也会产生有价值的执行轨迹、工具反馈和专家修正。我们希望把这些经验转化为数据与学习信号，持续提升模型和 Agent 的理解、推理与求解能力，建立“任务执行—反馈采集—数据沉淀—能力改进—再次验证”的数据飞轮。",
+    "context": "你将与 Agent 工程师、领域专家协作，发现能力瓶颈，研究模型、数据与算法改进，并通过实验验证效果。\n\n- 研究模型与 Agent 的能力提升。 围绕大语言模型、多模态模型的专业理解、推理和工具使用，探索数据构造、模型适配、后训练、蒸馏或反馈学习等方法；根据任务需要改进规划、搜索、候选选择与验证策略。\n- 从失败中定位研究问题。 分析模型输出与执行轨迹，区分信息缺失、模型理解、推理策略和工具能力等因素，提出可检验的假设，设计对照实验并迭代方法。\n- 建设有效的数据与学习信号。 从工程图纸、专业资料、工具结果与专家修正中识别高价值样本，设计数据筛选、合成与质量检查方法，将任务反馈转化为训练素材、评测样例或策略改进依据。\n- 验证并交付能力提升。 建立可靠基线与独立评测，检查数据泄漏、泛化效果和能力回退；与 Agent 工程师共同将算法成果接入系统，衡量任务成功率、结果正确性、人工介入及时间成本的变化。",
+    "requirements": [
+      "在模型或算法的某一方向有扎实积累，例如 LLM／多模态模型、后训练、推理、Agent 学习、搜索或优化；能够解释方法的机制、适用条件与能力边界",
+      "亲手做过模型训练、后训练或算法能力提升实验，能讲清问题、个人贡献、数据、基线和改进结果；研究项目、开源工作及个人实验均可作为依据",
+      "对数据有洞察力，能从杂乱资料和失败案例中识别关键差异，判断哪些信息值得采集、哪些反馈可以用于学习，并关注数据质量、代表性与来源",
+      "具备扎实的 Python 与算法实现能力，熟悉 PyTorch 或同类框架，能阅读研究代码、实现方法、调试实验并复现结果",
+      "重视实验设计与证据，能通过对照实验判断收益来自哪里，并检查方法在新样本、新任务上是否仍然有效",
+      "主动探索新的 AI 方法，熟练使用 AI 编程与研究工具，同时能独立审查产出、验证假设，对研究结论负责",
+      "愿意深入真实工程场景，与领域专家和工程团队协作，把研究成果推进到实际系统"
+    ],
+    "background": "欢迎在一个相关方向有深度的候选人，不要求精通所有模型与工程软件。已有视觉、机器人或科学计算积累，近期开展大模型研究的同学，同样欢迎申请。",
+    "preferred": [
+      "模型后训练与反馈学习：做过监督微调、偏好优化、强化学习、知识蒸馏或 on-policy distillation，能说明方法选择、数据设计与实际收益",
+      "Agent 能力研究：研究过多步推理、工具使用、轨迹学习、规划搜索或验证机制，并在真实任务中取得可复现的改进",
+      "数据闭环：做过困难样本挖掘、合成数据、轨迹筛选、过程监督或自动评测，能说明数据如何带来可验证的能力提升",
+      "AI4Science / AI4Industry：用 AI 推进科学研究、仿真计算、工程设计或制造问题求解；或将几何、约束求解等专业算法与模型、Agent 结合",
+      "公开技术成果：有论文、开源贡献、技术报告或持续维护的实验项目，能体现研究深度与独立判断"
+    ],
+    "internship": "欢迎本科生、硕士生和博士生，实验室研究、课程项目、竞赛与个人实验均可作为交流起点。优先考虑能连续实习 4 个月及以上者，到岗时间和每周工作天数可沟通；对优秀实习生开放长期合作或转正机会。",
+    "benefits": [
+      "围绕真实工程任务研究模型与算法，看到数据和学习方法如何改变系统表现",
+      "与团队共同定义研究问题、数据策略和评测方法，作为早期成员影响技术路线",
+      "积累从问题发现、实验验证到系统落地的完整研究经验，参与建设可持续迭代的数据飞轮"
+    ],
+    "applicationIntro": "发送简历至 chenwy1@getui.com，邮件主题可注明“AI 算法工程师”。欢迎附上一个最能代表你近期能力提升工作的项目、论文、代码仓库或实验记录，简短说明：",
+    "applicationQuestions": [
+      "你发现了什么能力瓶颈，提出了什么假设？",
+      "你做了哪些数据、模型或算法改进，本人负责什么？",
+      "如何证明改进有效，在新任务上表现如何，还有哪些局限？"
+    ],
+    "applicationNote": "我们尤其期待看到近期主动探索新 AI 方法的经历与成果。涉及保密的项目可以提供脱敏说明，投递阶段无需另行准备长篇材料。初步交流将围绕你的实际研究、实验判断和兴趣方向展开。"
   }
 ];
 
@@ -416,8 +453,8 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
       </section>
       <section className="careers-section" aria-labelledby="careers-title">
         <div className="page-grid careers-heading">
-          <div><p className="section-index">OPEN ROLES</p><h2 id="careers-title">Agent 工程师</h2></div>
-          <p>工程求解与 CAD 建模方向。不以工作年限为主要定薪依据。</p>
+          <div><p className="section-index">OPEN ROLES</p><h2 id="careers-title">开放岗位</h2></div>
+          <p>Agent 工程与模型算法两个方向。点击岗位查看详情，不以工作年限为主要定薪依据。</p>
         </div>
         <div className="page-grid job-list">
           {jobs.map((job, index) => {
@@ -436,15 +473,20 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
                 <div className="job-details" id={`job-details-${index}`} aria-hidden={!isOpen}>
                   {job.summary.split("\n\n").map((paragraph) => <p className="job-summary" key={paragraph}>{paragraph}</p>)}
                   <h3 className="job-context-title">你将做的事</h3>
-                  {job.context.split("\n\n").map((paragraph) => <p className="job-summary" key={paragraph}>{paragraph}</p>)}
+                  {job.context.split("\n\n").map((paragraph) => paragraph.startsWith("- ") ? <ul className="application-questions" key={paragraph}>{paragraph.split("\n").map((item) => <li key={item}>{item.replace(/^- /, "")}</li>)}</ul> : <p className="job-summary" key={paragraph}>{paragraph}</p>)}
                   <div className="role-detail-grid role-support-grid">
                     <section><h3>我们希望你</h3><ul>{job.requirements.map((item) => <li key={item}>{item}</li>)}</ul></section>
                     <section><h3>加分项（不要求全部具备）</h3><ul>{job.preferred.map((item) => <li key={item}>{item}</li>)}</ul></section>
                   </div>
+                  {job.background && <p className="job-summary">{job.background}</p>}
                   <div className="role-detail-grid role-support-grid">
                     <section><h3>在校生说明</h3><p className="job-summary">{job.internship}</p></section>
                     <section><h3>你将获得</h3><ul>{job.benefits.map((item) => <li key={item}>{item}</li>)}</ul></section>
                   </div>
+                  <h3 className="job-context-title">投递方式</h3>
+                  <p className="job-summary">{job.applicationIntro}</p>
+                  <ol className="application-questions">{job.applicationQuestions.map((question) => <li key={question}>{question}</li>)}</ol>
+                  <p className="job-summary">{job.applicationNote}</p>
                   <div className="application-actions">
                   <a className="job-apply" href={`mailto:chenwy1@getui.com?subject=MRTT%20${encodeURIComponent(job.title)}%20申请`}>申请这个岗位 <ArrowRight size={16} /></a>
                     <a className="application-email" href="mailto:chenwy1@getui.com">chenwy1@getui.com</a>
@@ -459,9 +501,7 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
         <div className="page-grid application-layout">
           <div><p className="section-index">APPLICATION</p><h2 id="application-title">用你最真实的作品和我们聊聊</h2></div>
           <div>
-            <p>{jobs[0].applicationIntro}</p>
-            <ol className="application-questions">{jobs[0].applicationQuestions.map((question) => <li key={question}>{question}</li>)}</ol>
-            <p>{jobs[0].applicationNote}</p>
+            <p>欢迎发送简历与代表项目，邮件主题注明申请岗位。具体投递说明可展开对应岗位查看。</p>
             <div className="application-actions">
             <a className="primary-button" href="mailto:chenwy1@getui.com?subject=MRTT%20岗位申请">投递简历 <ArrowRight size={17} /></a>
               <a className="application-email" href="mailto:chenwy1@getui.com">chenwy1@getui.com</a>
@@ -475,11 +515,11 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
 
 function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openJob, setOpenJob] = useState<number | null>(0);
+  const [openJob, setOpenJob] = useState<number | null>(null);
   const [page, setPage] = useState<PageId>(pageFromHash);
 
   useEffect(() => {
-    const onHashChange = () => { setPage(pageFromHash()); setOpenJob(0); window.scrollTo({ top: 0 }); };
+    const onHashChange = () => { setPage(pageFromHash()); setOpenJob(null); window.scrollTo({ top: 0 }); };
     const onResize = () => { if (window.innerWidth > 820) setMobileOpen(false); };
     window.addEventListener("hashchange", onHashChange);
     window.addEventListener("resize", onResize);
