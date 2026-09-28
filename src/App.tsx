@@ -441,14 +441,14 @@ function CareersPage({ openJob, setOpenJob }: { openJob: number | null; setOpenJ
   return (
     <main>
       <section className="inner-hero careers-hero">
-        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">加入仝心圆 / CAREERS</p><h1>把 AI 带进真实、复杂的工业世界</h1></div><p>这里有开放的研究问题、明确的工程约束，也有真正能被客户使用的结果。实习、应届及全职均可。</p></div>
+        <div className="page-grid inner-hero-layout"><div><p className="eyebrow">加入仝心圆 / CAREERS</p><h1>让 AI 多学一招，让工程向前一步。</h1></div><p>从让 Agent 跑通复杂任务，到让模型从数据中学会新本领，和我们一起把想法变成真实工程里的进步。实习、应届及全职均可。</p></div>
       </section>
       <section className="career-facts" aria-label="招聘基本信息">
         <div className="page-grid career-facts-grid">
           <div><span>LOCATION</span><strong>杭州</strong></div>
           <div><span>EMPLOYMENT</span><strong>实习 · 应届 · 全职</strong></div>
-          <div><span>STAGE</span><strong>从 0 到 1</strong></div>
-          <div><span>COMPENSATION</span><strong>薪酬面议</strong></div>
+          <div><span>STAGE</span><strong>龙头制造业公司和上市科技企业合资新创业公司</strong></div>
+          <div><span>COMPENSATION</span><strong>市场竞争力薪资和潜在股权激励</strong></div>
         </div>
       </section>
       <section className="careers-section" aria-labelledby="careers-title">
@@ -570,7 +570,7 @@ function App() {
       {page === "research" && <ResearchPage />}
       {page === "about" && <AboutPage />}
       {page === "careers" && <CareersPage openJob={openJob} setOpenJob={setOpenJob} />}
-      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>工业数据 AI 公司 · 产品：仝心圆</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>图纸建模 AI 产品</button><button onClick={() => navigate("research")}>研究方向</button><a href="/neube-sr-showcase/index.html">跨领域工程数据参数化重建解决方案</a><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>Copyright © 2026 浙江每日互动研究院有限公司</span></div></div></footer>
+      <footer className="site-footer"><div className="page-grid footer-grid"><div><strong className="footer-wordmark">MRTT</strong><p>工业数据 AI 公司 · 产品：仝心圆</p></div><div className="footer-links"><button onClick={() => navigate("home")}>首页</button><button onClick={() => navigate("product")}>图纸建模 AI 产品</button><button onClick={() => navigate("research")}>研究方向</button><a href="/neube-sr-showcase/index.html">跨领域工程数据参数化重建解决方案</a><button onClick={() => navigate("about")}>关于我们</button><button onClick={() => navigate("careers")}>加入我们</button></div><div className="footer-meta"><span>CHINA / 2026</span><span>Copyright © 2026</span><span>浙江每日仝泰科技有限公司</span><span>浙江每日互动研究院有限公司</span></div></div></footer>
     </div>
   );
 }

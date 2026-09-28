@@ -2717,3 +2717,6 @@ span {
 
 .application-questions { padding-left: 22px; color: var(--muted); font-size: 15px; line-height: 1.8; }
 .application-questions li + li { margin-top: 8px; }
+
+.career-facts-grid strong { display: block; line-height: 1.7; overflow-wrap: anywhere; }
+.footer-meta { line-height: 1.7; }
