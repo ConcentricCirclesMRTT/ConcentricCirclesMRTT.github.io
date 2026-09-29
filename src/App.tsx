@@ -221,8 +221,8 @@ function HomePage({ navigate }: { navigate: (page: PageId) => void }) {
 
       <section className="problem-section section-light" aria-labelledby="problem-title">
         <div className="page-grid problem-heading engineering-heading">
-          <div><p className="section-index">WHY ENGINEERING AGENTS</p><h2 id="problem-title">三维世界生成式模型已经可以造出漂亮的示意模型，</h2></div>
-          <p>真实工程，还需要有依据的解释。工程 Agent 结合基座模型、专业规则与工具，逐步核验几何和连接关系。</p>
+          <div><p className="section-index">WHY ENGINEERING AGENTS</p><h2 id="problem-title">三维世界生成式模型已经可以造出漂亮的示意模型，<br />但真实工程还需要经得起核验的答案。</h2></div>
+          <p>工程 Agent 结合基座模型、专业规则与工具，逐步核验几何和连接关系，让每一个工程解释都有据可查。</p>
         </div>
         <div className="page-grid engineering-reasons illustrated-reasons">
           <article>
